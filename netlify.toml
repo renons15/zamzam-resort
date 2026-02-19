@@ -1,0 +1,50 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/"
+  to = "/ru/index.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/index.html"
+  to = "/ru/index.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pricing.html"
+  to = "/ru/pricing.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/procedures.html"
+  to = "/ru/procedures.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/indications.html"
+  to = "/ru/indications.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nutrition.html"
+  to = "/ru/nutrition.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/licenses.html"
+  to = "/ru/licenses.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact.html"
+  to = "/ru/contact.html"
+  status = 301
+  force = true

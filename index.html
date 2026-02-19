@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Санаторий Zangiota Zam-Zam — натуральная термальная минеральная вода и лечебные процедуры для вашего благополучия."
+    />
+    <title>Санаторий «Zangiota Zam-Zam»</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="icon" href="https://ext.same-assets.com/10141910/2678896961.webp" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo-link" href="#hero" aria-label="На главную">
+          <img
+            src="https://ext.same-assets.com/10141910/2678896961.webp"
+            alt="Zangiota Zam-Zam"
+            width="70"
+            height="70"
+          />
+        </a>
+        <nav class="site-nav desktop-nav" aria-label="Основная навигация">
+          <a href="#about">О нас</a>
+          <a href="#rooms">Номера</a>
+          <a href="pricing.html">Прайс</a>
+          <a href="procedures.html">Процедуры</a>
+          <a href="indications.html">Показания</a>
+          <a href="nutrition.html">Питание</a>
+          <a href="contact.html">Контакты</a>
+        </nav>
+        <div class="header-actions desktop-actions">
+          <a
+            class="wa-pill"
+            href="https://wa.me/998909829871"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Написать в WhatsApp
+          </a>
+          <div class="lang-switcher" aria-label="Language switcher"><a class="lang-switcher__btn is-active" href="index.html" lang="ru" hreflang="ru">RU</a><a class="lang-switcher__btn" href="uz/index.html" lang="uz" hreflang="uz">UZ</a><a class="lang-switcher__btn" href="kk/index.html" lang="kk" hreflang="kk">KZ</a></div>
+        </div>
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+          aria-label="Открыть меню"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <div class="mobile-menu" id="mobileMenu">
+        <nav class="site-nav mobile-nav" aria-label="Мобильная навигация">
+          <a href="#about">О нас</a>
+          <a href="#rooms">Номера</a>
+          <a href="pricing.html">Прайс</a>
+          <a href="procedures.html">Процедуры</a>
+          <a href="indications.html">Показания</a>
+          <a href="nutrition.html">Питание</a>
+          <a href="contact.html">Контакты</a>
+        </nav>
+        <div class="header-actions mobile-actions">
+          <a
+            class="wa-pill"
+            href="https://wa.me/998909829871"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Написать в WhatsApp
+          </a>
+          <div class="lang-switcher" aria-label="Language switcher"><a class="lang-switcher__btn is-active" href="index.html" lang="ru" hreflang="ru">RU</a><a class="lang-switcher__btn" href="uz/index.html" lang="uz" hreflang="uz">UZ</a><a class="lang-switcher__btn" href="kk/index.html" lang="kk" hreflang="kk">KZ</a></div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="hero" class="hero">
+        <div class="hero-background" aria-hidden="true"></div>
+        <div class="container hero-content reveal">
+          <h1>ZANGIOTA ZAM-ZAM</h1>
+         
+        </div>
+
+        <div class="hero-booking" id="booking">
+          <div class="container">
+            <div class="booking-card">
+              <div class="booking-grid">
+                <label class="booking-field">
+                  <span>Заезд</span>
+                  <input id="checkinInput" type="date" />
+                </label>
+                <label class="booking-field">
+                  <span>Выезд</span>
+                  <input id="checkoutInput" type="date" />
+                </label>
+                <div class="booking-field booking-guests">
+                  <span>Гости</span>
+                  <button
+                    id="guestTrigger"
+                    class="guest-trigger"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="guestPopover"
+                  >
+                    <span id="guestSummary">2 взрослых, 0 детей</span>
+                  </button>
+                  <div id="guestPopover" class="guest-popover" hidden>
+                    <div class="guest-row">
+                      <div>
+                        <p>Взрослые</p>
+                        <small>от 18 лет</small>
+                      </div>
+                      <div class="guest-controls">
+                        <button id="adultsMinus" type="button" aria-label="Уменьшить взрослых">−</button>
+                        <span id="adultsCount">2</span>
+                        <button id="adultsPlus" type="button" aria-label="Увеличить взрослых">+</button>
+                      </div>
+                    </div>
+                    <div class="guest-row">
+                      <div>
+                        <p>Дети</p>
+                        <small>до 17 лет</small>
+                      </div>
+                      <div class="guest-controls">
+                        <button id="childrenMinus" type="button" aria-label="Уменьшить детей">−</button>
+                        <span id="childrenCount">0</span>
+                        <button id="childrenPlus" type="button" aria-label="Увеличить детей">+</button>
+                      </div>
+                    </div>
+                    <button id="guestDone" class="guest-done" type="button">Готово</button>
+                  </div>
+                </div>
+                <div class="booking-field promo-field">
+                  <span>Промокод</span>
+                  <button class="promo-button" type="button">У меня есть промокод</button>
+                </div>
+              </div>
+              <button class="btn btn-gold booking-submit" type="button">НАЙТИ НОМЕР</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section section-about">
+        <div class="container">
+          <h2 class="section-title reveal">О санатории</h2>
+          <p class="about-description reveal">
+            Санаторий «Zangiota Zam-Zam» находится в живописном районе Ташкентской области.
+            Он расположен вдали от промышленных зон и населенных пунктов, окружен чистым
+            воздухом, изобилием солнца и фруктовых садов. Гостям предоставляется
+            высококвалифицированное медицинское обслуживание, комфортабельные жилые помещения,
+            вкусная и полезная еда, быстрое обслуживание и разнообразные досуговые мероприятия.
+          </p>
+          <div class="about-gallery">
+            <figure class="about-photo reveal reveal-left">
+              <img
+                src="https://ext.same-assets.com/10141910/1936374692.jpeg"
+                alt="Санаторий Zangiota Zam-Zam - Фонтан"
+              />
+            </figure>
+            <figure class="about-photo reveal reveal-right">
+              <img
+                src="https://ext.same-assets.com/10141910/3065879048.jpeg"
+                alt="Санаторий Zangiota Zam-Zam - Источник"
+              />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="treatments" class="section section-treatments">
+        <div class="container">
+          <h2 class="section-title reveal">Специализируемся на лечении:</h2>
+          <div class="treatment-grid reveal">
+            <article class="treatment-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.2"
+                  d="M10 4v2.1c0 1.3-.6 2.5-1.6 3.3-1.8 1.4-2.9 3.5-2.9 5.8 0 3.1 2.5 5.6 5.6 5.6 2 0 3.9-1.1 4.9-2.8 1.2-2 1.3-4.5.3-6.5-.9-1.9-2.8-3.1-4.9-3.1h-.1"
+                ></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.2"
+                  d="M10.1 9.5c1.8-.9 4.1-.3 5.2 1.4"
+                ></path>
+              </svg>
+              <p>Заболеваний желудочно-кишечного тракта</p>
+            </article>
+            <article class="treatment-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.2"
+                  d="M8.5 6.5C6.6 6.5 5 8 5 9.9v1c0 2.3 1.7 4.2 3.9 4.6 1.1.2 2.1-.7 2.1-1.9V8.8c0-1.3-1.1-2.3-2.5-2.3z"
+                ></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.2"
+                  d="M15.5 6.5c1.9 0 3.5 1.5 3.5 3.4v1c0 2.3-1.7 4.2-3.9 4.6-1.1.2-2.1-.7-2.1-1.9V8.8c0-1.3 1.1-2.3 2.5-2.3z"
+                ></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M12 14v4"></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.2"
+                  d="M10.5 18h3"
+                ></path>
+              </svg>
+              <p>Урологических заболеваний</p>
+            </article>
+            <article class="treatment-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <circle cx="4.5" cy="11.5" r="1.5" stroke-width="1.2"></circle>
+                <circle cx="19.5" cy="11.5" r="1.5" stroke-width="1.2"></circle>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.2"
+                  d="M6 11.5h3.2a3 3 0 003-3V7M18 11.5h-3.2a3 3 0 01-3-3V7"
+                ></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M12 7v9"></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.2"
+                  d="M10.5 16h3"
+                ></path>
+              </svg>
+              <p>Гинекологических заболеваний</p>
+            </article>
+            <article class="treatment-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.2"
+                  d="M13.5 4c-.8 2.5-2.2 4.8-3.9 6.8-1.3 1.5-2.1 3.1-2.1 4.6 0 2.1 1.7 3.8 3.8 3.8H14"
+                ></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.2"
+                  d="M14 19h2.2a2.8 2.8 0 002.8-2.8c0-1.3-.8-2.4-2-2.9l-1.4-.6"
+                ></path>
+              </svg>
+              <p>Заболеваний органов дыхания</p>
+            </article>
+            <article class="treatment-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.2"
+                  d="M10.5 4.5l2.2 4-1 3.2 2 3.4-.7 4.9h-3l.5-4-2.2-3.1.9-3.5-1.6-3.1"
+                ></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.2"
+                  d="M8.8 9.4h3"
+                ></path>
+              </svg>
+              <p>Опорно-двигательного аппарата</p>
+            </article>
+            <article class="treatment-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <circle cx="12" cy="12" r="2.2" stroke-width="1.2"></circle>
+                <circle cx="12" cy="4" r="1.1" stroke-width="1.2"></circle>
+                <circle cx="12" cy="20" r="1.1" stroke-width="1.2"></circle>
+                <circle cx="4" cy="12" r="1.1" stroke-width="1.2"></circle>
+                <circle cx="20" cy="12" r="1.1" stroke-width="1.2"></circle>
+                <circle cx="6.2" cy="6.2" r="1.1" stroke-width="1.2"></circle>
+                <circle cx="17.8" cy="17.8" r="1.1" stroke-width="1.2"></circle>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M12 9.8V5.1"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M12 14.2v4.7"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M9.8 12H5.1"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M14.2 12h4.7"></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.2"
+                  d="M10.4 10.4L7 7"
+                ></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.2"
+                  d="M13.6 13.6l3.4 3.4"
+                ></path>
+              </svg>
+              <p>Заболеваний нервной системы</p>
+            </article>
+            <article class="treatment-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.2"
+                  d="M4.5 12.5h3l1.7-3 2.3 6 1.8-4h6.2"
+                ></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.2"
+                  d="M20.5 8.5a4.5 4.5 0 00-6.4 0L12 10.6 9.9 8.5a4.5 4.5 0 00-6.4 6.4L12 23l8.5-8.1a4.5 4.5 0 000-6.4z"
+                ></path>
+              </svg>
+              <p>Сердечно-сосудистых заболеваний</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="rooms" class="section section-rooms">
+        <div class="container">
+          <h2 class="section-title section-title-left">Номера</h2>
+          <div id="roomTabs" class="room-tabs">
+            <button class="room-tab is-active" type="button" data-room-id="standart">СТАНДАРТ</button>
+            <button class="room-tab" type="button" data-room-id="polulux1">ПОЛУЛЮКС 1К</button>
+            <button class="room-tab" type="button" data-room-id="polulux2">ПОЛУЛЮКС 2К</button>
+            <button class="room-tab" type="button" data-room-id="lux">ЛЮКС</button>
+          </div>
+
+          <div class="room-layout">
+            <article class="room-details">
+              <div class="room-header">
+                <h3 id="roomName">Стандарт</h3>
+                <div class="price-badge">
+                  <span>от</span>
+                  <strong id="roomPriceHeader">490 000</strong>
+                  <small id="roomCurrencyHeader">сум/ночь</small>
+                </div>
+              </div>
+
+              <div class="room-meta">
+                <div class="meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                      d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                    ></path>
+                  </svg>
+                  <span id="roomSize">18 м²</span>
+                </div>
+                <div class="meta-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                    ></path>
+                  </svg>
+                  <span id="roomBuilding">Основной корпус</span>
+                </div>
+              </div>
+
+              <div class="room-pricing">
+                <h4>Тарифы для граждан Узбекистана:</h4>
+                <div class="pricing-row">
+                  <span>Двухместное размещение</span>
+                  <strong id="roomPriceDouble">490 000 сум / сутки</strong>
+                </div>
+                <div class="pricing-row">
+                  <span>Одноместное размещение</span>
+                  <strong id="roomPriceSingle">710 000 сум / сутки</strong>
+                </div>
+                <div class="pricing-row">
+                  <span>Детям до 15 лет</span>
+                  <strong id="roomPriceChild">392 000 сум / сутки</strong>
+                </div>
+                <p>* Путёвка включает проживание, лечение и питание. Минимальный срок заезда — 10 суток.</p>
+              </div>
+
+              <div class="room-features">
+                <h4>Характеристики номера:</h4>
+                <ul id="roomFeatures"></ul>
+              </div>
+
+              <div class="room-actions">
+                <a class="btn btn-gold" href="#booking">ЗАБРОНИРОВАТЬ</a>
+                <a class="section-link" href="#contact">
+                  <span>ПОДРОБНЕЕ</span>
+                  <span class="link-circle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </span>
+                </a>
+              </div>
+            </article>
+
+            <article class="room-media">
+              <img
+                id="roomImage"
+                src="assets/old/images/standart.jpg"
+                alt="Стандарт"
+              />
+              <div class="image-price">
+                <p>Цена от</p>
+                <strong id="roomPriceImage">490 000</strong>
+                <small id="roomCurrencyImage">сум / ночь</small>
+              </div>
+            </article>
+          </div>
+
+          <div class="legacy-room-gallery">
+            <article class="legacy-room-card reveal">
+              <div class="legacy-room-media">
+                <video
+                  controls
+                  preload="metadata"
+                  poster="assets/old/images/standart.jpg"
+                >
+                  <source src="assets/old/images/standart.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="legacy-room-copy">
+                <h3>Стандартный номер</h3>
+                <p>Уютный номер со всем необходимым для комфортного отдыха.</p>
+              </div>
+            </article>
+
+            <article class="legacy-room-card reveal">
+              <div class="legacy-room-media">
+                <video
+                  controls
+                  preload="metadata"
+                  poster="assets/old/images/polulux.jpg"
+                >
+                  <source src="assets/old/images/polulux.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="legacy-room-copy">
+                <h3>Полулюкс</h3>
+                <p>Расширенное пространство с отдельной зоной отдыха.</p>
+              </div>
+            </article>
+
+            <article class="legacy-room-card reveal">
+              <div class="legacy-room-media">
+                <video
+                  controls
+                  preload="metadata"
+                  poster="assets/old/images/lux.jpg"
+                >
+                  <source src="assets/old/images/lux.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div class="legacy-room-copy">
+                <h3>Люкс</h3>
+                <p>Просторный номер премиум-класса с балконом и гостиной зоной.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-mineral">
+        <div class="container mineral-layout">
+          <figure class="mineral-image">
+            <img
+              src="https://ext.same-assets.com/10141910/3065879048.jpeg"
+              alt="Минеральный источник"
+            />
+          </figure>
+          <article class="mineral-content">
+            <h2 class="section-title section-title-left">Минеральная вода</h2>
+            <p class="mineral-lead">Глубокий источник № 7 ПР, 350 м. содержит:</p>
+            <ul>
+              <li>Кальций (Ca²⁺)</li>
+              <li>Магний (Mg²⁺)</li>
+              <li>Натрий (Na⁺)</li>
+              <li>Бикарбонаты (HCO₃⁻)</li>
+              <li>Сульфаты (SO₄²⁻)</li>
+            </ul>
+            <p class="mineral-note">
+              Полезно при заболеваниях ЖКТ, опорно-двигательного аппарата и кожных проблемах.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-pages">
+        <div class="container">
+          <h2 class="section-title">Подробнее о санатории</h2>
+          <p class="pages-intro">
+            Развернутую информацию по программам лечения, показаниям, питанию, лицензиям и прайсу мы вынесли на отдельные страницы.
+          </p>
+          <div class="pages-grid">
+            <a class="page-card reveal" href="pricing.html">
+              <h3>Прайс-лист</h3>
+              <p>Стоимость размещения и лечения для граждан Узбекистана и иностранных гостей.</p>
+            </a>
+            <a class="page-card reveal" href="procedures.html">
+              <h3>Процедуры</h3>
+              <p>Полный список процедур и программ восстановления, включая дополнительные услуги.</p>
+            </a>
+            <a class="page-card reveal" href="indications.html">
+              <h3>Показания</h3>
+              <p>Профили заболеваний и направления терапии с медицинскими рекомендациями.</p>
+            </a>
+            <a class="page-card reveal" href="nutrition.html">
+              <h3>Питание</h3>
+              <p>Лечебные столы, диеты и материалы от врачей-диетологов санатория.</p>
+            </a>
+            <a class="page-card reveal" href="licenses.html">
+              <h3>Лицензии</h3>
+              <p>Официальные документы и лицензии на медицинскую деятельность.</p>
+            </a>
+            <a class="page-card reveal" href="contact.html">
+              <h3>Контакты</h3>
+              <p>Телефоны, адрес, карта проезда и удобные способы связи с ресепшн.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="reviews" class="section section-reviews">
+        <div class="container reviews-wrap">
+          <h2 class="section-title reviews-title">Отзывы гостей</h2>
+          <div class="review-shell">
+            <button
+              class="review-arrow review-prev desktop-arrow"
+              id="reviewPrevDesktop"
+              type="button"
+              aria-label="Предыдущий отзыв"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+              </svg>
+            </button>
+            <article class="review-card">
+              <div class="review-author">
+                <div id="reviewInitials" class="review-avatar">МК</div>
+                <div>
+                  <h4 id="reviewNameLocation">Мария К., Самарканд</h4>
+                  <p id="reviewDate">03.03.2025</p>
+                </div>
+              </div>
+              <div id="reviewStars" class="review-stars" aria-label="Рейтинг"></div>
+              <p id="reviewText" class="review-text">
+                Вода — словно эликсир молодости. Сон и кожа стали лучше.
+              </p>
+              <a class="review-more" href="#contact">Читать полностью</a>
+            </article>
+            <button
+              class="review-arrow review-next desktop-arrow"
+              id="reviewNextDesktop"
+              type="button"
+              aria-label="Следующий отзыв"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+          <div id="reviewDots" class="review-dots"></div>
+          <div class="review-mobile-nav">
+            <button id="reviewPrevMobile" type="button" aria-label="Предыдущий отзыв">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+              </svg>
+            </button>
+            <button id="reviewNextMobile" type="button" aria-label="Следующий отзыв">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section section-contact">
+        <div class="container">
+          <div class="contact-cta reveal">
+            <h2 class="section-title">Остались вопросы?</h2>
+            <button class="btn btn-outline" type="button">ОСТАВИТЬ ЗАЯВКУ</button>
+          </div>
+
+          <div class="contact-grid">
+            <article class="contact-card">
+              <h3>Связаться с нами</h3>
+              <form id="contactForm">
+                <input type="text" name="name" placeholder="Ваше имя" required />
+                <input type="tel" name="phone" placeholder="Телефон" required />
+                <input type="email" name="email" placeholder="Email" />
+                <textarea name="message" rows="4" placeholder="Сообщение"></textarea>
+                <button class="btn btn-gold" type="submit">ОТПРАВИТЬ</button>
+                <p id="formStatus" class="form-status" aria-live="polite"></p>
+              </form>
+            </article>
+
+            <article class="contact-card contact-center">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  ></path>
+                </svg>
+              </div>
+              <h4>Телефоны</h4>
+              <a href="tel:+998983074010">+998 98 307 40 10</a>
+              <a href="tel:+998909829871">+998 90 982 98 71</a>
+              <p>Ответим с 08:00 до 22:00</p>
+            </article>
+
+            <article class="contact-card contact-center">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  ></path>
+                </svg>
+              </div>
+              <h4>Адрес</h4>
+              <p>Ташкентская обл., Зангиатинский р-н, пгт Уртааул, ул. Навои, 70</p>
+              <p>Для визита оформим пропуск заранее</p>
+            </article>
+
+            <article class="contact-card contact-center">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M3 8l8.89 5.26a2 2 0 002.22 0L23 8m-18 9h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                  ></path>
+                </svg>
+              </div>
+              <h4>Дополнительно</h4>
+              <a href="mailto:info@zam-zam.uz">info@zam-zam.uz</a>
+              <p>Ресепшн: ежедневно 08:00–22:00</p>
+              <p>Маршруты: №464, №84, №145</p>
+            </article>
+          </div>
+
+          <div class="map-wrap">
+            <iframe
+              title="Карта санатория"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2998.0!2d69.1!3d41.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDEyJzAwLjAiTiA2OcKwMDYnMDAuMCJF!5e0!3m2!1sen!2s!4v1600000000000!5m2!1sen!2s"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+            <div class="map-overlay">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                ></path>
+              </svg>
+              <p>Ташкентская обл., Зангиатинский р-н, пгт Уртааул, ул. Навои, 70</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-copy">
+        <p>Copyright © 2013 - <span id="currentYear">2025</span> Zangiota "Zam Zam"</p>
+      </div>
+    </footer>
+
+    <div class="floating-buttons">
+      <a
+        class="floating-btn whatsapp"
+        href="https://wa.me/998909829871?text=Добрый день, хочу забронировать"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Написать в WhatsApp"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"
+          ></path>
+        </svg>
+      </a>
+      <a class="floating-btn phone" href="tel:+998909829871" aria-label="Позвонить">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+          ></path>
+        </svg>
+      </a>
+    </div>
+<script src="assets/js/main.js"></script>
+  </body>
+</html>
