@@ -270,6 +270,7 @@
         </div>
       </section>
 
+
       <section id="rooms" class="section section-rooms">
         <div class="container">
           <h2 class="section-title section-title-left">Нөмірлер</h2>
@@ -480,55 +481,7 @@
       <section id="reviews" class="section section-reviews">
         <div class="container reviews-wrap">
           <h2 class="section-title reviews-title">Қонақтар пікірі</h2>
-          <div class="review-shell">
-            <button
-              class="review-arrow review-prev desktop-arrow"
-              id="reviewPrevDesktop"
-              type="button"
-              aria-label="Предыдущий отзыв"
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-              </svg>
-            </button>
-            <article class="review-card">
-              <div class="review-author">
-                <div id="reviewInitials" class="review-avatar">МК</div>
-                <div>
-                  <h4 id="reviewNameLocation">Мария К., Самарқанд</h4>
-                  <p id="reviewDate">03.03.2025</p>
-                </div>
-              </div>
-              <div id="reviewStars" class="review-stars" aria-label="Рейтинг"></div>
-              <p id="reviewText" class="review-text">
-                Су жастық эликсиріндей. Ұйқы мен терім жақсарды.
-              </p>
-              <a class="review-more" href="#contact">Толық оқу</a>
-            </article>
-            <button
-              class="review-arrow review-next desktop-arrow"
-              id="reviewNextDesktop"
-              type="button"
-              aria-label="Следующий отзыв"
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </button>
-          </div>
-          <div id="reviewDots" class="review-dots"></div>
-          <div class="review-mobile-nav">
-            <button id="reviewPrevMobile" type="button" aria-label="Предыдущий отзыв">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-              </svg>
-            </button>
-            <button id="reviewNextMobile" type="button" aria-label="Следующий отзыв">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </button>
-          </div>
+          <div id="reviewGrid" class="review-grid" aria-live="polite"></div>
         </div>
       </section>
 

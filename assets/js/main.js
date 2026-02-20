@@ -10,6 +10,7 @@ const currentLang = getCurrentLang();
 const uiTextByLang = {
   ru: {
     reviewLabel: "Отзыв",
+    reviewLink: "Открыть отзыв",
     perNight: "ночь",
     perDay: "сутки",
     adultForms: ["взрослый", "взрослых", "взрослых"],
@@ -18,6 +19,7 @@ const uiTextByLang = {
   },
   uz: {
     reviewLabel: "Sharh",
+    reviewLink: "Sharhni ochish",
     perNight: "kecha",
     perDay: "kun",
     adultForms: ["katta", "katta", "katta"],
@@ -26,6 +28,7 @@ const uiTextByLang = {
   },
   kk: {
     reviewLabel: "Пікір",
+    reviewLink: "Пікірді ашу",
     perNight: "түн",
     perDay: "тәулік",
     adultForms: ["ересек", "ересек", "ересек"],
@@ -37,83 +40,74 @@ const uiTextByLang = {
 const roomDataByLang = {
   ru: {
     standart: {
-      name: "Стандарт",
-      size: "18 м²",
+      name: "Стандарт (2-ой этаж)",
+      size: "20 м²",
       building: "Основной корпус",
       pricePerNight: 490000,
       priceSingle: 710000,
       priceChild: 392000,
       currency: "сум",
       features: [
-        "2 односпальные кровати",
-        "Тумбочка, стол, стулья, шкаф",
-        "Телевизор, WI-Fi",
+        "Однокомнатный двухместный номер",
+        "LCD TV и WiFi",
         "Холодильник",
         "Кондиционер",
-        "Чайный набор, чайник",
-        "Душ, с/у",
-        "Фен, полотенца, халат"
+        "Душевая и туалет внутри номера"
       ],
       image: "assets/old/images/standart.jpg"
     },
     polulux1: {
-      name: "Полулюкс (1-комнатный)",
-      size: "20-35 м²",
+      name: "Полулюкс (1-комнатный, 36 м²)",
+      size: "36 м²",
       building: "Основной корпус",
       pricePerNight: 650000,
       priceSingle: 943000,
       priceChild: 520000,
       currency: "сум",
       features: [
-        "2 односпальные кровати или 1 двуспальная",
-        "Тумбочка, стол, стулья, шкаф",
-        "Телевизор, WI-Fi",
+        "2-х местный однокомнатный номер",
+        "Отдельный санузел",
+        "LCD TV",
         "Холодильник",
-        "Кондиционер",
-        "Чайный набор, чайник",
-        "Душ, с/у",
-        "Фен, полотенца, халат, тапочки"
+        "Мягкая мебель",
+        "Балкон с видом на сад"
       ],
       image: "assets/old/images/polulux.jpg"
     },
     polulux2: {
       name: "Полулюкс (2-комнатный)",
-      size: "20-35 м²",
+      size: "2 комнаты",
       building: "Основной корпус",
       pricePerNight: 670000,
       priceSingle: 972000,
       priceChild: 536000,
       currency: "сум",
       features: [
-        "2 односпальные кровати или 1 двуспальная",
-        "Дополнительная гостиная зона",
-        "Тумбочка, стол, стулья, шкаф",
-        "Телевизор, WI-Fi",
+        "2-х местное размещение",
+        "Две уютные комнаты",
+        "Санузел",
+        "LCD TV",
         "Холодильник",
-        "Кондиционер",
-        "Чайный набор, чайник",
-        "Душ, с/у",
-        "Фен, полотенца, халат, тапочки"
+        "Балкон с видом на сад"
       ],
       image: "assets/old/images/polulux.jpg"
     },
     lux: {
-      name: "Люкс",
-      size: "40 м²",
+      name: "Люкс (2-комнатный)",
+      size: "55 м²",
       building: "Основной корпус",
       pricePerNight: 890000,
       priceSingle: 1291000,
       priceChild: 712000,
       currency: "сум",
       features: [
-        "2-спальная кровать",
-        "Тумбочка, стол, стулья, шкаф, диван",
-        "Телевизор, Wi-FI",
+        "VIP номер на две персоны",
+        "2 комнаты, около 56 м²",
+        "Красивая мебель и удобные диваны",
+        "LCD-42d",
         "Холодильник",
-        "Кондиционер",
-        "Чайный набор, чайник",
-        "Душ, с/у",
-        "Фен, полотенца, халат, тапочки"
+        "Просторный санузел",
+        "Балконы с видом на сад"
       ],
       image: "assets/old/images/lux.jpg"
     }
@@ -290,133 +284,151 @@ const reviewsByLang = {
   ru: [
     {
       name: "Мария К.",
-      location: "Самарканд",
+      city: "Самарканд",
       date: "03.03.2025",
       rating: 5,
-      text: "Вода — словно эликсир молодости. Сон и кожа стали лучше."
+      text: "Вода — словно эликсир молодости. Сон и кожа стали лучше.",
+      url: "__REVIEW_URL__"
     },
     {
       name: "Алексей П.",
-      location: "Ташкент",
+      city: "Ташкент",
       date: "12.04.2025",
       rating: 5,
-      text: "Прекрасный санаторий с отличным сервисом и лечением!"
+      text: "Прекрасный санаторий с отличным сервисом и лечением!",
+      url: "__REVIEW_URL__"
     },
     {
       name: "Наталья Б.",
-      location: "Навои",
+      city: "Навои",
       date: "18.02.2025",
       rating: 5,
-      text: "Природа потрясающая, процедуры эффективные."
+      text: "Природа потрясающая, процедуры эффективные.",
+      url: "__REVIEW_URL__"
     },
     {
       name: "Сергей В.",
-      location: "Фергана",
+      city: "Фергана",
       date: "27.01.2025",
       rating: 5,
-      text: "Рекомендую, особенно людям с проблемами суставов."
+      text: "Рекомендую, особенно людям с проблемами суставов.",
+      url: "__REVIEW_URL__"
     },
     {
       name: "Елена Д.",
-      location: "Бухара",
+      city: "Бухара",
       date: "10.01.2025",
       rating: 5,
-      text: "Вернулась домой полная сил, здоровья. Персонал отличный."
+      text: "Вернулась домой полная сил, здоровья. Персонал отличный.",
+      url: "__REVIEW_URL__"
     },
     {
       name: "Ольга Ш.",
-      location: "Андижан",
+      city: "Андижан",
       date: "22.12.2024",
       rating: 5,
-      text: "Лечебная вода творит чудеса. Очень довольна."
+      text: "Лечебная вода творит чудеса. Очень довольна.",
+      url: "__REVIEW_URL__"
     }
   ],
   uz: [
     {
       name: "Mariya K.",
-      location: "Samarqand",
+      city: "Samarqand",
       date: "03.03.2025",
       rating: 5,
-      text: "Suv go'yo yoshlik eliksiri. Uyqu ham, terim ham yaxshilandi."
+      text: "Suv go'yo yoshlik eliksiri. Uyqu ham, terim ham yaxshilandi.",
+      url: "__REVIEW_URL__"
     },
     {
       name: "Aleksey P.",
-      location: "Toshkent",
+      city: "Toshkent",
       date: "12.04.2025",
       rating: 5,
-      text: "Ajoyib servis va davolashga ega zo'r sanatoriy!"
+      text: "Ajoyib servis va davolashga ega zo'r sanatoriy!",
+      url: "__REVIEW_URL__"
     },
     {
       name: "Natalya B.",
-      location: "Navoiy",
+      city: "Navoiy",
       date: "18.02.2025",
       rating: 5,
-      text: "Tabiat ajoyib, muolajalar samarali."
+      text: "Tabiat ajoyib, muolajalar samarali.",
+      url: "__REVIEW_URL__"
     },
     {
       name: "Sergey V.",
-      location: "Farg'ona",
+      city: "Farg'ona",
       date: "27.01.2025",
       rating: 5,
-      text: "Tavsiya qilaman, ayniqsa bo'g'im muammosi borlarga."
+      text: "Tavsiya qilaman, ayniqsa bo'g'im muammosi borlarga.",
+      url: "__REVIEW_URL__"
     },
     {
       name: "Elena D.",
-      location: "Buxoro",
+      city: "Buxoro",
       date: "10.01.2025",
       rating: 5,
-      text: "Uyga kuch va sog'liq bilan qaytdim. Jamoa zo'r."
+      text: "Uyga kuch va sog'liq bilan qaytdim. Jamoa zo'r.",
+      url: "__REVIEW_URL__"
     },
     {
       name: "Olga Sh.",
-      location: "Andijon",
+      city: "Andijon",
       date: "22.12.2024",
       rating: 5,
-      text: "Shifobaxsh suv mo''jiza qiladi. Juda mamnunman."
+      text: "Shifobaxsh suv mo''jiza qiladi. Juda mamnunman.",
+      url: "__REVIEW_URL__"
     }
   ],
   kk: [
     {
       name: "Мария К.",
-      location: "Самарқанд",
+      city: "Самарқанд",
       date: "03.03.2025",
       rating: 5,
-      text: "Су жастық эликсиріндей. Ұйқы мен терім жақсарды."
+      text: "Су жастық эликсиріндей. Ұйқы мен терім жақсарды.",
+      url: "__REVIEW_URL__"
     },
     {
       name: "Алексей П.",
-      location: "Ташкент",
+      city: "Ташкент",
       date: "12.04.2025",
       rating: 5,
-      text: "Қызметі мен емі өте жақсы керемет шипажай!"
+      text: "Қызметі мен емі өте жақсы керемет шипажай!",
+      url: "__REVIEW_URL__"
     },
     {
       name: "Наталья Б.",
-      location: "Науаи",
+      city: "Науаи",
       date: "18.02.2025",
       rating: 5,
-      text: "Табиғат тамаша, емшаралар тиімді."
+      text: "Табиғат тамаша, емшаралар тиімді.",
+      url: "__REVIEW_URL__"
     },
     {
       name: "Сергей В.",
-      location: "Ферғана",
+      city: "Ферғана",
       date: "27.01.2025",
       rating: 5,
-      text: "Ұсынамын, әсіресе буын мәселесі бар адамдарға."
+      text: "Ұсынамын, әсіресе буын мәселесі бар адамдарға.",
+      url: "__REVIEW_URL__"
     },
     {
       name: "Елена Д.",
-      location: "Бұхара",
+      city: "Бұхара",
       date: "10.01.2025",
       rating: 5,
-      text: "Үйге күш-қуатпен оралдым. Қызметкерлер керемет."
+      text: "Үйге күш-қуатпен оралдым. Қызметкерлер керемет.",
+      url: "__REVIEW_URL__"
     },
     {
       name: "Ольга Ш.",
-      location: "Андижан",
+      city: "Андижан",
       date: "22.12.2024",
       rating: 5,
-      text: "Емдік су керемет әсер береді. Өте ризамын."
+      text: "Емдік су керемет әсер береді. Өте ризамын.",
+      url: "__REVIEW_URL__"
     }
   ]
 };
@@ -427,7 +439,6 @@ const uiText = uiTextByLang[currentLang] || uiTextByLang.ru;
 
 const state = {
   activeRoomId: "standart",
-  activeReviewIndex: 0,
   adults: 2,
   children: 0
 };
@@ -754,59 +765,77 @@ function createStarIcon() {
   return icon;
 }
 
-function renderReview(index) {
-  const review = reviews[index];
-  if (!review) return;
-  state.activeReviewIndex = index;
-
-  const initials = document.getElementById("reviewInitials");
-  const nameLocation = document.getElementById("reviewNameLocation");
-  const date = document.getElementById("reviewDate");
-  const stars = document.getElementById("reviewStars");
-  const text = document.getElementById("reviewText");
-
-  if (!initials || !nameLocation || !date || !stars || !text) return;
-
-  initials.textContent = review.name
+function getReviewInitials(name) {
+  return name
     .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
     .map((chunk) => chunk.charAt(0))
-    .join("");
-  nameLocation.textContent = `${review.name}, ${review.location}`;
-  date.textContent = review.date;
-  text.textContent = review.text;
+    .join("")
+    .toUpperCase();
+}
 
-  stars.innerHTML = "";
-  for (let i = 0; i < review.rating; i += 1) {
+function createReviewCard(review) {
+  const card = document.createElement("article");
+  card.className = "review-card reveal";
+
+  const author = document.createElement("div");
+  author.className = "review-author";
+
+  const avatar = document.createElement("div");
+  avatar.className = "review-avatar";
+  avatar.textContent = getReviewInitials(review.name);
+
+  const meta = document.createElement("div");
+
+  const nameLocation = document.createElement("h4");
+  nameLocation.textContent = `${review.name}, ${review.city}`;
+
+  meta.appendChild(nameLocation);
+  if (review.date) {
+    const date = document.createElement("p");
+    date.className = "review-date";
+    date.textContent = review.date;
+    meta.appendChild(date);
+  }
+
+  author.appendChild(avatar);
+  author.appendChild(meta);
+
+  const stars = document.createElement("div");
+  stars.className = "review-stars";
+  const rating = Math.max(0, Math.min(5, Number(review.rating) || 0));
+  stars.setAttribute("aria-label", `${uiText.reviewLabel}: ${rating}/5`);
+  for (let i = 0; i < rating; i += 1) {
     stars.appendChild(createStarIcon());
   }
 
-  document.querySelectorAll(".review-dot").forEach((dot, dotIndex) => {
-    dot.classList.toggle("is-active", dotIndex === index);
-  });
+  const text = document.createElement("p");
+  text.className = "review-text";
+  text.textContent = review.text;
+
+  const link = document.createElement("a");
+  link.className = "review-more";
+  link.href = review.url || "__REVIEW_URL__";
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.textContent = uiText.reviewLink;
+
+  card.appendChild(author);
+  card.appendChild(stars);
+  card.appendChild(text);
+  card.appendChild(link);
+  return card;
 }
 
 function initReviews() {
-  const dotsContainer = document.getElementById("reviewDots");
-  if (!dotsContainer) return;
+  const reviewGrid = document.getElementById("reviewGrid");
+  if (!reviewGrid) return;
 
-  reviews.forEach((_, index) => {
-    const dot = document.createElement("button");
-    dot.type = "button";
-    dot.className = "review-dot";
-    dot.setAttribute("aria-label", `${uiText.reviewLabel} ${index + 1}`);
-    dot.addEventListener("click", () => renderReview(index));
-    dotsContainer.appendChild(dot);
+  reviewGrid.innerHTML = "";
+  reviews.slice(0, 6).forEach((review) => {
+    reviewGrid.appendChild(createReviewCard(review));
   });
-
-  const next = () => renderReview((state.activeReviewIndex + 1) % reviews.length);
-  const prev = () => renderReview((state.activeReviewIndex - 1 + reviews.length) % reviews.length);
-
-  document.getElementById("reviewPrevDesktop")?.addEventListener("click", prev);
-  document.getElementById("reviewPrevMobile")?.addEventListener("click", prev);
-  document.getElementById("reviewNextDesktop")?.addEventListener("click", next);
-  document.getElementById("reviewNextMobile")?.addEventListener("click", next);
-
-  renderReview(0);
 }
 
 function initRevealAnimations() {
