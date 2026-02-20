@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../assets/css/styles.css" />
     <link rel="icon" href="../images/logo.webp" />
   </head>
-  <body>
+  <body class="page-procedures-legacy">
     <header class="site-header">
       <div class="container header-inner">
         <a class="logo-link" href="index.html" aria-label="На главную">
@@ -54,73 +54,361 @@
       </div>
     </header>
 
-    <main>
-      <section class="section section-procedures">
-        <div class="container">
-          <h1 class="section-title">Процедуры и программы</h1>
-          <p class="procedures-intro">
-            В санатории доступно 36 процедур и программ восстановления: диагностика, водолечение, физиотерапия и дополнительные курсы поддержки.
+    <main id="main" role="main" class="legacy-procedures-main">
+      <section class="page-hero page-hero--procedures" aria-labelledby="procedures-hero-title">
+        <div class="container hero-inner">
+          <p class="eyebrow">Процедуры санатория</p>
+          <h1 id="procedures-hero-title">36 методик для полного восстановления</h1>
+          <p class="lead">
+            Комплексные программы сочетают диагностику, водолечение, физиотерапию и дополнительные методики, чтобы поддержать организм на каждом этапе оздоровления.
           </p>
 
-          <div class="procedure-columns">
-            <article class="procedure-column">
-              <h3>Диагностика и мониторинг</h3>
-              <ul>
-                <li>Клиническая и биохимическая лаборатория</li>
-                <li>Ультразвуковое исследование Logiq (Германия)</li>
-                <li>ЭКГ-исследование (12-канальный Burdick, США)</li>
-              </ul>
-            </article>
+          <div class="hero-metrics" role="list">
+            <div class="metric" role="listitem">
+              <span class="metric-value">36</span>
+              <span class="metric-label">процедур и программ</span>
+            </div>
+            <div class="metric" role="listitem">
+              <span class="metric-value">4</span>
+              <span class="metric-label">ключевых направления лечения</span>
+            </div>
+            <div class="metric" role="listitem">
+              <span class="metric-value">24/7</span>
+              <span class="metric-label">сопровождение специалистов</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <article class="procedure-column">
-              <h3>Реабилитация и ЛФК</h3>
-              <ul>
-                <li>ЛФК кабинет и индивидуальные программы</li>
-                <li>Лечебный, механо- и вибромассаж</li>
-                <li>Вытяжение позвоночника (подводное — дополнительно оплачивается)</li>
-                <li>Пневматическое вытяжение шейных позвонков</li>
-                <li>Нуга Бест, мануальный массаж (дополнительно оплачивается)</li>
-              </ul>
-            </article>
+      <section class="procedure-highlights" aria-labelledby="highlights-title">
+        <div class="container">
+          <div class="highlight-header">
+            <p class="eyebrow">Ваш путь к здоровью</p>
+            <h2 id="highlights-title">Этапы комплексной программы</h2>
+            <p>
+              Мы сопровождаем гостей от первого приёма до закрепления результата. Каждый этап дополняет предыдущий и помогает организму восстановиться мягко и уверенно.
+            </p>
+          </div>
 
-            <article class="procedure-column">
-              <h3>Водолечение и SPA</h3>
-              <ul>
-                <li>Минеральные и жемчужные ванны</li>
-                <li>Циркулярный душ, душ Виши, подводный массаж</li>
-                <li>Вихревые ванны, четырёхкамерная гальваническая ванна</li>
-                <li>Кишечное и гинекологическое орошение</li>
-                <li>Крытый бассейн с лечебными саунами</li>
-                <li>Пароуглекислая ванна (дополнительно оплачивается)</li>
-              </ul>
-            </article>
+          <ul class="highlight-list" role="list">
+            <li class="highlight-card" aria-label="Этап диагностики">
+              <span class="highlight-icon" aria-hidden="true">🩺</span>
+              <h3>Диагностика и план</h3>
+              <p>Первичное обследование и консультации узких специалистов формируют персональную программу лечения.</p>
+            </li>
+            <li class="highlight-card" aria-label="Этап процедур">
+              <span class="highlight-icon" aria-hidden="true">💧</span>
+              <h3>Минеральные процедуры</h3>
+              <p>Водолечение, SPA-ритуалы и аппаратная терапия запускают восстановительные процессы и снимают напряжение.</p>
+            </li>
+            <li class="highlight-card" aria-label="Этап сопровождения">
+              <span class="highlight-icon" aria-hidden="true">🌿</span>
+              <h3>Поддержка после курса</h3>
+              <p>Диетологические рекомендации, дополнительные программы и контрольные осмотры помогают удержать прогресс.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
 
-            <article class="procedure-column">
-              <h3>Физиотерапия и доп. программы</h3>
-              <ul>
-                <li>Иглотерапия (дополнительно оплачивается)</li>
-                <li>Инфракрасный лазер, магнитотерапия</li>
-                <li>Ингаляции, электрофорез, амплипульс, УВЧ, дарсонваль</li>
-                <li>Парафиноозокерит, грязелечение, светолечение</li>
-                <li>Гирудотерапия и соляная пещера (дополнительно оплачивается)</li>
-                <li>Лекарственные настои и кислородная пенка</li>
+      <nav class="section-jump" aria-label="Категории процедур">
+        <div class="container">
+          <ul>
+            <li><a href="#diagnostics">Диагностика</a></li>
+            <li><a href="#rehab">Реабилитация</a></li>
+            <li><a href="#balneology">Водолечение</a></li>
+            <li><a href="#physio">Физиотерапия</a></li>
+            <li><a href="#programs">Доп. программы</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <section class="procedure-group" id="diagnostics" aria-labelledby="diagnostics-title">
+        <div class="container">
+          <div class="procedure-layout">
+            <div class="group-info">
+              <div class="group-header">
+                <p class="eyebrow">Точная диагностика</p>
+                <h2 id="diagnostics-title">Диагностика и мониторинг</h2>
+                <p>
+                  Современное оборудование помогает быстро выявить состояние организма и подобрать оптимальную программу лечения.
+                </p>
+              </div>
+              <ul class="group-highlights" role="list">
+                <li class="group-highlight">
+                  <span class="group-highlight__icon" aria-hidden="true">⏱</span>
+                  <span class="group-highlight__text">Результаты анализов в течение 24 часов после сдачи</span>
+                </li>
+                <li class="group-highlight">
+                  <span class="group-highlight__icon" aria-hidden="true">🔬</span>
+                  <span class="group-highlight__text">Лаборатория, ультразвук Logiq и ЭКГ Burdick класса эксперт</span>
+                </li>
+                <li class="group-highlight">
+                  <span class="group-highlight__icon" aria-hidden="true">🧑‍⚕️</span>
+                  <span class="group-highlight__text">Персональные назначения врача в день прибытия</span>
+                </li>
               </ul>
-            </article>
+            </div>
+            <div class="group-content">
+              <ul class="procedure-items">
+                <li class="procedure-item">
+                  <span class="item-title">Клиническая и биохимическая лаборатория</span>
+                </li>
+                <li class="procedure-item">
+                  <span class="item-title">Ультразвуковое исследование — Logiq (Германия)</span>
+                </li>
+                <li class="procedure-item">
+                  <span class="item-title">ЭКГ-исследование — 12-канальный Burdick (США)</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="procedure-group" id="rehab" aria-labelledby="rehab-title">
+        <div class="container">
+          <div class="procedure-layout">
+            <div class="group-info">
+              <div class="group-header">
+                <p class="eyebrow">Движение и восстановление</p>
+                <h2 id="rehab-title">Реабилитация и ЛФК</h2>
+                <p>
+                  Комплекс упражнений и терапий укрепляет опорно-двигательный аппарат и снимает мышечное напряжение.
+                </p>
+              </div>
+              <ul class="group-highlights" role="list">
+                <li class="group-highlight">
+                  <span class="group-highlight__icon" aria-hidden="true">🏃</span>
+                  <span class="group-highlight__text">Индивидуальные программы ЛФК по показаниям врача</span>
+                </li>
+                <li class="group-highlight">
+                  <span class="group-highlight__icon" aria-hidden="true">🧘</span>
+                  <span class="group-highlight__text">Сопровождение инструкторов для безопасного прогресса</span>
+                </li>
+                <li class="group-highlight">
+                  <span class="group-highlight__icon" aria-hidden="true">💆</span>
+                  <span class="group-highlight__text">Массажные методики для снятия зажимов и восстановления тонуса</span>
+                </li>
+              </ul>
+            </div>
+            <div class="group-content">
+              <ul class="procedure-items">
+                <li class="procedure-item">
+                  <span class="item-title">ЛФК кабинет</span>
+                  <p class="item-desc">Оснащён шведской стенкой, гирями, скакалками, обручами, беговой дорожкой, велотренажёром, лыжным тренажёром и вибротренажёром для похудения.</p>
+                </li>
+                <li class="procedure-item">
+                  <span class="item-title">Лечебный массаж, механомассаж и вибромассаж</span>
+                </li>
+                <li class="procedure-item">
+                  <span class="item-title">Вытяжение позвоночника</span>
+                  <p class="item-desc">Механическое входит в стандартный пакет услуг, подводное компьютерное выполняется по назначению специалиста.</p>
+                  <span class="item-note">Подводное вытяжение оплачивается дополнительно</span>
+                </li>
+                <li class="procedure-item">
+                  <span class="item-title">Пневматическое вытяжение шейных позвонков</span>
+                </li>
+                <li class="procedure-item">
+                  <span class="item-title">Нуга Бест</span>
+                  <p class="item-desc">Массажёр термотерапевтический с турманиевым камнем.</p>
+                  <span class="item-note">Дополнительно оплачивается</span>
+                </li>
+                <li class="procedure-item">
+                  <span class="item-title">Мануальный массаж</span>
+                  <span class="item-note">Дополнительно оплачивается</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="procedure-group" id="balneology" aria-labelledby="balneology-title">
+        <div class="container">
+          <div class="procedure-layout">
+            <div class="group-info">
+              <div class="group-header">
+                <p class="eyebrow">Минеральная сила воды</p>
+                <h2 id="balneology-title">Водолечение и SPA-ритуалы</h2>
+                <p>
+                  Минеральные ванны и душевые процедуры улучшают кровообращение, снимают стресс и поддерживают иммунитет.
+                </p>
+              </div>
+              <ul class="group-highlights" role="list">
+                <li class="group-highlight">
+                  <span class="group-highlight__icon" aria-hidden="true">💧</span>
+                  <span class="group-highlight__text">Минеральная вода из собственной скважины поддерживает естественный баланс</span>
+                </li>
+                <li class="group-highlight">
+                  <span class="group-highlight__icon" aria-hidden="true">🧖</span>
+                  <span class="group-highlight__text">SPA-зона с саунами и бассейном для комфортного расслабления</span>
+                </li>
+                <li class="group-highlight">
+                  <span class="group-highlight__icon" aria-hidden="true">✨</span>
+                  <span class="group-highlight__text">Авторские душевые ритуалы для восстановления тонуса кожи</span>
+                </li>
+              </ul>
+            </div>
+            <div class="group-content">
+              <ul class="procedure-items">
+                <li class="procedure-item"><span class="item-title">Минеральные и жемчужные ванны</span></li>
+                <li class="procedure-item"><span class="item-title">Циркулярный душ</span></li>
+                <li class="procedure-item"><span class="item-title">Подводный массаж</span></li>
+                <li class="procedure-item"><span class="item-title">Вихревые ванны</span></li>
+                <li class="procedure-item"><span class="item-title">Четырёхкамерная гальваническая ванна</span></li>
+                <li class="procedure-item"><span class="item-title">Кишечное орошение</span></li>
+                <li class="procedure-item"><span class="item-title">Гинекологическое орошение</span></li>
+                <li class="procedure-item">
+                  <span class="item-title">Крытый плавательный бассейн с лечебными саунами</span>
+                  <p class="item-desc">Комплекс полностью реконструирован в 2014 году.</p>
+                </li>
+                <li class="procedure-item">
+                  <span class="item-title">Пароуглекислая ванна</span>
+                  <span class="item-note">Дополнительно оплачивается</span>
+                </li>
+                <li class="procedure-item"><span class="item-title">Душ Виши</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="procedure-group" id="physio" aria-labelledby="physio-title">
+        <div class="container">
+          <div class="procedure-layout">
+            <div class="group-info">
+              <div class="group-header">
+                <p class="eyebrow">Аппаратные методики</p>
+                <h2 id="physio-title">Физиотерапия и аппаратное лечение</h2>
+                <p>
+                  Физиотерапевтические методики воздействуют на организм мягко и адресно, ускоряя регенерацию и поддерживая дыхательную систему.
+                </p>
+              </div>
+              <ul class="group-highlights" role="list">
+                <li class="group-highlight">
+                  <span class="group-highlight__icon" aria-hidden="true">⚡</span>
+                  <span class="group-highlight__text">Аппараты последнего поколения для точечного воздействия</span>
+                </li>
+                <li class="group-highlight">
+                  <span class="group-highlight__icon" aria-hidden="true">🌡</span>
+                  <span class="group-highlight__text">Безболезненные методы с контролем температуры и интенсивности</span>
+                </li>
+                <li class="group-highlight">
+                  <span class="group-highlight__icon" aria-hidden="true">📈</span>
+                  <span class="group-highlight__text">Отслеживаем динамику, чтобы корректировать программу своевременно</span>
+                </li>
+              </ul>
+            </div>
+            <div class="group-content">
+              <ul class="procedure-items">
+                <li class="procedure-item">
+                  <span class="item-title">Иглотерапия</span>
+                  <span class="item-note">Дополнительно оплачивается</span>
+                </li>
+                <li class="procedure-item"><span class="item-title">Инфракрасный лазер</span></li>
+                <li class="procedure-item"><span class="item-title">Акупунктурная магнитотерапия</span></li>
+                <li class="procedure-item"><span class="item-title">Аппаратная магнитотерапия</span></li>
+                <li class="procedure-item"><span class="item-title">Ультразвуковой ингалятор</span></li>
+                <li class="procedure-item"><span class="item-title">Тубус</span></li>
+                <li class="procedure-item"><span class="item-title">Электрофорез</span></li>
+                <li class="procedure-item"><span class="item-title">Амплипульс</span></li>
+                <li class="procedure-item"><span class="item-title">УВЧ-терапия</span></li>
+                <li class="procedure-item"><span class="item-title">Дарсонваль</span></li>
+                <li class="procedure-item"><span class="item-title">Парафиноозокерит</span></li>
+                <li class="procedure-item"><span class="item-title">Грязелечение</span><p class="item-desc">Введено в эксплуатацию в 2009 году.</p></li>
+                <li class="procedure-item"><span class="item-title">Светолечение</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="procedure-group" id="programs" aria-labelledby="programs-title">
+        <div class="container">
+          <div class="procedure-layout">
+            <div class="group-info">
+              <div class="group-header">
+                <p class="eyebrow">Дополнительная поддержка</p>
+                <h2 id="programs-title">Дополнительные программы</h2>
+                <p>
+                  Авторские курсы и натуральные средства усиливают основной план лечения и помогают закрепить результат.
+                </p>
+              </div>
+              <ul class="group-highlights" role="list">
+                <li class="group-highlight">
+                  <span class="group-highlight__icon" aria-hidden="true">🧾</span>
+                  <span class="group-highlight__text">Составляем поддерживающий план и даём рекомендации на дом</span>
+                </li>
+                <li class="group-highlight">
+                  <span class="group-highlight__icon" aria-hidden="true">🌬</span>
+                  <span class="group-highlight__text">Соляная пещера и кислородная пенка укрепляют дыхательную систему</span>
+                </li>
+                <li class="group-highlight">
+                  <span class="group-highlight__icon" aria-hidden="true">🌿</span>
+                  <span class="group-highlight__text">Натуральные настои и гирудотерапия усиливают основной курс</span>
+                </li>
+              </ul>
+            </div>
+            <div class="group-content">
+              <ul class="procedure-items">
+                <li class="procedure-item"><span class="item-title">Общеукрепляющая медикаментозная терапия</span></li>
+                <li class="procedure-item">
+                  <span class="item-title">Гирудотерапия</span>
+                  <span class="item-note">Дополнительно оплачивается</span>
+                </li>
+                <li class="procedure-item">
+                  <span class="item-title">Соляная пещера</span>
+                  <p class="item-desc">Для профилактики лёгочных заболеваний.</p>
+                  <span class="item-note">Дополнительно оплачивается</span>
+                </li>
+                <li class="procedure-item"><span class="item-title">Лекарственные настои и кислородная пенка</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="procedure-note-block" aria-label="Примечание по оплате">
+        <div class="container">
+          <div class="note-card">
+            <span class="note-card__icon" aria-hidden="true">ℹ️</span>
+            <h2>Важно знать</h2>
+            <p>
+              Большинство процедур входит в программу путёвки и назначается после консультации врача. Услуги, отмеченные как «Дополнительно оплачивается», доступны по индивидуальному запросу.
+            </p>
+            <p class="note-card__meta">Нужна индивидуальная консультация? <a href="tel:+998983074010">Свяжитесь с администратором</a> или оставьте заявку онлайн.</p>
+            <div class="note-card__actions">
+              <a class="btn btn-primary" href="contact.html">Записаться на консультацию</a>
+              <a class="btn btn-secondary" href="pricing.html">Посмотреть услуги</a>
+            </div>
           </div>
         </div>
       </section>
     </main>
+
+    <div class="floating-contact" aria-label="Быстрые контакты">
+      <a
+        href="https://api.whatsapp.com/send?phone=998909829871"
+        class="btn-icon whatsapp"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Написать в WhatsApp"
+      ></a>
+
+      <a
+        href="tg://resolve?domain=zafarzamzam"
+        class="btn-icon telegram"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Написать в Telegram"
+      ></a>
+    </div>
 
     <footer class="site-footer">
       <div class="container footer-copy">
         <p>Copyright © 2013 - <span id="currentYear">2025</span> Zangiota "Zam Zam"</p>
       </div>
     </footer>
-
-    <div class="floating-buttons">
-      <a class="floating-btn whatsapp" href="https://wa.me/998909829871?text=Добрый день, хочу забронировать" target="_blank" rel="noopener noreferrer" aria-label="Написать в WhatsApp">WA</a>
-      <a class="floating-btn phone" href="tel:+998909829871" aria-label="Позвонить">☎</a>
-    </div>
 <script src="../assets/js/main.js"></script>
   </body>
 </html>

@@ -1050,6 +1050,969 @@ textarea {
   color: #5f5f5f;
 }
 
+/* Legacy procedures page migration */
+.legacy-procedures-main {
+  --lp-primary: #005aa7;
+  --lp-secondary: #00b2dd;
+  --lp-light: #ffffff;
+  --lp-muted: #f3f7fb;
+  --lp-border: #dbe5f1;
+  --lp-dark: #1e2e4a;
+  --lp-radius-md: 10px;
+  --lp-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --lp-shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --lp-transition: 0.25s ease;
+  padding-top: var(--header-height);
+}
+
+.legacy-procedures-main .container {
+  width: min(92%, 1200px);
+  margin-inline: auto;
+}
+
+.legacy-procedures-main .page-hero {
+  position: relative;
+  padding: clamp(3.5rem, 9vw, 6.5rem) 0;
+  color: var(--lp-light);
+  text-align: center;
+  overflow: hidden;
+}
+
+.legacy-procedures-main .page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+.legacy-procedures-main .page-hero--procedures {
+  background:
+    linear-gradient(135deg, rgba(0, 90, 167, 0.78), rgba(0, 178, 221, 0.72)),
+    url("../../images/procedures-bg.jpg") center / cover no-repeat;
+}
+
+.legacy-procedures-main .page-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.legacy-procedures-main .page-hero .hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  max-width: 760px;
+}
+
+.legacy-procedures-main .page-hero .lead {
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  margin: 0;
+  opacity: 0.9;
+}
+
+.legacy-procedures-main .eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--lp-primary);
+}
+
+.legacy-procedures-main .page-hero .eyebrow {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.legacy-procedures-main .hero-metrics {
+  display: grid;
+  gap: 0.9rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.legacy-procedures-main .metric {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--lp-radius-md);
+  padding: 0.85rem 1rem;
+  display: grid;
+  place-items: center;
+  gap: 0.3rem;
+  backdrop-filter: blur(4px);
+}
+
+.legacy-procedures-main .metric-value {
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.legacy-procedures-main .metric-label {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.legacy-procedures-main .section-jump {
+  background: var(--lp-muted);
+  border-bottom: 1px solid var(--lp-border);
+  padding: 0.85rem 0;
+}
+
+.legacy-procedures-main .section-jump ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+}
+
+.legacy-procedures-main .section-jump a {
+  display: inline-block;
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid var(--lp-border);
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--lp-dark);
+  transition: background var(--lp-transition), color var(--lp-transition), box-shadow var(--lp-transition);
+}
+
+.legacy-procedures-main .section-jump a:hover,
+.legacy-procedures-main .section-jump a:focus {
+  background: var(--lp-primary);
+  color: var(--lp-light);
+  box-shadow: var(--lp-shadow-sm);
+}
+
+.legacy-procedures-main .procedure-highlights {
+  padding: clamp(2.4rem, 6vw, 4.3rem) 0;
+  background: linear-gradient(135deg, rgba(0, 90, 167, 0.05), rgba(0, 178, 221, 0.1));
+}
+
+.legacy-procedures-main .highlight-header {
+  max-width: 720px;
+  margin: 0 auto 1.5rem;
+  text-align: center;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.legacy-procedures-main .highlight-header h2 {
+  margin: 0;
+  color: var(--lp-primary);
+}
+
+.legacy-procedures-main .highlight-header p {
+  margin: 0;
+}
+
+.legacy-procedures-main .highlight-header p:not(.eyebrow) {
+  color: #3f5162;
+}
+
+.legacy-procedures-main .highlight-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.legacy-procedures-main .highlight-card {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(219, 229, 241, 0.7);
+  border-radius: 20px;
+  box-shadow: 0 18px 38px rgba(8, 72, 120, 0.08);
+  padding: clamp(1.4rem, 3vw, 1.9rem);
+  display: grid;
+  gap: 0.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--lp-transition), box-shadow var(--lp-transition);
+}
+
+.legacy-procedures-main .highlight-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(0, 178, 221, 0.18), transparent 45%);
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.legacy-procedures-main .highlight-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(8, 72, 120, 0.12);
+}
+
+.legacy-procedures-main .highlight-card h3 {
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  color: var(--lp-primary);
+  font-size: 1.1rem;
+}
+
+.legacy-procedures-main .highlight-card p {
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  color: #445465;
+  line-height: 1.55;
+}
+
+.legacy-procedures-main .highlight-icon {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(0, 90, 167, 0.14), rgba(0, 178, 221, 0.24));
+  color: var(--lp-primary);
+  font-size: 1.6rem;
+  position: relative;
+  z-index: 1;
+}
+
+.legacy-procedures-main .procedure-group {
+  padding: clamp(2.5rem, 7vw, 4.5rem) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.legacy-procedures-main .procedure-group::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 8% 18%, rgba(0, 90, 167, 0.08), transparent 46%),
+    radial-gradient(circle at 88% 20%, rgba(0, 178, 221, 0.06), transparent 40%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.legacy-procedures-main .procedure-group .container {
+  position: relative;
+  z-index: 1;
+}
+
+.legacy-procedures-main .procedure-layout {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.legacy-procedures-main .group-info {
+  display: grid;
+  gap: clamp(1.1rem, 3vw, 1.8rem);
+  text-align: center;
+}
+
+.legacy-procedures-main .group-info .group-header {
+  margin: 0;
+}
+
+.legacy-procedures-main .group-header {
+  max-width: 720px;
+  margin: 0 auto 1.5rem;
+  text-align: center;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.legacy-procedures-main .group-header h2 {
+  margin: 0;
+  color: var(--lp-primary);
+}
+
+.legacy-procedures-main .group-header p {
+  margin: 0;
+}
+
+.legacy-procedures-main .group-header p:not(.eyebrow) {
+  color: #425160;
+}
+
+.legacy-procedures-main .group-highlights {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.legacy-procedures-main .group-highlight {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 0.65rem;
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(219, 229, 241, 0.7);
+  border-radius: 16px;
+  box-shadow: 0 10px 26px rgba(10, 72, 120, 0.08);
+}
+
+.legacy-procedures-main .group-highlight__icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(0, 90, 167, 0.12), rgba(0, 178, 221, 0.2));
+  font-size: 1.25rem;
+  color: var(--lp-primary);
+}
+
+.legacy-procedures-main .group-highlight__text {
+  font-size: 0.95rem;
+  color: #3f5162;
+  line-height: 1.55;
+}
+
+.legacy-procedures-main .group-content {
+  position: relative;
+}
+
+.legacy-procedures-main .procedure-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.legacy-procedures-main .procedure-item {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(219, 229, 241, 0.75);
+  border-left: 4px solid rgba(0, 90, 167, 0.38);
+  border-radius: var(--lp-radius-md);
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  box-shadow: 0 14px 30px rgba(7, 53, 89, 0.08);
+  backdrop-filter: blur(8px);
+  transition: transform var(--lp-transition), box-shadow var(--lp-transition);
+}
+
+.legacy-procedures-main .procedure-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(7, 53, 89, 0.12);
+}
+
+.legacy-procedures-main .item-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--lp-dark);
+}
+
+.legacy-procedures-main .item-desc {
+  margin: 0;
+  font-size: 0.92rem;
+  color: #51626b;
+}
+
+.legacy-procedures-main .item-note {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--lp-primary);
+  background: rgba(0, 90, 167, 0.12);
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+}
+
+.legacy-procedures-main .procedure-note-block {
+  padding: clamp(2.5rem, 7vw, 4rem) 0;
+  background: linear-gradient(135deg, rgba(179, 229, 252, 0.45), rgba(0, 178, 221, 0.15));
+}
+
+.legacy-procedures-main .note-card {
+  background: #ffffff;
+  border-radius: var(--lp-radius-md);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  box-shadow: var(--lp-shadow-md);
+  border: 1px solid var(--lp-border);
+  text-align: center;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.legacy-procedures-main .note-card__icon {
+  font-size: 2rem;
+  color: var(--lp-primary);
+  margin-inline: auto;
+}
+
+.legacy-procedures-main .note-card h2 {
+  margin: 0;
+  color: var(--lp-primary);
+}
+
+.legacy-procedures-main .note-card p {
+  margin: 0;
+  color: #3d4d5c;
+}
+
+.legacy-procedures-main .note-card__meta {
+  font-size: 0.9rem;
+  color: #4f6275;
+}
+
+.legacy-procedures-main .note-card__meta a {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(79, 98, 117, 0.25);
+}
+
+.legacy-procedures-main .note-card__meta a:hover,
+.legacy-procedures-main .note-card__meta a:focus {
+  border-color: rgba(79, 98, 117, 0.5);
+}
+
+.legacy-procedures-main .note-card__actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.legacy-procedures-main .note-card__actions .btn {
+  min-width: 180px;
+  display: inline-block;
+  font-weight: 700;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  text-decoration: none;
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: 1rem;
+  transition: transform var(--lp-transition), box-shadow var(--lp-transition), opacity var(--lp-transition);
+}
+
+.legacy-procedures-main .note-card__actions .btn-primary {
+  background: var(--lp-primary);
+  color: var(--lp-light);
+  box-shadow: 0 6px 18px rgba(0, 90, 167, 0.25);
+}
+
+.legacy-procedures-main .note-card__actions .btn-secondary {
+  background: var(--lp-secondary);
+  color: var(--lp-light);
+  box-shadow: 0 6px 18px rgba(0, 178, 221, 0.25);
+}
+
+.legacy-procedures-main .note-card__actions .btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.96;
+}
+
+.legacy-procedures-main .note-card__actions .btn:active {
+  transform: translateY(0);
+  opacity: 0.9;
+}
+
+.page-procedures-legacy .floating-contact,
+.page-indications-legacy .floating-contact {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  z-index: 120;
+}
+
+.page-procedures-legacy .floating-contact .btn-icon,
+.page-indications-legacy .floating-contact .btn-icon {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  transition: transform 0.22s, box-shadow 0.22s, background-color 0.22s;
+  border: 2.5px solid var(--gold);
+  background-size: 62%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.page-procedures-legacy .floating-contact .btn-icon:hover,
+.page-indications-legacy .floating-contact .btn-icon:hover {
+  transform: scale(1.06);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
+  background-color: #f1faff;
+}
+
+.page-procedures-legacy .floating-contact .btn-icon.whatsapp,
+.page-indications-legacy .floating-contact .btn-icon.whatsapp {
+  background-image: url("../../images/whatsapp.svg");
+  border-color: #25d366;
+}
+
+.page-procedures-legacy .floating-contact .btn-icon.telegram,
+.page-indications-legacy .floating-contact .btn-icon.telegram {
+  background-image: url("../../images/telegram.svg");
+  border-color: #229ed9;
+}
+
+@media (min-width: 576px) {
+  .legacy-procedures-main .hero-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .legacy-procedures-main .metric {
+    padding: 1rem 1.25rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .legacy-procedures-main .procedure-items {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .legacy-procedures-main .group-header {
+    text-align: left;
+    justify-items: start;
+  }
+
+  .legacy-procedures-main .group-header p {
+    max-width: 580px;
+  }
+
+  .legacy-procedures-main .group-info {
+    text-align: left;
+  }
+
+  .legacy-procedures-main .group-highlights {
+    gap: 0.85rem;
+  }
+
+  .legacy-procedures-main .group-highlight {
+    padding: 1rem 1.25rem;
+  }
+
+  .legacy-procedures-main .highlight-header {
+    text-align: left;
+    justify-items: start;
+  }
+
+  .legacy-procedures-main .highlight-card {
+    padding: 1.8rem 2.1rem;
+  }
+
+  .legacy-procedures-main .note-card {
+    text-align: left;
+    justify-items: start;
+  }
+
+  .legacy-procedures-main .note-card__actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 1080px) {
+  .legacy-procedures-main .procedure-layout {
+    grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .legacy-procedures-main .procedure-items {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Legacy indications page migration */
+.legacy-indications-main {
+  --li-primary: #005aa7;
+  --li-secondary: #00b2dd;
+  --li-light: #ffffff;
+  --li-muted: #f3f7fb;
+  --li-border: #dbe5f1;
+  --li-dark: #1e2e4a;
+  --li-radius-md: 10px;
+  --li-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --li-shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --li-transition: 0.25s ease;
+  font-family: "Nunito", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: var(--li-dark);
+  padding-top: var(--header-height);
+}
+
+.legacy-indications-main .container {
+  width: min(92%, 1200px);
+  margin-inline: auto;
+}
+
+.legacy-indications-main h2 {
+  text-align: center;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 1.5rem;
+  color: var(--li-primary);
+}
+
+.legacy-indications-main .grid-2 {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+.legacy-indications-main .page-hero {
+  position: relative;
+  padding: clamp(3.5rem, 9vw, 6.5rem) 0;
+  color: var(--li-light);
+  text-align: center;
+  overflow: hidden;
+}
+
+.legacy-indications-main .page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+.legacy-indications-main .page-hero--indications {
+  background:
+    linear-gradient(135deg, rgba(0, 90, 167, 0.82), rgba(0, 178, 221, 0.78)),
+    url("../../images/hero-bg.jpg") center / cover no-repeat;
+}
+
+.legacy-indications-main .page-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.legacy-indications-main .page-hero .hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  max-width: 760px;
+}
+
+.legacy-indications-main .page-hero .lead {
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  margin: 0;
+  opacity: 0.9;
+}
+
+.legacy-indications-main .eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--li-primary);
+}
+
+.legacy-indications-main .page-hero .eyebrow {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.legacy-indications-main .hero-metrics {
+  display: grid;
+  gap: 0.9rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.legacy-indications-main .metric {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--li-radius-md);
+  padding: 0.85rem 1rem;
+  display: grid;
+  place-items: center;
+  gap: 0.3rem;
+  backdrop-filter: blur(4px);
+}
+
+.legacy-indications-main .metric-value {
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.legacy-indications-main .metric-label {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.legacy-indications-main .indications-overview {
+  padding: clamp(2.5rem, 7vw, 4.5rem) 0;
+}
+
+.legacy-indications-main .indications-overview__text {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.legacy-indications-main .indications-list {
+  margin: 0;
+  padding-left: 1.2em;
+  color: #435468;
+}
+
+.legacy-indications-main .indications-list li {
+  margin-bottom: 0.4rem;
+}
+
+.legacy-indications-main .indications-overview__media {
+  display: grid;
+  place-items: center;
+}
+
+.legacy-indications-main .indications-photo {
+  border-radius: var(--li-radius-md);
+  box-shadow: var(--li-shadow-md);
+}
+
+.legacy-indications-main .indications-overview__media picture {
+  width: 100%;
+}
+
+.legacy-indications-main .indications-overview__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.legacy-indications-main .indication-groups {
+  padding: clamp(2.5rem, 7vw, 4.5rem) 0;
+  background: var(--li-muted);
+}
+
+.legacy-indications-main .indication-groups__intro {
+  max-width: 720px;
+  margin: 0 auto 1.5rem;
+  text-align: center;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.legacy-indications-main .indication-groups__intro p {
+  margin: 0;
+}
+
+.legacy-indications-main .indication-groups__grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.legacy-indications-main .indication-group {
+  background: #fff;
+  border-radius: var(--li-radius-md);
+  border: 1px solid var(--li-border);
+  box-shadow: var(--li-shadow-sm);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  display: grid;
+  gap: 1rem;
+}
+
+.legacy-indications-main .indication-group__header {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.legacy-indications-main .indication-group__header h3 {
+  margin: 0;
+  color: var(--li-primary);
+  font-size: 1.25rem;
+}
+
+.legacy-indications-main .indication-group__header p {
+  margin: 0;
+  color: #425160;
+}
+
+.legacy-indications-main .indication-card-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  align-items: stretch;
+}
+
+.legacy-indications-main .indication-card {
+  background: rgba(243, 247, 251, 0.75);
+  border: 1px solid rgba(219, 229, 241, 0.7);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  color: #425468;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.legacy-indications-main .indication-card a {
+  color: var(--li-primary);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.legacy-indications-main .indication-card a:hover,
+.legacy-indications-main .indication-card a:focus {
+  text-decoration: underline;
+}
+
+.legacy-indications-main .indication-card-list--bulleted .indication-card {
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.legacy-indications-main .indication-card-list--bulleted .indication-card::before {
+  content: "•";
+  position: absolute;
+  left: 0.45rem;
+  color: var(--li-primary);
+  font-size: 1.3rem;
+  line-height: 1;
+  top: 0.9rem;
+}
+
+.legacy-indications-main .indications-cta {
+  padding: clamp(2.5rem, 7vw, 4.5rem) 0;
+}
+
+.legacy-indications-main .indications-cta__card {
+  background: linear-gradient(135deg, rgba(0, 178, 221, 0.12), rgba(0, 90, 167, 0.1));
+  border: 1px solid rgba(0, 90, 167, 0.18);
+  border-radius: var(--li-radius-md);
+  box-shadow: var(--li-shadow-md);
+  padding: clamp(1.8rem, 5vw, 2.8rem);
+  display: grid;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.legacy-indications-main .indications-cta__card h2 {
+  margin: 0;
+  color: var(--li-primary);
+}
+
+.legacy-indications-main .indications-cta__card p {
+  margin: 0;
+  color: #3d4f60;
+}
+
+.legacy-indications-main .cta-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+.legacy-indications-main .cta-actions .btn {
+  width: 100%;
+  display: inline-block;
+  font-weight: 700;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  text-decoration: none;
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: 1rem;
+  transition: transform var(--li-transition), box-shadow var(--li-transition), opacity var(--li-transition);
+}
+
+.legacy-indications-main .cta-actions .btn-primary {
+  background: var(--li-primary);
+  color: var(--li-light);
+  box-shadow: 0 6px 18px rgba(0, 90, 167, 0.25);
+}
+
+.legacy-indications-main .cta-actions .btn-secondary {
+  background: var(--li-secondary);
+  color: var(--li-light);
+  box-shadow: 0 6px 18px rgba(0, 178, 221, 0.25);
+}
+
+.legacy-indications-main .cta-actions .btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.96;
+}
+
+.legacy-indications-main .cta-actions .btn:active {
+  transform: translateY(0);
+  opacity: 0.9;
+}
+
+.legacy-indications-main .fade-in {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: fadeInUpLegacyIndications 0.8s forwards;
+}
+
+@keyframes fadeInUpLegacyIndications {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .legacy-indications-main .fade-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (min-width: 576px) {
+  .legacy-indications-main .hero-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .legacy-indications-main .metric {
+    padding: 1rem 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .legacy-indications-main .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .legacy-indications-main .indication-groups__intro {
+    text-align: left;
+  }
+
+  .legacy-indications-main .indication-groups__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .legacy-indications-main .cta-actions {
+    flex-direction: row;
+  }
+
+  .legacy-indications-main .cta-actions .btn {
+    width: auto;
+    min-width: 200px;
+  }
+}
+
 .section-indications {
   background: var(--cream);
 }
@@ -1711,8 +2674,8 @@ textarea {
   background: #229ed9;
 }
 
-.floating-btn.telegram svg {
-  width: 24px;
+.floating-btn.telegram img {
+  width: 30px;
 }
 
 .floating-btn.phone {
