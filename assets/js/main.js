@@ -444,10 +444,7 @@ function setCurrentYear() {
 
 function initHeaderScrollResize() {
   const header = document.querySelector(".site-header");
-  const hero = document.getElementById("hero");
-  if (!header || !hero) return;
-
-  header.classList.add("has-scroll-resize");
+  if (!header) return;
 
   const updateHeaderState = () => {
     header.classList.toggle("scrolled", window.scrollY > 4);
