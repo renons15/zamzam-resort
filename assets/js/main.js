@@ -470,7 +470,7 @@ function initHeroParallax() {
   const heroBackground = hero?.querySelector(".hero-background");
   if (!hero || !heroBackground) return;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  if (window.matchMedia("(max-width: 1100px)").matches) return;
+  if (window.matchMedia("(max-width: 1199px)").matches) return;
 
   let ticking = false;
   const speed = 0.24;
@@ -505,7 +505,7 @@ function initAboutGalleryParallax() {
   const images = Array.from(gallery.querySelectorAll(".about-photo img"));
   if (images.length === 0) return;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  if (window.matchMedia("(max-width: 1100px)").matches) return;
+  if (window.matchMedia("(max-width: 1199px)").matches) return;
 
   let ticking = false;
   const maxOffset = 22;
@@ -543,22 +543,49 @@ function initMobileMenu() {
   const mobileMenu = document.getElementById("mobileMenu");
   if (!toggle || !mobileMenu) return;
 
-  const toggleMenu = () => {
-    const isExpanded = toggle.getAttribute("aria-expanded") === "true";
-    toggle.setAttribute("aria-expanded", isExpanded ? "false" : "true");
-    toggle.classList.toggle("is-open", !isExpanded);
-    mobileMenu.classList.toggle("is-open", !isExpanded);
+  const desktopMq = window.matchMedia("(min-width: 1200px)");
+  const isMenuOpen = () => toggle.getAttribute("aria-expanded") === "true";
+
+  const setMenuState = (open) => {
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.classList.toggle("is-open", open);
+    mobileMenu.classList.toggle("is-open", open);
+    mobileMenu.setAttribute("aria-hidden", open ? "false" : "true");
+    document.body.classList.toggle("menu-open", open);
   };
 
-  toggle.addEventListener("click", toggleMenu);
+  setMenuState(false);
+
+  toggle.addEventListener("click", (event) => {
+    event.stopPropagation();
+    setMenuState(!isMenuOpen());
+  });
 
   mobileMenu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      toggle.setAttribute("aria-expanded", "false");
-      toggle.classList.remove("is-open");
-      mobileMenu.classList.remove("is-open");
-    });
+    link.addEventListener("click", () => setMenuState(false));
   });
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!isMenuOpen()) return;
+    if (target instanceof Node && (mobileMenu.contains(target) || toggle.contains(target))) return;
+    setMenuState(false);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && isMenuOpen()) {
+      setMenuState(false);
+      toggle.focus();
+    }
+  });
+
+  const closeOnDesktop = () => {
+    if (desktopMq.matches) setMenuState(false);
+  };
+
+  closeOnDesktop();
+  if (typeof desktopMq.addEventListener === "function") desktopMq.addEventListener("change", closeOnDesktop);
+  else if (typeof desktopMq.addListener === "function") desktopMq.addListener(closeOnDesktop);
 }
 
 function setDateValue(input, date) {

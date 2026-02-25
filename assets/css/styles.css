@@ -21,6 +21,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -29,9 +31,22 @@ body {
   color: var(--ink);
   background: var(--white);
   line-height: 1.6;
+  overflow-x: hidden;
+}
+
+body.menu-open {
+  overflow: hidden;
+  touch-action: none;
+  overscroll-behavior: none;
 }
 
 img {
+  display: block;
+  max-width: 100%;
+}
+
+iframe,
+video {
   display: block;
   max-width: 100%;
 }
@@ -45,6 +60,15 @@ button,
 input,
 textarea {
   font: inherit;
+}
+
+.homepage-contact-legacy__form input,
+.homepage-contact-legacy__form textarea,
+.contact-card input,
+.contact-card textarea,
+.legacy-contact-main .contact-form input,
+.legacy-contact-main .contact-form textarea {
+  width: 100%;
 }
 
 .container {
@@ -62,6 +86,8 @@ textarea {
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(2.4rem, 3.8vw, 4rem);
   font-weight: 500;
+  line-height: 1.08;
+  text-wrap: balance;
 }
 
 .section-title-left {
@@ -4443,6 +4469,7 @@ textarea {
   position: relative;
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
 }
 
 .map-wrap iframe {
@@ -4633,13 +4660,17 @@ textarea {
   scroll-margin-top: 106px;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1199px) {
   :root {
     --header-height: 84px;
   }
 
+  .container {
+    width: min(100% - 28px, var(--container-width));
+  }
+
   .logo-link img {
-    width: 100px;
+    width: 94px;
   }
 
   .site-header:not(.scrolled) .logo-link img {
@@ -4655,8 +4686,47 @@ textarea {
     display: inline-flex;
   }
 
+  .mobile-menu {
+    display: grid;
+    gap: 14px;
+    border-top: 1px solid #efefef;
+    background: #fff;
+    padding: 0 16px;
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    pointer-events: none;
+    transition: max-height 0.3s ease, opacity 0.25s ease, padding 0.25s ease;
+  }
+
   .mobile-menu.is-open {
-    display: block;
+    max-height: calc(100vh - var(--header-height));
+    opacity: 1;
+    visibility: visible;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    pointer-events: auto;
+    padding: 16px;
+  }
+
+  .mobile-nav a {
+    width: 100%;
+    padding: 6px 0;
+  }
+
+  .mobile-actions,
+  .lang-switcher--mobile {
+    width: 100%;
+  }
+
+  .mobile-actions .wa-pill {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .lang-switcher--mobile {
+    justify-content: center;
   }
 
   .hero {
@@ -4664,10 +4734,24 @@ textarea {
     padding-bottom: 24px;
   }
 
+  .hero-content {
+    gap: 22px;
+  }
+
+  .hero h1 {
+    max-width: 16ch;
+    font-size: clamp(2rem, 6vw, 3.6rem);
+    line-height: 1.1;
+  }
+
   .hero-booking {
     position: static;
-    margin-top: 42px;
+    margin-top: 36px;
     width: 100%;
+  }
+
+  .hero-booking .container {
+    width: min(100% - 28px, var(--container-width));
   }
 
   .booking-grid {
@@ -4683,22 +4767,185 @@ textarea {
   }
 
   .section {
-    padding-block: 92px;
+    padding-block: 88px;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 5vw, 3.1rem);
+    line-height: 1.1;
   }
 
   .section-about {
-    padding-top: 124px;
-    padding-bottom: 108px;
+    padding-top: 120px;
+    padding-bottom: 104px;
   }
 
-  .room-layout,
-  .mineral-layout,
+  .treatment-grid,
+  .legacy-room-gallery,
   .pages-grid,
+  .review-grid,
+  .contact-grid,
+  .procedure-columns,
+  .indications-grid,
+  .diet-grid,
+  .homepage-contact-legacy__list,
+  .footer-grid,
+  .legacy-about-main .hero-metrics,
+  .legacy-about-main .about-story__layout,
+  .legacy-about-main .about-water__grid,
+  .legacy-about-main .service-grid,
+  .legacy-procedures-main .procedure-items,
+  .legacy-procedures-main .highlight-list,
+  .legacy-indications-main .hero-metrics,
+  .legacy-indications-main .indication-groups__grid,
+  .legacy-indications-main .indication-card-list,
+  .legacy-nutrition-main .hero-metrics,
+  .legacy-nutrition-main .diet-groups,
+  .legacy-nutrition-main .diet-card-list,
+  .legacy-contact-main .contact-highlights__list,
+  .legacy-contact-main .contact-info__list,
+  .legacy-contact-main .contact .grid-2,
+  .homepage-contact-legacy__layout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .legacy-procedures-main .procedure-layout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  .map-wrap iframe {
+    height: 380px;
+  }
+
+  .footer-logo {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --header-height: 76px;
+  }
+
+  .container {
+    width: min(100% - 20px, var(--container-width));
+  }
+
+  .header-inner {
+    min-height: var(--header-height);
+  }
+
+  .logo-link img {
+    width: 82px;
+  }
+
+  .section {
+    padding-block: 68px;
+  }
+
+  .section-title {
+    margin-bottom: 18px;
+    font-size: clamp(1.72rem, 9vw, 2.3rem);
+    line-height: 1.12;
+  }
+
+  .section-about {
+    padding-top: 94px;
+    padding-bottom: 80px;
+  }
+
+  .hero-content {
+    margin-top: 0;
+    gap: 18px;
+    padding-inline: 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.85rem, 11vw, 2.7rem);
+    letter-spacing: 0.05em;
+    line-height: 1.12;
+  }
+
+  .hero-video {
+    margin-top: 14px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-booking {
+    margin-top: 28px;
+  }
+
+  .hero-booking .container,
+  .homepage-contact-legacy .container {
+    width: min(100% - 20px, var(--container-width));
+  }
+
+  .booking-card {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-field {
+    min-height: auto;
+    padding: 16px 18px;
+    border-right: 0;
+    border-bottom: 1px solid #ededed;
+  }
+
+  .booking-field:last-child {
+    border-bottom: 0;
+  }
+
+  .booking-submit {
+    min-height: 56px;
+    border-radius: 0 0 18px 18px;
+  }
+
+  .guest-popover {
+    left: 0;
+    right: 0;
+  }
+
+  .homepage-contact-legacy__layout,
+  .homepage-contact-legacy__list,
+  .legacy-contact-main .contact-highlights__list,
+  .legacy-contact-main .contact-info__list,
+  .legacy-contact-main .contact .grid-2,
+  .about-gallery,
+  .treatment-grid,
+  .room-layout,
+  .room-features ul,
+  .legacy-room-gallery,
   .legacy-pricing-layout,
   .nutrition-grid-extended,
-  .licenses-grid-new {
+  .licenses-grid-new,
+  .pages-grid,
+  .review-grid,
+  .contact-grid,
+  .procedure-columns,
+  .indications-grid,
+  .diet-grid,
+  .mineral-layout,
+  .footer-grid,
+  .legacy-about-main .hero-metrics,
+  .legacy-about-main .about-story__layout,
+  .legacy-about-main .about-water__grid,
+  .legacy-about-main .service-grid,
+  .legacy-procedures-main .procedure-layout,
+  .legacy-procedures-main .procedure-items,
+  .legacy-procedures-main .highlight-list,
+  .legacy-indications-main .hero-metrics,
+  .legacy-indications-main .indication-groups__grid,
+  .legacy-indications-main .indication-card-list,
+  .legacy-nutrition-main .hero-metrics,
+  .legacy-nutrition-main .diet-groups,
+  .legacy-nutrition-main .diet-card-list {
     grid-template-columns: 1fr;
-    gap: 32px;
   }
 
   .mineral-image {
@@ -4709,73 +4956,12 @@ textarea {
     order: 1;
   }
 
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .procedure-columns,
-  .indications-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .review-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-}
-
-@media (max-width: 780px) {
-  .section {
-    padding-block: 72px;
-  }
-
-  .section-about {
-    padding-top: 98px;
-    padding-bottom: 84px;
-  }
-
-  .hero h1 {
-    letter-spacing: 0.08em;
-  }
-
-  .hero-video {
-    margin-top: 26px;
-  }
-
-  .homepage-contact-legacy .container {
-    width: min(100% - 24px, var(--container-width));
-  }
-
-  .homepage-contact-legacy__layout {
-    grid-template-columns: 1fr;
-  }
-
-  .homepage-contact-legacy__form {
-    padding: 24px;
-  }
-
-  .about-gallery,
-  .treatment-grid,
-  .room-features ul,
-  .legacy-room-gallery,
-  .diet-grid,
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .review-grid {
-    grid-template-columns: 1fr;
-  }
-
   .about-gallery {
-    margin-top: 40px;
+    margin-top: 36px;
   }
 
   .treatment-card {
+    padding: 20px 18px;
     border-right: 0;
   }
 
@@ -4783,34 +4969,29 @@ textarea {
     border-bottom: 1px solid #e2e2e2;
   }
 
+  .review-card,
+  .page-card,
+  .contact-card,
+  .legacy-room-copy,
+  .legacy-pricing-card,
+  .indication-group,
+  .diet-downloads,
+  .nutrition-summary,
+  .license-panel-content,
+  .homepage-contact-legacy__form,
+  .legacy-contact-main .contact-form--card,
+  .legacy-contact-main .contact-info__card {
+    padding: 16px;
+  }
+
   .room-header {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .map-overlay {
-    position: static;
-    max-width: none;
-    width: 100%;
-    box-shadow: none;
-  }
-
-  .booking-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .booking-field {
-    border-right: 0;
-    border-bottom: 1px solid #ededed;
-  }
-
-  .booking-field:last-child {
-    border-bottom: 0;
-  }
-
   .legacy-price-head,
   .legacy-price-row {
-    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-columns: 1.3fr 1fr 1fr;
     gap: 8px;
     padding: 8px;
   }
@@ -4822,6 +5003,23 @@ textarea {
   .legacy-price-row span,
   .legacy-price-row strong {
     font-size: 0.74rem;
+  }
+
+  .homepage-contact-legacy__submit,
+  .legacy-contact-main .contact-form .btn {
+    width: 100%;
+    align-self: stretch;
+  }
+
+  .map-wrap iframe {
+    height: 300px;
+  }
+
+  .map-overlay {
+    position: static;
+    max-width: none;
+    width: 100%;
+    box-shadow: none;
   }
 
   .floating-buttons {
