@@ -841,17 +841,23 @@ function createReviewCard(review) {
   text.className = "review-text";
   text.textContent = review.text;
 
-  const link = document.createElement("a");
-  link.className = "review-more";
-  link.href = review.url || "__REVIEW_URL__";
-  link.target = "_blank";
-  link.rel = "noopener noreferrer";
-  link.textContent = uiText.reviewLink;
-
   card.appendChild(author);
   card.appendChild(stars);
   card.appendChild(text);
-  card.appendChild(link);
+
+  const hasValidReviewUrl =
+    typeof review.url === "string" && /^https?:\/\//i.test(review.url);
+
+  if (hasValidReviewUrl) {
+    const link = document.createElement("a");
+    link.className = "review-more";
+    link.href = review.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = uiText.reviewLink;
+    card.appendChild(link);
+  }
+
   return card;
 }
 

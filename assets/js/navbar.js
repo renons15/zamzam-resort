@@ -66,30 +66,32 @@
     const parts = window.location.pathname.split("/").filter(Boolean);
     const maybeFile = parts[parts.length - 1] || "";
     const currentPage = maybeFile.endsWith(".html") ? maybeFile : "index.html";
-    const parentDir = maybeFile.endsWith(".html")
-      ? parts[parts.length - 2] || ""
-      : maybeFile;
+    const currentDirParts = maybeFile.endsWith(".html") ? parts.slice(0, -1) : parts.slice();
+    const parentDir = currentDirParts[currentDirParts.length - 1] || "";
     const inLangSubdir = SUPPORTED_LANGS.includes(parentDir);
     const currentLang = inLangSubdir ? parentDir : "ru";
+    const baseParts = inLangSubdir
+      ? currentDirParts.slice(0, -1)
+      : currentDirParts.slice();
+    const basePath = baseParts.length ? `/${baseParts.join("/")}` : "";
 
     return {
+      basePath,
       currentLang,
       currentPage,
       inLangSubdir
     };
   }
 
+  function withBase(path, context) {
+    const cleaned = String(path || "").replace(/^\.?\//, "");
+    if (!cleaned) return context.basePath || "/";
+    return context.basePath ? `${context.basePath}/${cleaned}` : `/${cleaned}`;
+  }
+
   function localeHref(targetLang, page, context) {
     const targetPage = page || "index.html";
-
-    if (!context.inLangSubdir) {
-      if (targetLang === "ru") return targetPage;
-      return `${targetLang}/${targetPage}`;
-    }
-
-    if (targetLang === context.currentLang) return targetPage;
-    if (targetLang === "ru") return `../${targetPage}`;
-    return `../${targetLang}/${targetPage}`;
+    return withBase(`${targetLang}/${targetPage}`, context);
   }
 
   function assetHref(path, context) {
@@ -102,9 +104,9 @@
     return window.location.hash === item.hash;
   }
 
-  function linkHref(item) {
-    if (item.type === "page") return item.file;
-    return `index.html${item.hash}`;
+  function linkHref(item, context) {
+    if (item.type === "page") return withBase(`${context.currentLang}/${item.file}`, context);
+    return withBase(`${context.currentLang}/index.html${item.hash}`, context);
   }
 
   function renderNavLinks(labels, context) {
@@ -112,7 +114,7 @@
       const active = isActive(item, context);
       const activeAttrs = active ? ' class="is-active" aria-current="page"' : "";
       const label = labels[item.key];
-      return `<a href="${linkHref(item)}"${activeAttrs}>${label}</a>`;
+      return `<a href="${linkHref(item, context)}"${activeAttrs}>${label}</a>`;
     }).join("");
   }
 
@@ -143,7 +145,7 @@
 
     host.innerHTML = `
       <div class="container header-inner">
-        <a class="logo-link" href="index.html#hero" aria-label="${uiText.logoAria}">
+        <a class="logo-link" href="${withBase(`${context.currentLang}/index.html#hero`, context)}" aria-label="${uiText.logoAria}">
           <img src="${logoPath}" alt="Zangiota Zam-Zam" width="70" height="70" />
         </a>
         <nav class="site-nav desktop-nav" aria-label="${uiText.desktopNavAria}">
