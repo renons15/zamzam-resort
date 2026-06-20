@@ -2,49 +2,67 @@
   publish = "."
 
 [[redirects]]
-  from = "/"
-  to = "/ru/index.html"
+  from = "/ru"
+  to = "/"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/index.html"
-  to = "/ru/index.html"
+  from = "/ru/"
+  to = "/"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/pricing.html"
-  to = "/ru/pricing.html"
+  from = "/ru/index.html"
+  to = "/"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/procedures.html"
-  to = "/ru/procedures.html"
+  from = "/ru/pricing.html"
+  to = "/pricing.html"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/indications.html"
-  to = "/ru/indications.html"
+  from = "/ru/procedures.html"
+  to = "/procedures.html"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/nutrition.html"
-  to = "/ru/nutrition.html"
+  from = "/ru/indications.html"
+  to = "/indications.html"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/licenses.html"
-  to = "/ru/licenses.html"
+  from = "/ru/nutrition.html"
+  to = "/nutrition.html"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/contact.html"
-  to = "/ru/contact.html"
+  from = "/ru/licenses.html"
+  to = "/licenses.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/ru/contact.html"
+  to = "/contact.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/ru/about.html"
+  to = "/about.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/ru/rooms.html"
+  to = "/rooms.html"
   status = 301
   force = true

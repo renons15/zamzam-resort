@@ -85,13 +85,24 @@
 
   function withBase(path, context) {
     const cleaned = String(path || "").replace(/^\.?\//, "");
-    if (!cleaned) return context.basePath || "/";
+    if (!cleaned) return context.basePath ? `${context.basePath}/` : "/";
     return context.basePath ? `${context.basePath}/${cleaned}` : `/${cleaned}`;
   }
 
-  function localeHref(targetLang, page, context) {
+  function localizedPath(targetLang, page) {
     const targetPage = page || "index.html";
-    return withBase(`${targetLang}/${targetPage}`, context);
+
+    // Russian is the default language and lives at the site root. Keep /ru/
+    // only as a backwards-compatible redirect target, never as a nav target.
+    if (targetLang === "ru") {
+      return targetPage.replace(/^index\.html(?=$|[?#])/, "");
+    }
+
+    return `${targetLang}/${targetPage}`;
+  }
+
+  function localeHref(targetLang, page, context) {
+    return withBase(localizedPath(targetLang, page), context);
   }
 
   function assetHref(path, context) {
@@ -105,8 +116,8 @@
   }
 
   function linkHref(item, context) {
-    if (item.type === "page") return withBase(`${context.currentLang}/${item.file}`, context);
-    return withBase(`${context.currentLang}/index.html${item.hash}`, context);
+    if (item.type === "page") return localeHref(context.currentLang, item.file, context);
+    return localeHref(context.currentLang, `index.html${item.hash}`, context);
   }
 
   function renderNavLinks(labels, context) {
@@ -145,7 +156,7 @@
 
     host.innerHTML = `
       <div class="container header-inner">
-        <a class="logo-link" href="${withBase(`${context.currentLang}/index.html#hero`, context)}" aria-label="${uiText.logoAria}">
+        <a class="logo-link" href="${localeHref(context.currentLang, "index.html#hero", context)}" aria-label="${uiText.logoAria}">
           <img src="${logoPath}" alt="Zangiota Zam-Zam" width="70" height="70" />
         </a>
         <nav class="site-nav desktop-nav" aria-label="${uiText.desktopNavAria}">

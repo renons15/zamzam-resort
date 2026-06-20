@@ -4,7 +4,10 @@ This repository is now a plain static website with no framework build step.
 
 ## Project structure
 
-- `index.html` - main page
+- Root HTML files - canonical Russian pages (`index.html` is the main page)
+- `uz/` - Uzbek pages
+- `kk/` - Kazakh pages
+- `ru/` - legacy Russian URLs that redirect to the root pages
 - `assets/css/styles.css` - site styles
 - `assets/js/main.js` - UI interactions
 
