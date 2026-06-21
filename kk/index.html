@@ -36,16 +36,29 @@
 
         <div class="hero-booking" id="booking">
           <div class="container">
-            <div class="booking-card">
+            <form
+              id="bookingForm"
+              class="booking-card"
+              action="/.netlify/functions/booking"
+              method="post"
+              novalidate
+            >
               <div class="booking-grid">
-                <label class="booking-field">
-                  <span>Келу</span>
-                  <input id="checkinInput" type="date" />
-                </label>
-                <label class="booking-field">
-                  <span>Кету</span>
-                  <input id="checkoutInput" type="date" />
-                </label>
+                <div class="booking-field booking-dates">
+                  <span>Тұру күндері</span>
+                  <div class="date-range-inputs">
+                    <label>
+                      <span class="visually-hidden">Келу</span>
+                      <input id="checkinInput" name="checkin" type="date" required />
+                    </label>
+                    <span class="date-range-separator" aria-hidden="true">—</span>
+                    <label>
+                      <span class="visually-hidden">Кету</span>
+                      <input id="checkoutInput" name="checkout" type="date" required />
+                    </label>
+                  </div>
+                  <small id="bookingDateHint">Кемінде 10 тәулік</small>
+                </div>
                 <div class="booking-field booking-guests">
                   <span>Қонақтар</span>
                   <button
@@ -82,14 +95,41 @@
                     </div>
                     <button id="guestDone" class="guest-done" type="button">Дайын</button>
                   </div>
+                  <input id="adultsInput" name="adults" type="hidden" value="2" />
+                  <input id="childrenInput" name="children" type="hidden" value="0" />
                 </div>
-                <div class="booking-field promo-field">
-                  <span>Промокод</span>
-                  <button class="promo-button" type="button">Менде промо-код бар</button>
+                <label class="booking-field booking-phone">
+                  <span>Телефон нөмірі</span>
+                  <input
+                    id="bookingPhone"
+                    name="phone"
+                    type="tel"
+                    inputmode="tel"
+                    autocomplete="tel"
+                    placeholder="+998 90 123 45 67"
+                    required
+                  />
+                </label>
+                <label class="booking-field booking-room">
+                  <span>Бөлме түрі</span>
+                  <select id="bookingRoom" name="roomType" required>
+                    <option value="">Бөлмені таңдаңыз</option>
+                    <option value="standart">Стандарт</option>
+                    <option value="polulux1">Полулюкс, 1 бөлме</option>
+                    <option value="polulux2">Полулюкс, 2 бөлме</option>
+                    <option value="lux">Люкс</option>
+                  </select>
+                </label>
+                <div class="booking-honeypot" aria-hidden="true">
+                  <label for="bookingWebsite">Бұл өрісті толтырмаңыз</label>
+                  <input id="bookingWebsite" name="website" type="text" tabindex="-1" autocomplete="off" />
                 </div>
               </div>
-              <button class="btn btn-gold booking-submit" type="button"> Сұраныс жіберу</button>
-            </div>
+              <button id="bookingSubmit" class="btn btn-gold booking-submit" type="submit">
+                Сұраныс жіберу
+              </button>
+            </form>
+            <p id="bookingStatus" class="booking-status" role="status" aria-live="polite"></p>
           </div>
         </div>
       </section>

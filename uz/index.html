@@ -36,16 +36,29 @@
 
         <div class="hero-booking" id="booking">
           <div class="container">
-            <div class="booking-card">
+            <form
+              id="bookingForm"
+              class="booking-card"
+              action="/.netlify/functions/booking"
+              method="post"
+              novalidate
+            >
               <div class="booking-grid">
-                <label class="booking-field">
-                  <span>Kelish</span>
-                  <input id="checkinInput" type="date" />
-                </label>
-                <label class="booking-field">
-                  <span>Ketish</span>
-                  <input id="checkoutInput" type="date" />
-                </label>
+                <div class="booking-field booking-dates">
+                  <span>Yashash sanalari</span>
+                  <div class="date-range-inputs">
+                    <label>
+                      <span class="visually-hidden">Kelish</span>
+                      <input id="checkinInput" name="checkin" type="date" required />
+                    </label>
+                    <span class="date-range-separator" aria-hidden="true">—</span>
+                    <label>
+                      <span class="visually-hidden">Ketish</span>
+                      <input id="checkoutInput" name="checkout" type="date" required />
+                    </label>
+                  </div>
+                  <small id="bookingDateHint">Kamida 10 kun</small>
+                </div>
                 <div class="booking-field booking-guests">
                   <span>Mehmonlar</span>
                   <button
@@ -82,14 +95,41 @@
                     </div>
                     <button id="guestDone" class="guest-done" type="button">Tayyor</button>
                   </div>
+                  <input id="adultsInput" name="adults" type="hidden" value="2" />
+                  <input id="childrenInput" name="children" type="hidden" value="0" />
                 </div>
-                <div class="booking-field promo-field">
-                  <span>Promo-kod</span>
-                  <button class="promo-button" type="button">Menda promo-kod bor</button>
+                <label class="booking-field booking-phone">
+                  <span>Telefon raqami</span>
+                  <input
+                    id="bookingPhone"
+                    name="phone"
+                    type="tel"
+                    inputmode="tel"
+                    autocomplete="tel"
+                    placeholder="+998 90 123 45 67"
+                    required
+                  />
+                </label>
+                <label class="booking-field booking-room">
+                  <span>Xona turi</span>
+                  <select id="bookingRoom" name="roomType" required>
+                    <option value="">Xonani tanlang</option>
+                    <option value="standart">Standart</option>
+                    <option value="polulux1">Polulyuks, 1 xona</option>
+                    <option value="polulux2">Polulyuks, 2 xona</option>
+                    <option value="lux">Lyuks</option>
+                  </select>
+                </label>
+                <div class="booking-honeypot" aria-hidden="true">
+                  <label for="bookingWebsite">Bu maydonni to'ldirmang</label>
+                  <input id="bookingWebsite" name="website" type="text" tabindex="-1" autocomplete="off" />
                 </div>
               </div>
-              <button class="btn btn-gold booking-submit" type="button"> So'rov yuborish</button>
-            </div>
+              <button id="bookingSubmit" class="btn btn-gold booking-submit" type="submit">
+                So'rov yuborish
+              </button>
+            </form>
+            <p id="bookingStatus" class="booking-status" role="status" aria-live="polite"></p>
           </div>
         </div>
       </section>

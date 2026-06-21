@@ -21,7 +21,13 @@ const uiTextByLang = {
     perDay: "сутки",
     adultForms: ["взрослый", "взрослых", "взрослых"],
     childForms: ["ребенок", "ребенка", "детей"],
-    formSuccess: "Спасибо! Мы свяжемся с вами в ближайшее время."
+    formSuccess: "Спасибо! Мы свяжемся с вами в ближайшее время.",
+    bookingDateMinimum: "Выберите даты проживания минимум на 10 суток.",
+    bookingPhoneInvalid: "Введите корректный номер телефона.",
+    bookingRoomRequired: "Выберите тип номера.",
+    bookingSending: "Отправляем запрос…",
+    bookingSuccess: "Запрос отправлен. Администратор свяжется с вами для подтверждения.",
+    bookingError: "Не удалось отправить запрос. Попробуйте еще раз или свяжитесь с нами по телефону."
   },
   uz: {
     reviewLabel: "Sharh",
@@ -30,7 +36,13 @@ const uiTextByLang = {
     perDay: "kun",
     adultForms: ["katta", "katta", "katta"],
     childForms: ["bola", "bola", "bola"],
-    formSuccess: "Rahmat! Tez orada siz bilan bog'lanamiz."
+    formSuccess: "Rahmat! Tez orada siz bilan bog'lanamiz.",
+    bookingDateMinimum: "Kamida 10 kunlik yashash sanalarini tanlang.",
+    bookingPhoneInvalid: "To'g'ri telefon raqamini kiriting.",
+    bookingRoomRequired: "Xona turini tanlang.",
+    bookingSending: "So'rov yuborilmoqda…",
+    bookingSuccess: "So'rov yuborildi. Administrator tasdiqlash uchun siz bilan bog'lanadi.",
+    bookingError: "So'rovni yuborib bo'lmadi. Qayta urinib ko'ring yoki biz bilan telefon orqali bog'laning."
   },
   kk: {
     reviewLabel: "Пікір",
@@ -39,7 +51,13 @@ const uiTextByLang = {
     perDay: "тәулік",
     adultForms: ["ересек", "ересек", "ересек"],
     childForms: ["бала", "бала", "бала"],
-    formSuccess: "Рақмет! Жақын арада сізбен хабарласамыз."
+    formSuccess: "Рақмет! Жақын арада сізбен хабарласамыз.",
+    bookingDateMinimum: "Кемінде 10 тәулік тұру күндерін таңдаңыз.",
+    bookingPhoneInvalid: "Дұрыс телефон нөмірін енгізіңіз.",
+    bookingRoomRequired: "Бөлме түрін таңдаңыз.",
+    bookingSending: "Сұраныс жіберілуде…",
+    bookingSuccess: "Сұраныс жіберілді. Әкімші растау үшін сізбен хабарласады.",
+    bookingError: "Сұранысты жіберу мүмкін болмады. Қайталап көріңіз немесе бізге телефон шалыңыз."
   }
 };
 
@@ -600,27 +618,52 @@ function setDateValue(input, date) {
   input.value = localDate.toISOString().split("T")[0];
 }
 
+function parseLocalDate(value) {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value || "");
+  if (!match) return null;
+  return new Date(Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3])));
+}
+
+function addDays(date, days) {
+  const result = new Date(date);
+  result.setUTCDate(result.getUTCDate() + days);
+  return result;
+}
+
+function bookingNights(checkin, checkout) {
+  const start = parseLocalDate(checkin);
+  const end = parseLocalDate(checkout);
+  if (!start || !end) return 0;
+  return Math.round((end.getTime() - start.getTime()) / 86400000);
+}
+
 function initBookingDates() {
   const checkin = document.getElementById("checkinInput");
   const checkout = document.getElementById("checkoutInput");
   if (!checkin || !checkout) return;
 
   const today = new Date();
-  const nextWeek = new Date(today);
-  nextWeek.setDate(nextWeek.getDate() + 7);
+  const minimumCheckout = new Date(today);
+  minimumCheckout.setDate(minimumCheckout.getDate() + 10);
 
   setDateValue(checkin, today);
-  setDateValue(checkout, nextWeek);
+  setDateValue(checkout, minimumCheckout);
   const minDate = checkin.value;
   checkin.min = minDate;
-  checkout.min = minDate;
 
-  checkin.addEventListener("change", () => {
-    checkout.min = checkin.value;
-    if (checkout.value < checkin.value) {
-      checkout.value = checkin.value;
+  const updateCheckoutMinimum = () => {
+    const selectedCheckin = parseLocalDate(checkin.value);
+    if (!selectedCheckin) return;
+    const nextMinimum = addDays(selectedCheckin, 10);
+    const minimumValue = nextMinimum.toISOString().split("T")[0];
+    checkout.min = minimumValue;
+    if (!checkout.value || bookingNights(checkin.value, checkout.value) < 10) {
+      checkout.value = minimumValue;
     }
-  });
+  };
+
+  updateCheckoutMinimum();
+  checkin.addEventListener("change", updateCheckoutMinimum);
 }
 
 function pluralizeRu(value, one, few, many) {
@@ -644,6 +687,10 @@ function updateGuestSummary() {
 
   adultsCount.textContent = String(state.adults);
   childrenCount.textContent = String(state.children);
+  const adultsInput = document.getElementById("adultsInput");
+  const childrenInput = document.getElementById("childrenInput");
+  if (adultsInput) adultsInput.value = String(state.adults);
+  if (childrenInput) childrenInput.value = String(state.children);
 
   const adultText = `${state.adults} ${pluralizeByLang(state.adults, uiText.adultForms, currentLang)}`;
   const childrenText = `${state.children} ${pluralizeByLang(state.children, uiText.childForms, currentLang)}`;
@@ -915,6 +962,79 @@ function initContactForm() {
   });
 }
 
+function setBookingStatus(status, message, type = "") {
+  if (!status) return;
+  status.textContent = message;
+  status.classList.toggle("is-success", type === "success");
+  status.classList.toggle("is-error", type === "error");
+}
+
+function hasValidPhone(value) {
+  const digits = value.replace(/\D/g, "");
+  return /^\+?[\d\s().-]+$/.test(value) && digits.length >= 7 && digits.length <= 15;
+}
+
+function initBookingForm() {
+  const form = document.getElementById("bookingForm");
+  const status = document.getElementById("bookingStatus");
+  const submit = document.getElementById("bookingSubmit");
+  if (!form || !status || !submit) return;
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    setBookingStatus(status, "");
+
+    const checkin = document.getElementById("checkinInput");
+    const checkout = document.getElementById("checkoutInput");
+    const phone = document.getElementById("bookingPhone");
+    const room = document.getElementById("bookingRoom");
+
+    if (!checkin?.value || !checkout?.value || bookingNights(checkin.value, checkout.value) < 10) {
+      setBookingStatus(status, uiText.bookingDateMinimum, "error");
+      checkin?.focus();
+      return;
+    }
+
+    if (!phone || !hasValidPhone(phone.value.trim())) {
+      setBookingStatus(status, uiText.bookingPhoneInvalid, "error");
+      phone?.focus();
+      return;
+    }
+
+    if (!room?.value) {
+      setBookingStatus(status, uiText.bookingRoomRequired, "error");
+      room?.focus();
+      return;
+    }
+
+    const payload = Object.fromEntries(new FormData(form).entries());
+    payload.locale = currentLang;
+
+    submit.disabled = true;
+    form.setAttribute("aria-busy", "true");
+    setBookingStatus(status, uiText.bookingSending);
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) throw new Error(`Booking request failed with ${response.status}`);
+      setBookingStatus(status, uiText.bookingSuccess, "success");
+      phone.value = "";
+      room.value = "";
+    } catch (error) {
+      console.error(error);
+      setBookingStatus(status, uiText.bookingError, "error");
+    } finally {
+      submit.disabled = false;
+      form.removeAttribute("aria-busy");
+    }
+  });
+}
+
 function bootstrap() {
   setCurrentYear();
   initHeaderScrollResize();
@@ -922,6 +1042,7 @@ function bootstrap() {
   initMobileMenu();
   initBookingDates();
   initGuestPicker();
+  initBookingForm();
   initRoomTabs();
   initReviews();
   initRevealAnimations();

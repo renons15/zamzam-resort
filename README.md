@@ -32,6 +32,24 @@ python3 -m http.server 3000
 
 Then open `http://localhost:3000`.
 
+The static server is enough to review the layout, but booking submissions require the Netlify function. To test the complete flow locally, install the Netlify CLI and run `netlify dev`.
+
+## Telegram booking setup
+
+Booking requests are sent by `netlify/functions/booking.js`. The browser never receives the Telegram bot token.
+
+1. Create a bot with [@BotFather](https://t.me/BotFather) and copy its token.
+2. Add the bot to the destination group. Sending messages does not require administrator access.
+3. Send a message that mentions the bot in the group, then call `https://api.telegram.org/bot<TOKEN>/getUpdates`. Copy the group's `chat.id`; supergroup IDs normally start with `-100`.
+4. In Netlify, open **Site configuration → Environment variables** and add:
+   - `TELEGRAM_BOT_TOKEN`
+   - `TELEGRAM_CHAT_ID`
+   - `TELEGRAM_MESSAGE_THREAD_ID` only when requests should go to one topic in a forum group
+   - `BOOKING_ALLOWED_ORIGINS` with the production site origin, for example `https://zamzam.example`
+5. Deploy the repository through Netlify. The included `netlify.toml` publishes the static site and deploys the booking function together.
+
+Use `.env.example` as the local template. Never commit a real bot token. GitHub Pages can still host the static pages, but it cannot run this server-side function; use Netlify (or an equivalent serverless host) for working booking submissions.
+
 ## Deploy
 
-Deploy as a static site (for example on Netlify) with publish directory set to the repository root.
+Deploy on Netlify with the publish directory set to the repository root. The booking function is discovered from `netlify/functions`.

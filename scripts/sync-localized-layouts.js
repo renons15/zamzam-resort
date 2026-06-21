@@ -24,6 +24,16 @@ const TRANSLATION_OVERRIDES = {
   uz: {
     "Заезд": "Kelish",
     "Выезд": "Ketish",
+    "Даты проживания": "Yashash sanalari",
+    "Минимум 10 суток": "Kamida 10 kun",
+    "Номер телефона": "Telefon raqami",
+    "Тип номера": "Xona turi",
+    "Выберите номер": "Xonani tanlang",
+    "Стандарт": "Standart",
+    "Полулюкс, 1 комната": "Polulyuks, 1 xona",
+    "Полулюкс, 2 комнаты": "Polulyuks, 2 xona",
+    "Люкс": "Lyuks",
+    "Не заполняйте это поле": "Bu maydonni to'ldirmang",
     "Готово": "Tayyor",
     "Номера": "Xonalar",
     "Прайс": "Narxlar",
@@ -49,6 +59,16 @@ const TRANSLATION_OVERRIDES = {
   kk: {
     "Заезд": "Келу",
     "Выезд": "Кету",
+    "Даты проживания": "Тұру күндері",
+    "Минимум 10 суток": "Кемінде 10 тәулік",
+    "Номер телефона": "Телефон нөмірі",
+    "Тип номера": "Бөлме түрі",
+    "Выберите номер": "Бөлмені таңдаңыз",
+    "Стандарт": "Стандарт",
+    "Полулюкс, 1 комната": "Полулюкс, 1 бөлме",
+    "Полулюкс, 2 комнаты": "Полулюкс, 2 бөлме",
+    "Люкс": "Люкс",
+    "Не заполняйте это поле": "Бұл өрісті толтырмаңыз",
     "Номера": "Бөлмелер",
     "Прайс": "Бағалар",
     "ЗАБРОНИРОВАТЬ": "БРОНДАУ",
@@ -166,7 +186,9 @@ function makeBatches(strings) {
 }
 
 async function fillCache(locale, strings, cache) {
-  const missing = [...strings].filter((value) => !cache[locale][value]);
+  const missing = [...strings].filter(
+    (value) => !cache[locale][value] && !TRANSLATION_OVERRIDES[locale][value]
+  );
   const batches = makeBatches(missing);
 
   for (let index = 0; index < batches.length; index += 1) {
