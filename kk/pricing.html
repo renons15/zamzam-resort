@@ -1,162 +1,384 @@
 <!doctype html>
-<html lang="kk">
+<html lang="kk" prefix="og: http://ogp.me/ns#">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Актуальный прайс-лист санатория Zangiota Zam-Zam: стоимость размещения и лечения для граждан Узбекистана и иностранных гостей."
+      content="«Zangiota Zam-Zam» шипажайының 2025 жылға арналған ағымдағы прейскуранты: Өзбекстан азаматтары мен шетелдік қонақтарды орналастыру және емдеу құны."
     />
-        <meta property="og:title" content="Zangiota Zam-Zam" />
-    <meta property="og:description" content="Санаторий Zangiota Zam-Zam — лечение, проживание и оздоровительные процедуры." />
-    <meta property="og:image" content="../images/hero-bg.jpg" />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#005aa7" />
+
+    <meta property="og:title" content="Бағасы • Zangiota Zam-Zam" />
+    <meta
+      property="og:description"
+      content="Өзбекстан азаматтары мен шетелдік қонақтарға арналған Зангиота Зәм-Зам санаторийлері мен нөмірлерінің құны."
+    />
+    <meta property="og:image" content="../images/lux.jpg" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-<title>Бағалар — Zangiota Zam-Zam</title>
+
+    <title>Бағасы • Zangiota Zam-Zam</title>
+
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/css/styles.css" />
-    <link rel="icon" href="../images/logo.webp" />
   </head>
-  <body>
+  <body class="page-pricing-legacy">
     <header class="site-header" data-shared-navbar="true"></header>
-<script src="../assets/js/navbar.js"></script>
+    <script src="../assets/js/navbar.js"></script>
 
-    <main>
-      <section class="section section-pricing">
+    <main id="main" role="main" class="legacy-pricing-main">
+      <section class="page-hero page-hero--pricing" aria-labelledby="pricing-hero-title">
+        <div class="container hero-inner">
+          <p class="eyebrow">Өмір сүру құны</p>
+          <h1 id="pricing-hero-title">Zangiota Zam-Zam прейскуранты 2025 ж</h1>
+          <p class="lead">Пакетке тұру, емдеу бағдарламасы және тамақтану кіреді.</p>
+
+          <div class="hero-metrics" role="list">
+            <div class="metric" role="listitem">
+              <span class="metric-value">01.01.2025</span>
+              <span class="metric-label">жарамдылық күні</span>
+            </div>
+            <div class="metric" role="listitem">
+              <span class="metric-value">10 күн</span>
+              <span class="metric-label">жолдаманың ең аз мерзімі</span>
+            </div>
+            <div class="metric" role="listitem">
+              <span class="metric-value">All inclusive</span>
+              <span class="metric-label">тұру · емдеу · тамақ</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pricing" aria-labelledby="pricing-uz-title">
         <div class="container">
-          <h1 class="section-title">Бағалар 2025</h1>
-          <p class="pricing-intro">
-            Баға бір адамға тәулігіне көрсетілген. Жолдамаға тұру, емдеу бағдарламасы және тамақтану кіреді.
-          </p>
+          <div class="pricing-layout">
+            <article class="pricing-card" id="pricing-uz">
+              <header>
+                <h2 id="pricing-uz-title">Бағалар</h2>
+                <span class="card-meta">Өзбекстан Республикасының азаматтары үшін</span>
+              </header>
 
-          <div class="legacy-pricing-layout">
-            <article class="legacy-pricing-card">
-              <header><h3>Өзбекстан Республикасы азаматтары үшін</h3></header>
-
-              <div class="legacy-price-category">
-                <h4>Стандарт (18 м²)</h4>
-                <div class="legacy-price-table">
-                  <div class="legacy-price-head"><span>Орналастыру</span><span>1 тәулікке</span><span>10 тәулікке</span></div>
-                  <div class="legacy-price-row"><span>Двухместное</span><strong>490 000 сум</strong><strong>4 900 000 сум</strong></div>
-                  <div class="legacy-price-row"><span>Одноместное</span><strong>710 000 сум</strong><strong>7 100 000 сум</strong></div>
-                  <div class="legacy-price-row"><span>15 жасқа дейінгі балалар</span><strong>392 000 сум</strong><strong>3 920 000 сум</strong></div>
+              <div class="price-category">
+                <h3>Стандартты бөлмелер · 18 м²</h3>
+                <div class="price-table" role="table" aria-label="Өзбекстан азаматтары үшін стандартты нөмірлердің құны">
+                  <div class="price-table__head" role="row">
+                    <span role="columnheader">Орналасу</span>
+                    <span role="columnheader">1 күнде</span>
+                    <span role="columnheader">10 күнде</span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Екі кісілік орын</span>
+                    <span class="price-amount" role="cell" data-label="1 күнде"><strong>490 000 сум</strong></span>
+                    <span class="price-amount" role="cell" data-label="10 күнде"><strong>4 900 000 сум</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Бір орындық</span>
+                    <span class="price-amount" role="cell" data-label="1 күнде"><strong>710 000 сум</strong></span>
+                    <span class="price-amount" role="cell" data-label="10 күнде"><strong>7 100 000 сум</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">15 жасқа дейінгі балалар</span>
+                    <span class="price-amount" role="cell" data-label="1 күнде"><strong>392 000 сум</strong></span>
+                    <span class="price-amount" role="cell" data-label="10 күнде"><strong>3 920 000 сум</strong></span>
+                  </div>
                 </div>
               </div>
 
-              <div class="legacy-price-category">
-                <h4>Жартылай люкс (1 бөлмелі)</h4>
-                <div class="legacy-price-table">
-                  <div class="legacy-price-head"><span>Орналастыру</span><span>1 тәулікке</span><span>10 тәулікке</span></div>
-                  <div class="legacy-price-row"><span>Двухместное</span><strong>650 000 сум</strong><strong>6 500 000 сум</strong></div>
-                  <div class="legacy-price-row"><span>Одноместное</span><strong>943 000 сум</strong><strong>9 430 000 сум</strong></div>
-                  <div class="legacy-price-row"><span>15 жасқа дейінгі балалар</span><strong>520 000 сум</strong><strong>5 200 000 сум</strong></div>
+              <div class="price-category">
+                <h3>Бір бөлмелі «Кіші люкс»</h3>
+                <div class="price-table" role="table" aria-label="Өзбекстан азаматтары үшін бір бөлмелі Junior Suite құны">
+                  <div class="price-table__head" role="row">
+                    <span role="columnheader">Орналасу</span>
+                    <span role="columnheader">1 күнде</span>
+                    <span role="columnheader">10 күнде</span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Екі кісілік орын</span>
+                    <span class="price-amount" role="cell" data-label="1 күнде"><strong>650 000 сум</strong></span>
+                    <span class="price-amount" role="cell" data-label="10 күнде"><strong>6 500 000 сум</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Бір орындық</span>
+                    <span class="price-amount" role="cell" data-label="1 күнде"><strong>943 000 сум</strong></span>
+                    <span class="price-amount" role="cell" data-label="10 күнде"><strong>9 430 000 сум</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">15 жасқа дейінгі балалар</span>
+                    <span class="price-amount" role="cell" data-label="1 күнде"><strong>520 000 сум</strong></span>
+                    <span class="price-amount" role="cell" data-label="10 күнде"><strong>5 200 000 сум</strong></span>
+                  </div>
                 </div>
               </div>
 
-              <div class="legacy-price-category">
-                <h4>Жартылай люкс (2 бөлмелі)</h4>
-                <div class="legacy-price-table">
-                  <div class="legacy-price-head"><span>Орналастыру</span><span>1 тәулікке</span><span>10 тәулікке</span></div>
-                  <div class="legacy-price-row"><span>Двухместное</span><strong>670 000 сум</strong><strong>6 700 000 сум</strong></div>
-                  <div class="legacy-price-row"><span>Одноместное</span><strong>972 000 сум</strong><strong>9 720 000 сум</strong></div>
-                  <div class="legacy-price-row"><span>15 жасқа дейінгі балалар</span><strong>536 000 сум</strong><strong>5 360 000 сум</strong></div>
+              <div class="price-category">
+                <h3>Екі бөлмелі «Кіші люкс»</h3>
+                <div class="price-table" role="table" aria-label="Өзбекстан азаматтары үшін екі бөлмелі Junior Suites құны">
+                  <div class="price-table__head" role="row">
+                    <span role="columnheader">Орналасу</span>
+                    <span role="columnheader">1 күнде</span>
+                    <span role="columnheader">10 күнде</span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Екі кісілік орын</span>
+                    <span class="price-amount" role="cell" data-label="1 күнде"><strong>670 000 сум</strong></span>
+                    <span class="price-amount" role="cell" data-label="10 күнде"><strong>6 700 000 сум</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Бір орындық</span>
+                    <span class="price-amount" role="cell" data-label="1 күнде"><strong>972 000 сум</strong></span>
+                    <span class="price-amount" role="cell" data-label="10 күнде"><strong>9 720 000 сум</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">15 жасқа дейінгі балалар</span>
+                    <span class="price-amount" role="cell" data-label="1 күнде"><strong>536 000 сум</strong></span>
+                    <span class="price-amount" role="cell" data-label="10 күнде"><strong>5 360 000 сум</strong></span>
+                  </div>
                 </div>
               </div>
 
-              <div class="legacy-price-category">
-                <h4>Люкс</h4>
-                <div class="legacy-price-table">
-                  <div class="legacy-price-head"><span>Орналастыру</span><span>1 тәулікке</span><span>10 тәулікке</span></div>
-                  <div class="legacy-price-row"><span>Двухместное</span><strong>890 000 сум</strong><strong>8 900 000 сум</strong></div>
-                  <div class="legacy-price-row"><span>Одноместное</span><strong>1 291 000 сум</strong><strong>12 910 000 сум</strong></div>
-                  <div class="legacy-price-row"><span>15 жасқа дейінгі балалар</span><strong>712 000 сум</strong><strong>7 120 000 сум</strong></div>
+              <div class="price-category">
+                <h3>Люкс бөлме</h3>
+                <div class="price-table" role="table" aria-label="Өзбекстан азаматтары үшін люкс нөмірлерінің құны">
+                  <div class="price-table__head" role="row">
+                    <span role="columnheader">Орналасу</span>
+                    <span role="columnheader">1 күнде</span>
+                    <span role="columnheader">10 күнде</span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Екі кісілік орын</span>
+                    <span class="price-amount" role="cell" data-label="1 күнде"><strong>890 000 сум</strong></span>
+                    <span class="price-amount" role="cell" data-label="10 күнде"><strong>8 900 000 сум</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Бір орындық</span>
+                    <span class="price-amount" role="cell" data-label="1 күнде"><strong>1 291 000 сум</strong></span>
+                    <span class="price-amount" role="cell" data-label="10 күнде"><strong>12 910 000 сум</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">15 жасқа дейінгі балалар</span>
+                    <span class="price-amount" role="cell" data-label="1 күнде"><strong>712 000 сум</strong></span>
+                    <span class="price-amount" role="cell" data-label="10 күнде"><strong>7 120 000 сум</strong></span>
+                  </div>
                 </div>
               </div>
             </article>
 
-            <article class="legacy-pricing-card">
-              <header><h3>Шетелдік қонақтар үшін</h3></header>
+            <article class="pricing-card" id="pricing-intl">
+              <header>
+                <h2 id="pricing-intl-title">Бағалар</h2>
+                <span class="card-meta">Шетелдік қонақтар үшін</span>
+              </header>
 
-              <div class="legacy-price-category">
-                <h4>Стандарт (18 м²)</h4>
-                <div class="legacy-price-table">
-                  <div class="legacy-price-head legacy-price-head-foreign"><span>Орналастыру</span><span>1 тәулікке</span><span>$ баламасы</span></div>
-                  <div class="legacy-price-row"><span>Двухместное</span><strong>520 000 сум</strong><strong>40 $</strong></div>
-                  <div class="legacy-price-row"><span>Одноместное</span><strong>754 000 сум</strong><strong>58 $</strong></div>
-                  <div class="legacy-price-row"><span>15 жасқа дейінгі балалар</span><strong>416 000 сум</strong><strong>32 $</strong></div>
+              <div class="price-category">
+                <h3>Стандартты бөлмелер · 18 м²</h3>
+                <div class="price-table" role="table" aria-label="Шетелдік қонақтарға арналған стандартты нөмірлердің құны">
+                  <div class="price-table__head" role="row">
+                    <span role="columnheader">Орналасу</span>
+                    <span role="columnheader">1 күнде</span>
+                    <span role="columnheader">$ эквиваленті</span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Екі кісілік орын</span>
+                    <span class="price-amount" role="cell" data-label="1 күнде"><strong>520 000 сум</strong></span>
+                    <span class="price-amount" role="cell" data-label="$ эквиваленті"><strong>40 $</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Бір орындық</span>
+                    <span class="price-amount" role="cell" data-label="1 күнде"><strong>754 000 сум</strong></span>
+                    <span class="price-amount" role="cell" data-label="$ эквиваленті"><strong>58 $</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">15 жасқа дейінгі балалар</span>
+                    <span class="price-amount" role="cell" data-label="1 күнде"><strong>416 000 сум</strong></span>
+                    <span class="price-amount" role="cell" data-label="$ эквиваленті"><strong>32 $</strong></span>
+                  </div>
                 </div>
               </div>
 
-              <div class="legacy-price-category">
-                <h4>Жартылай люкс (1 бөлмелі)</h4>
-                <div class="legacy-price-table">
-                  <div class="legacy-price-head legacy-price-head-foreign"><span>Орналастыру</span><span>1 тәулікке</span><span>$ баламасы</span></div>
-                  <div class="legacy-price-row"><span>Двухместное</span><strong>702 000 сум</strong><strong>54 $</strong></div>
-                  <div class="legacy-price-row"><span>Одноместное</span><strong>1 014 000 сум</strong><strong>78 $</strong></div>
-                  <div class="legacy-price-row"><span>15 жасқа дейінгі балалар</span><strong>559 000 сум</strong><strong>43 $</strong></div>
+              <div class="price-category">
+                <h3>Бір бөлмелі «Кіші люкс»</h3>
+                <div class="price-table" role="table" aria-label="Шетелдік қонақтарға арналған бір бөлмелі Junior Suites құны">
+                  <div class="price-table__head" role="row">
+                    <span role="columnheader">Орналасу</span>
+                    <span role="columnheader">1 күнде</span>
+                    <span role="columnheader">$ эквиваленті</span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Екі кісілік орын</span>
+                    <span class="price-amount" role="cell" data-label="1 күнде"><strong>702 000 сум</strong></span>
+                    <span class="price-amount" role="cell" data-label="$ эквиваленті"><strong>54 $</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Бір орындық</span>
+                    <span class="price-amount" role="cell" data-label="1 күнде"><strong>1 014 000 сум</strong></span>
+                    <span class="price-amount" role="cell" data-label="$ эквиваленті"><strong>78 $</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">15 жасқа дейінгі балалар</span>
+                    <span class="price-amount" role="cell" data-label="1 күнде"><strong>559 000 сум</strong></span>
+                    <span class="price-amount" role="cell" data-label="$ эквиваленті"><strong>43 $</strong></span>
+                  </div>
                 </div>
               </div>
 
-              <div class="legacy-price-category">
-                <h4>Жартылай люкс (2 бөлмелі)</h4>
-                <div class="legacy-price-table">
-                  <div class="legacy-price-head legacy-price-head-foreign"><span>Орналастыру</span><span>1 тәулікке</span><span>$ баламасы</span></div>
-                  <div class="legacy-price-row"><span>Двухместное</span><strong>715 000 сум</strong><strong>55 $</strong></div>
-                  <div class="legacy-price-row"><span>Одноместное</span><strong>1 040 000 сум</strong><strong>80 $</strong></div>
-                  <div class="legacy-price-row"><span>15 жасқа дейінгі балалар</span><strong>572 000 сум</strong><strong>44 $</strong></div>
+              <div class="price-category">
+                <h3>Екі бөлмелі «Кіші люкс»</h3>
+                <div class="price-table" role="table" aria-label="Шетелдік қонақтарға арналған екі бөлмелі Junior Suites құны">
+                  <div class="price-table__head" role="row">
+                    <span role="columnheader">Орналасу</span>
+                    <span role="columnheader">1 күнде</span>
+                    <span role="columnheader">$ эквиваленті</span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Екі кісілік орын</span>
+                    <span class="price-amount" role="cell" data-label="1 күнде"><strong>715 000 сум</strong></span>
+                    <span class="price-amount" role="cell" data-label="$ эквиваленті"><strong>55 $</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Бір орындық</span>
+                    <span class="price-amount" role="cell" data-label="1 күнде"><strong>1 040 000 сум</strong></span>
+                    <span class="price-amount" role="cell" data-label="$ эквиваленті"><strong>80 $</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">15 жасқа дейінгі балалар</span>
+                    <span class="price-amount" role="cell" data-label="1 күнде"><strong>572 000 сум</strong></span>
+                    <span class="price-amount" role="cell" data-label="$ эквиваленті"><strong>44 $</strong></span>
+                  </div>
                 </div>
               </div>
 
-              <div class="legacy-price-category">
-                <h4>Люкс</h4>
-                <div class="legacy-price-table">
-                  <div class="legacy-price-head legacy-price-head-foreign"><span>Орналастыру</span><span>1 тәулікке</span><span>$ баламасы</span></div>
-                  <div class="legacy-price-row"><span>Двухместное</span><strong>949 000 сум</strong><strong>73 $</strong></div>
-                  <div class="legacy-price-row"><span>Одноместное</span><strong>1 378 000 сум</strong><strong>106 $</strong></div>
-                  <div class="legacy-price-row"><span>15 жасқа дейінгі балалар</span><strong>754 000 сум</strong><strong>58 $</strong></div>
+              <div class="price-category">
+                <h3>Люкс бөлме</h3>
+                <div class="price-table" role="table" aria-label="Шетелдік қонақтарға арналған люкс нөмірлерінің құны">
+                  <div class="price-table__head" role="row">
+                    <span role="columnheader">Орналасу</span>
+                    <span role="columnheader">1 күнде</span>
+                    <span role="columnheader">$ эквиваленті</span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Екі кісілік орын</span>
+                    <span class="price-amount" role="cell" data-label="1 күнде"><strong>949 000 сум</strong></span>
+                    <span class="price-amount" role="cell" data-label="$ эквиваленті"><strong>73 $</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Бір орындық</span>
+                    <span class="price-amount" role="cell" data-label="1 күнде"><strong>1 378 000 сум</strong></span>
+                    <span class="price-amount" role="cell" data-label="$ эквиваленті"><strong>106 $</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">15 жасқа дейінгі балалар</span>
+                    <span class="price-amount" role="cell" data-label="1 күнде"><strong>754 000 сум</strong></span>
+                    <span class="price-amount" role="cell" data-label="$ эквиваленті"><strong>58 $</strong></span>
+                  </div>
                 </div>
               </div>
             </article>
           </div>
 
-          <div class="legacy-includes">
-            <h3>Что входит в путёвку</h3>
-            <ul>
-              <li><strong>Проживание</strong> в номерах «Стандарт», «Полулюкс» и «Люкс».</li>
-              <li><strong>Лечебная программа</strong> по назначению врача.</li>
-              <li><strong>Сбалансированное питание</strong> с диетическими меню.</li>
-              <li><strong>Медицинское сопровождение</strong> на протяжении курса.</li>
+          <aside class="pricing-includes" aria-labelledby="pricing-includes-title">
+            <h2 id="pricing-includes-title">Санаторий жолдамасына не кіреді</h2>
+            <ul class="pricing-includes__list">
+              <li class="pricing-includes__item">
+                <span class="pricing-includes__icon" aria-hidden="true">✓</span>
+                <div>
+                  <strong>Таңдалған бөлме санатында тұру</strong>
+                  <p>Заманауи, жарық бөлмелер «Стандарт», «Джуниор-люкс» және «Люкс» күнделікті тазалығы бар.</p>
+                </div>
+              </li>
+              <li class="pricing-includes__item">
+                <span class="pricing-includes__icon" aria-hidden="true">✓</span>
+                <div>
+                  <strong>Дәрігер тағайындаған емдеу бағдарламасы</strong>
+                  <p>Курсыңызға сәйкес минералды ванналар, физиотерапия, бассейн және қосымша процедуралар.</p>
+                </div>
+              </li>
+              <li class="pricing-includes__item">
+                <span class="pricing-includes__icon" aria-hidden="true">✓</span>
+                <div>
+                  <strong>Теңгерімді диета</strong>
+                  <p>Санаторий диетологымен келісілген диеталық мәзір мен ұлттық тағамдар.</p>
+                </div>
+              </li>
+              <li class="pricing-includes__item">
+                <span class="pricing-includes__icon" aria-hidden="true">✓</span>
+                <div>
+                  <strong>Медициналық қолдау</strong>
+                  <p>Курс барысында дәрігердің алғашқы қабылдауы, бақылау тексерулері және мамандардан кеңес алу.</p>
+                </div>
+              </li>
             </ul>
-          </div>
+          </aside>
+        </div>
+      </section>
 
-          <div class="legacy-notes">
-            <h3>Білу маңызды</h3>
-            <ul>
-              <li>Қолма-қол төлем тек өзбек сомымен қабылданады.</li>
-              <li>Шетел валютасымен төлем үшін VISA, MasterCard және Kaspi Gold карталары қолжетімді.</li>
-              <li>Жолдаманың ең аз мерзімі — 10 тәулік.</li>
-              <li>Бронь жасамас бұрын бос нөмірлер мен қосымша қызметтерді нақтылаңыз.</li>
-            </ul>
+      <section class="pricing-notes" aria-labelledby="pricing-notes-title">
+        <div class="container">
+          <h2 id="pricing-notes-title">Білу маңызды</h2>
+          <ul class="pricing-notes__list">
+            <li>Қолма-қол төлем тек өзбек сумымен қабылданады. Қолма-қол шетел валютасымен төлемдер жүргізілмейді.</li>
+            <li>VISA, MasterCard және Kaspi Gold банк карталары шетел валютасындағы төлемдер үшін қолжетімді.</li>
+            <li>Бағасы бір адамға тәулігіне. Ваучерді беру үшін кемінде 10 күндік келуді растау қажет.</li>
+            <li>Брондау алдында қолжетімділікті және ықтимал қосымша қызметтерді тексеріңіз.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="pricing-cta" aria-labelledby="pricing-cta-title">
+        <div class="container">
+          <div class="cta-card">
+            <h2 id="pricing-cta-title">Бағдарлама мен бөлмені таңдауға көмектесеміз</h2>
+            <p>Саяхатқа тапсырыс беру, шақыру беру немесе емдеу туралы кеңес алу үшін бізге хабарласыңыз.</p>
+            <div class="cta-actions">
+              <a class="btn btn-primary" href="tel:+998983071896">+998 98 307 18 96 нөміріне хабарласыңыз</a>
+              <a
+                class="btn btn-secondary"
+                href="https://api.whatsapp.com/send?phone=998909829871"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ватсапқа жазыңыз
+              </a>
+            </div>
+            <p class="card-note">Санаторий мекен-жайы: Ташкент облысы, Зангиата ауданы, Ұрта-Ауыл ауылы, көш. Науаи, 70 үй.</p>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="container footer-copy">
-        <p>Copyright © 2013 - <span id="currentYear">2025</span> Zangiota "Zam Zam"</p>
+    <div class="floating-contact" aria-label="Жылдам контактілер">
+      <a
+        href="https://api.whatsapp.com/send?phone=998909829871"
+        class="btn-icon whatsapp"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Ватсапқа жазыңыз"
+      ></a>
+
+      <a
+        href="https://t.me/zafarzamzam"
+        class="btn-icon telegram"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Telegramға жазыңыз"
+      ></a>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-inner">
+        <p>Copyright © 2013 - 2025 Zangiota “Zam Zam”</p>
       </div>
     </footer>
 
-    <div class="floating-buttons">
-      <a class="floating-btn whatsapp" href="https://wa.me/998909829871?text=%D0%A1%D3%99%D0%BB%D0%B5%D0%BC%D0%B5%D1%82%D1%81%D1%96%D0%B7%20%D0%B1%D0%B5%2C%20%D0%B1%D1%80%D0%BE%D0%BD%D1%8C%20%D0%B6%D0%B0%D1%81%D0%B0%D2%93%D1%8B%D0%BC%20%D0%BA%D0%B5%D0%BB%D0%B5%D0%B4%D1%96" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp-қа жазу">WA</a>
-      <a class="floating-btn phone" href="tel:+998909829871" aria-label="Қоңырау шалу">☎</a>
-    </div>
-<script src="../assets/js/main.js"></script>
+    <script src="../assets/js/main.js" defer></script>
   </body>
 </html>

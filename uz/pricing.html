@@ -1,162 +1,384 @@
 <!doctype html>
-<html lang="uz">
+<html lang="uz" prefix="og: http://ogp.me/ns#">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Актуальный прайс-лист санатория Zangiota Zam-Zam: стоимость размещения и лечения для граждан Узбекистана и иностранных гостей."
+      content="“Zangiota Zam-Zam” sanatoriysining 2025 yilga mo‘ljallangan joriy narxlari: O‘zbekiston fuqarolari va xorijlik mehmonlar uchun turar joy va davolanish narxi."
     />
-        <meta property="og:title" content="Zangiota Zam-Zam" />
-    <meta property="og:description" content="Санаторий Zangiota Zam-Zam — лечение, проживание и оздоровительные процедуры." />
-    <meta property="og:image" content="../images/hero-bg.jpg" />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#005aa7" />
+
+    <meta property="og:title" content="Narxi • Zangiota Zam-Zam" />
+    <meta
+      property="og:description"
+      content="O'zbekiston fuqarolari va chet ellik mehmonlar uchun Zangiota Zam-Zam sanatoriy yo'llanmalari va xonalari narxi."
+    />
+    <meta property="og:image" content="../images/lux.jpg" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-<title>Narxlar — Zangiota Zam-Zam</title>
+
+    <title>Narxi • Zangiota Zam-Zam</title>
+
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/css/styles.css" />
-    <link rel="icon" href="../images/logo.webp" />
   </head>
-  <body>
+  <body class="page-pricing-legacy">
     <header class="site-header" data-shared-navbar="true"></header>
-<script src="../assets/js/navbar.js"></script>
+    <script src="../assets/js/navbar.js"></script>
 
-    <main>
-      <section class="section section-pricing">
+    <main id="main" role="main" class="legacy-pricing-main">
+      <section class="page-hero page-hero--pricing" aria-labelledby="pricing-hero-title">
+        <div class="container hero-inner">
+          <p class="eyebrow">Yashash narxi</p>
+          <h1 id="pricing-hero-title">Zangiota Zam-Zam 2025 yil uchun narxlar ro'yxati</h1>
+          <p class="lead">Paketga turar joy, davolanish dasturi va ovqatlanish kiradi.</p>
+
+          <div class="hero-metrics" role="list">
+            <div class="metric" role="listitem">
+              <span class="metric-value">01.01.2025</span>
+              <span class="metric-label">amal qilish sanasi</span>
+            </div>
+            <div class="metric" role="listitem">
+              <span class="metric-value">10 kun</span>
+              <span class="metric-label">yo'llanmaning minimal muddati</span>
+            </div>
+            <div class="metric" role="listitem">
+              <span class="metric-value">All inclusive</span>
+              <span class="metric-label">turar joy · davolash · oziq-ovqat</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pricing" aria-labelledby="pricing-uz-title">
         <div class="container">
-          <h1 class="section-title">Narxlar 2025</h1>
-          <p class="pricing-intro">
-            Narx bir kishi uchun kunlik ko'rsatilgan. Yo'llanmaga yashash, davolash dasturi va ovqatlanish kiradi.
-          </p>
+          <div class="pricing-layout">
+            <article class="pricing-card" id="pricing-uz">
+              <header>
+                <h2 id="pricing-uz-title">Narxlar</h2>
+                <span class="card-meta">O‘zbekiston Respublikasi fuqarolari uchun</span>
+              </header>
 
-          <div class="legacy-pricing-layout">
-            <article class="legacy-pricing-card">
-              <header><h3>O'zbekiston Respublikasi fuqarolari uchun</h3></header>
-
-              <div class="legacy-price-category">
-                <h4>Стандарт (18 м²)</h4>
-                <div class="legacy-price-table">
-                  <div class="legacy-price-head"><span>Joylashuv</span><span>1 sutka uchun</span><span>10 sutka uchun</span></div>
-                  <div class="legacy-price-row"><span>Двухместное</span><strong>490 000 сум</strong><strong>4 900 000 сум</strong></div>
-                  <div class="legacy-price-row"><span>Одноместное</span><strong>710 000 сум</strong><strong>7 100 000 сум</strong></div>
-                  <div class="legacy-price-row"><span>15 yoshgacha bolalar</span><strong>392 000 сум</strong><strong>3 920 000 сум</strong></div>
+              <div class="price-category">
+                <h3>Standart xonalar · 18 m²</h3>
+                <div class="price-table" role="table" aria-label="O'zbekiston fuqarolari uchun standart xonalarning narxi">
+                  <div class="price-table__head" role="row">
+                    <span role="columnheader">Turar joy</span>
+                    <span role="columnheader">1 kunda</span>
+                    <span role="columnheader">10 kun ichida</span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Ikki kishilik joy</span>
+                    <span class="price-amount" role="cell" data-label="1 kunda"><strong>490 000 so'm</strong></span>
+                    <span class="price-amount" role="cell" data-label="10 kun ichida"><strong>4 900 000 so'm</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Bir kishilik yashash</span>
+                    <span class="price-amount" role="cell" data-label="1 kunda"><strong>710 000 so'm</strong></span>
+                    <span class="price-amount" role="cell" data-label="10 kun ichida"><strong>7 100 000 so'm</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">15 yoshgacha bo'lgan bolalar</span>
+                    <span class="price-amount" role="cell" data-label="1 kunda"><strong>392 000 so'm</strong></span>
+                    <span class="price-amount" role="cell" data-label="10 kun ichida"><strong>3 920 000 so'm</strong></span>
+                  </div>
                 </div>
               </div>
 
-              <div class="legacy-price-category">
-                <h4>Polulyuks (1 xonali)</h4>
-                <div class="legacy-price-table">
-                  <div class="legacy-price-head"><span>Joylashuv</span><span>1 sutka uchun</span><span>10 sutka uchun</span></div>
-                  <div class="legacy-price-row"><span>Двухместное</span><strong>650 000 сум</strong><strong>6 500 000 сум</strong></div>
-                  <div class="legacy-price-row"><span>Одноместное</span><strong>943 000 сум</strong><strong>9 430 000 сум</strong></div>
-                  <div class="legacy-price-row"><span>15 yoshgacha bolalar</span><strong>520 000 сум</strong><strong>5 200 000 сум</strong></div>
+              <div class="price-category">
+                <h3>Bir xonali "Junior Suite"</h3>
+                <div class="price-table" role="table" aria-label="O'zbekiston fuqarolari uchun bir xonali Junior Suite narxi">
+                  <div class="price-table__head" role="row">
+                    <span role="columnheader">Turar joy</span>
+                    <span role="columnheader">1 kunda</span>
+                    <span role="columnheader">10 kun ichida</span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Ikki kishilik joy</span>
+                    <span class="price-amount" role="cell" data-label="1 kunda"><strong>650 000 so'm</strong></span>
+                    <span class="price-amount" role="cell" data-label="10 kun ichida"><strong>6 500 000 so'm</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Bir kishilik yashash</span>
+                    <span class="price-amount" role="cell" data-label="1 kunda"><strong>943 000 so'm</strong></span>
+                    <span class="price-amount" role="cell" data-label="10 kun ichida"><strong>9 430 000 so'm</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">15 yoshgacha bo'lgan bolalar</span>
+                    <span class="price-amount" role="cell" data-label="1 kunda"><strong>520 000 so'm</strong></span>
+                    <span class="price-amount" role="cell" data-label="10 kun ichida"><strong>5 200 000 so'm</strong></span>
+                  </div>
                 </div>
               </div>
 
-              <div class="legacy-price-category">
-                <h4>Polulyuks (2 xonali)</h4>
-                <div class="legacy-price-table">
-                  <div class="legacy-price-head"><span>Joylashuv</span><span>1 sutka uchun</span><span>10 sutka uchun</span></div>
-                  <div class="legacy-price-row"><span>Двухместное</span><strong>670 000 сум</strong><strong>6 700 000 сум</strong></div>
-                  <div class="legacy-price-row"><span>Одноместное</span><strong>972 000 сум</strong><strong>9 720 000 сум</strong></div>
-                  <div class="legacy-price-row"><span>15 yoshgacha bolalar</span><strong>536 000 сум</strong><strong>5 360 000 сум</strong></div>
+              <div class="price-category">
+                <h3>Ikki xonali "Junior Suite"</h3>
+                <div class="price-table" role="table" aria-label="O'zbekiston fuqarolari uchun ikki xonali Junior Suite narxi">
+                  <div class="price-table__head" role="row">
+                    <span role="columnheader">Turar joy</span>
+                    <span role="columnheader">1 kunda</span>
+                    <span role="columnheader">10 kun ichida</span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Ikki kishilik joy</span>
+                    <span class="price-amount" role="cell" data-label="1 kunda"><strong>670 000 so'm</strong></span>
+                    <span class="price-amount" role="cell" data-label="10 kun ichida"><strong>6 700 000 so'm</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Bir kishilik yashash</span>
+                    <span class="price-amount" role="cell" data-label="1 kunda"><strong>972 000 so'm</strong></span>
+                    <span class="price-amount" role="cell" data-label="10 kun ichida"><strong>9 720 000 so‘m</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">15 yoshgacha bo'lgan bolalar</span>
+                    <span class="price-amount" role="cell" data-label="1 kunda"><strong>536 000 so'm</strong></span>
+                    <span class="price-amount" role="cell" data-label="10 kun ichida"><strong>5 360 000 so'm</strong></span>
+                  </div>
                 </div>
               </div>
 
-              <div class="legacy-price-category">
-                <h4>Lyuks</h4>
-                <div class="legacy-price-table">
-                  <div class="legacy-price-head"><span>Joylashuv</span><span>1 sutka uchun</span><span>10 sutka uchun</span></div>
-                  <div class="legacy-price-row"><span>Двухместное</span><strong>890 000 сум</strong><strong>8 900 000 сум</strong></div>
-                  <div class="legacy-price-row"><span>Одноместное</span><strong>1 291 000 сум</strong><strong>12 910 000 сум</strong></div>
-                  <div class="legacy-price-row"><span>15 yoshgacha bolalar</span><strong>712 000 сум</strong><strong>7 120 000 сум</strong></div>
+              <div class="price-category">
+                <h3>Hashamatli xona</h3>
+                <div class="price-table" role="table" aria-label="O‘zbekiston fuqarolari uchun lyuks xonalar narxi">
+                  <div class="price-table__head" role="row">
+                    <span role="columnheader">Turar joy</span>
+                    <span role="columnheader">1 kunda</span>
+                    <span role="columnheader">10 kun ichida</span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Ikki kishilik joy</span>
+                    <span class="price-amount" role="cell" data-label="1 kunda"><strong>890 000 so'm</strong></span>
+                    <span class="price-amount" role="cell" data-label="10 kun ichida"><strong>8 900 000 so'm</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Bir kishilik yashash</span>
+                    <span class="price-amount" role="cell" data-label="1 kunda"><strong>1 291 000 so‘m</strong></span>
+                    <span class="price-amount" role="cell" data-label="10 kun ichida"><strong>12 910 000 so‘m</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">15 yoshgacha bo'lgan bolalar</span>
+                    <span class="price-amount" role="cell" data-label="1 kunda"><strong>712 000 so'm</strong></span>
+                    <span class="price-amount" role="cell" data-label="10 kun ichida"><strong>7 120 000 so'm</strong></span>
+                  </div>
                 </div>
               </div>
             </article>
 
-            <article class="legacy-pricing-card">
-              <header><h3>Xorijiy mehmonlar uchun</h3></header>
+            <article class="pricing-card" id="pricing-intl">
+              <header>
+                <h2 id="pricing-intl-title">Narxlar</h2>
+                <span class="card-meta">Chet ellik mehmonlar uchun</span>
+              </header>
 
-              <div class="legacy-price-category">
-                <h4>Стандарт (18 м²)</h4>
-                <div class="legacy-price-table">
-                  <div class="legacy-price-head legacy-price-head-foreign"><span>Joylashuv</span><span>1 sutka uchun</span><span>$ dagi ekvivalent</span></div>
-                  <div class="legacy-price-row"><span>Двухместное</span><strong>520 000 сум</strong><strong>40 $</strong></div>
-                  <div class="legacy-price-row"><span>Одноместное</span><strong>754 000 сум</strong><strong>58 $</strong></div>
-                  <div class="legacy-price-row"><span>15 yoshgacha bolalar</span><strong>416 000 сум</strong><strong>32 $</strong></div>
+              <div class="price-category">
+                <h3>Standart xonalar · 18 m²</h3>
+                <div class="price-table" role="table" aria-label="Chet ellik mehmonlar uchun standart xonalar narxi">
+                  <div class="price-table__head" role="row">
+                    <span role="columnheader">Turar joy</span>
+                    <span role="columnheader">1 kunda</span>
+                    <span role="columnheader">$ ekvivalenti</span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Ikki kishilik joy</span>
+                    <span class="price-amount" role="cell" data-label="1 kunda"><strong>520 000 so'm</strong></span>
+                    <span class="price-amount" role="cell" data-label="$ ekvivalenti"><strong>40 $</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Bir kishilik yashash</span>
+                    <span class="price-amount" role="cell" data-label="1 kunda"><strong>754 000 so'm</strong></span>
+                    <span class="price-amount" role="cell" data-label="$ ekvivalenti"><strong>58 $</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">15 yoshgacha bo'lgan bolalar</span>
+                    <span class="price-amount" role="cell" data-label="1 kunda"><strong>416 000 so'm</strong></span>
+                    <span class="price-amount" role="cell" data-label="$ ekvivalenti"><strong>32 $</strong></span>
+                  </div>
                 </div>
               </div>
 
-              <div class="legacy-price-category">
-                <h4>Polulyuks (1 xonali)</h4>
-                <div class="legacy-price-table">
-                  <div class="legacy-price-head legacy-price-head-foreign"><span>Joylashuv</span><span>1 sutka uchun</span><span>$ dagi ekvivalent</span></div>
-                  <div class="legacy-price-row"><span>Двухместное</span><strong>702 000 сум</strong><strong>54 $</strong></div>
-                  <div class="legacy-price-row"><span>Одноместное</span><strong>1 014 000 сум</strong><strong>78 $</strong></div>
-                  <div class="legacy-price-row"><span>15 yoshgacha bolalar</span><strong>559 000 сум</strong><strong>43 $</strong></div>
+              <div class="price-category">
+                <h3>Bir xonali "Junior Suite"</h3>
+                <div class="price-table" role="table" aria-label="Chet ellik mehmonlar uchun bir xonali Junior Suite narxi">
+                  <div class="price-table__head" role="row">
+                    <span role="columnheader">Turar joy</span>
+                    <span role="columnheader">1 kunda</span>
+                    <span role="columnheader">$ ekvivalenti</span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Ikki kishilik joy</span>
+                    <span class="price-amount" role="cell" data-label="1 kunda"><strong>702 000 so'm</strong></span>
+                    <span class="price-amount" role="cell" data-label="$ ekvivalenti"><strong>54 $</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Bir kishilik yashash</span>
+                    <span class="price-amount" role="cell" data-label="1 kunda"><strong>1 014 000 so'm</strong></span>
+                    <span class="price-amount" role="cell" data-label="$ ekvivalenti"><strong>78 $</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">15 yoshgacha bo'lgan bolalar</span>
+                    <span class="price-amount" role="cell" data-label="1 kunda"><strong>559 000 so'm</strong></span>
+                    <span class="price-amount" role="cell" data-label="$ ekvivalenti"><strong>43 $</strong></span>
+                  </div>
                 </div>
               </div>
 
-              <div class="legacy-price-category">
-                <h4>Polulyuks (2 xonali)</h4>
-                <div class="legacy-price-table">
-                  <div class="legacy-price-head legacy-price-head-foreign"><span>Joylashuv</span><span>1 sutka uchun</span><span>$ dagi ekvivalent</span></div>
-                  <div class="legacy-price-row"><span>Двухместное</span><strong>715 000 сум</strong><strong>55 $</strong></div>
-                  <div class="legacy-price-row"><span>Одноместное</span><strong>1 040 000 сум</strong><strong>80 $</strong></div>
-                  <div class="legacy-price-row"><span>15 yoshgacha bolalar</span><strong>572 000 сум</strong><strong>44 $</strong></div>
+              <div class="price-category">
+                <h3>Ikki xonali "Junior Suite"</h3>
+                <div class="price-table" role="table" aria-label="Chet ellik mehmonlar uchun ikki xonali Junior Suite narxi">
+                  <div class="price-table__head" role="row">
+                    <span role="columnheader">Turar joy</span>
+                    <span role="columnheader">1 kunda</span>
+                    <span role="columnheader">$ ekvivalenti</span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Ikki kishilik joy</span>
+                    <span class="price-amount" role="cell" data-label="1 kunda"><strong>715 000 so'm</strong></span>
+                    <span class="price-amount" role="cell" data-label="$ ekvivalenti"><strong>55 $</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Bir kishilik yashash</span>
+                    <span class="price-amount" role="cell" data-label="1 kunda"><strong>1 040 000 so'm</strong></span>
+                    <span class="price-amount" role="cell" data-label="$ ekvivalenti"><strong>80 $</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">15 yoshgacha bo'lgan bolalar</span>
+                    <span class="price-amount" role="cell" data-label="1 kunda"><strong>572 000 so'm</strong></span>
+                    <span class="price-amount" role="cell" data-label="$ ekvivalenti"><strong>44 $</strong></span>
+                  </div>
                 </div>
               </div>
 
-              <div class="legacy-price-category">
-                <h4>Lyuks</h4>
-                <div class="legacy-price-table">
-                  <div class="legacy-price-head legacy-price-head-foreign"><span>Joylashuv</span><span>1 sutka uchun</span><span>$ dagi ekvivalent</span></div>
-                  <div class="legacy-price-row"><span>Двухместное</span><strong>949 000 сум</strong><strong>73 $</strong></div>
-                  <div class="legacy-price-row"><span>Одноместное</span><strong>1 378 000 сум</strong><strong>106 $</strong></div>
-                  <div class="legacy-price-row"><span>15 yoshgacha bolalar</span><strong>754 000 сум</strong><strong>58 $</strong></div>
+              <div class="price-category">
+                <h3>Hashamatli xona</h3>
+                <div class="price-table" role="table" aria-label="Chet ellik mehmonlar uchun hashamatli xonalarning narxi">
+                  <div class="price-table__head" role="row">
+                    <span role="columnheader">Turar joy</span>
+                    <span role="columnheader">1 kunda</span>
+                    <span role="columnheader">$ ekvivalenti</span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Ikki kishilik joy</span>
+                    <span class="price-amount" role="cell" data-label="1 kunda"><strong>949 000 so'm</strong></span>
+                    <span class="price-amount" role="cell" data-label="$ ekvivalenti"><strong>73 $</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">Bir kishilik yashash</span>
+                    <span class="price-amount" role="cell" data-label="1 kunda"><strong>1 378 000 so‘m</strong></span>
+                    <span class="price-amount" role="cell" data-label="$ ekvivalenti"><strong>106 $</strong></span>
+                  </div>
+                  <div class="price-row" role="row">
+                    <span class="price-label" role="rowheader">15 yoshgacha bo'lgan bolalar</span>
+                    <span class="price-amount" role="cell" data-label="1 kunda"><strong>754 000 so'm</strong></span>
+                    <span class="price-amount" role="cell" data-label="$ ekvivalenti"><strong>58 $</strong></span>
+                  </div>
                 </div>
               </div>
             </article>
           </div>
 
-          <div class="legacy-includes">
-            <h3>Что входит в путёвку</h3>
-            <ul>
-              <li><strong>Проживание</strong> в номерах «Стандарт», «Полулюкс» и «Люкс».</li>
-              <li><strong>Лечебная программа</strong> по назначению врача.</li>
-              <li><strong>Сбалансированное питание</strong> с диетическими меню.</li>
-              <li><strong>Медицинское сопровождение</strong> на протяжении курса.</li>
+          <aside class="pricing-includes" aria-labelledby="pricing-includes-title">
+            <h2 id="pricing-includes-title">Sanatoriy vaucheriga nimalar kiradi</h2>
+            <ul class="pricing-includes__list">
+              <li class="pricing-includes__item">
+                <span class="pricing-includes__icon" aria-hidden="true">✓</span>
+                <div>
+                  <strong>Tanlangan xona toifasida turar joy</strong>
+                  <p>Zamonaviy, yorug xonalar "Standart", "Junior Suite" va "Lyuks" kundalik tozalash.</p>
+                </div>
+              </li>
+              <li class="pricing-includes__item">
+                <span class="pricing-includes__icon" aria-hidden="true">✓</span>
+                <div>
+                  <strong>Shifokor tomonidan belgilangan davolash dasturi</strong>
+                  <p>Kursingizga ko'ra mineral vannalar, fizioterapiya, suzish havzasi va qo'shimcha protseduralar.</p>
+                </div>
+              </li>
+              <li class="pricing-includes__item">
+                <span class="pricing-includes__icon" aria-hidden="true">✓</span>
+                <div>
+                  <strong>Balansli ovqatlanish</strong>
+                  <p>Sanatoriyaning ovqatlanish mutaxassisi bilan kelishilgan dietali menyular va milliy taomlar.</p>
+                </div>
+              </li>
+              <li class="pricing-includes__item">
+                <span class="pricing-includes__icon" aria-hidden="true">✓</span>
+                <div>
+                  <strong>Tibbiy yordam</strong>
+                  <p>Kurs davomida shifokorning dastlabki qabuli, keyingi tekshiruvlar va mutaxassislar bilan maslahatlashuvlar.</p>
+                </div>
+              </li>
             </ul>
-          </div>
+          </aside>
+        </div>
+      </section>
 
-          <div class="legacy-notes">
-            <h3>Bilish muhim</h3>
-            <ul>
-              <li>Naqd to'lov faqat o'zbek so'mida qabul qilinadi.</li>
-              <li>Xorijiy valyutada to'lov uchun VISA, MasterCard va Kaspi Gold kartalari mavjud.</li>
-              <li>Yo'llanmaning minimal muddati — 10 sutka.</li>
-              <li>Bron qilishdan oldin bo'sh xonalar va qo'shimcha xizmatlarni aniqlashtiring.</li>
-            </ul>
+      <section class="pricing-notes" aria-labelledby="pricing-notes-title">
+        <div class="container">
+          <h2 id="pricing-notes-title">Bilish muhim</h2>
+          <ul class="pricing-notes__list">
+            <li>Naqd to‘lov faqat o‘zbek so‘mida qabul qilinadi. Naqd xorijiy valyutada to'lovlar amalga oshirilmaydi.</li>
+            <li>VISA, MasterCard va Kaspi Gold bank kartalari xorijiy valyutada toʻlovlarni amalga oshirish mumkin.</li>
+            <li>Narx bir kishi uchun bir kun. Vaucherni berish uchun kamida 10 kunlik kelishni tasdiqlash talab qilinadi.</li>
+            <li>Rezervasyondan oldin mavjudligi va mumkin bo'lgan qo'shimcha xizmatlarni tekshiring.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="pricing-cta" aria-labelledby="pricing-cta-title">
+        <div class="container">
+          <div class="cta-card">
+            <h2 id="pricing-cta-title">Dastur va xonani tanlashga yordam beramiz</h2>
+            <p>Sayohatni bron qilish, taklifnoma berish yoki davolanish bo'yicha maslahat olish uchun biz bilan bog'laning.</p>
+            <div class="cta-actions">
+              <a class="btn btn-primary" href="tel:+998983071896">+998 98 307 18 96 raqamiga qo'ng'iroq qiling</a>
+              <a
+                class="btn btn-secondary"
+                href="https://api.whatsapp.com/send?phone=998909829871"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp ga yozing
+              </a>
+            </div>
+            <p class="card-note">Sanatoriy manzili: Toshkent viloyati, Zangiota tumani, O‘rta-Oul qishlog‘i, ko‘ch. Navoiy, 70-uy.</p>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="container footer-copy">
-        <p>Copyright © 2013 - <span id="currentYear">2025</span> Zangiota "Zam Zam"</p>
+    <div class="floating-contact" aria-label="Tezkor kontaktlar">
+      <a
+        href="https://api.whatsapp.com/send?phone=998909829871"
+        class="btn-icon whatsapp"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="WhatsApp ga yozing"
+      ></a>
+
+      <a
+        href="https://t.me/zafarzamzam"
+        class="btn-icon telegram"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Telegramga yozing"
+      ></a>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-inner">
+        <p>Copyright © 2013 - 2025 Zangiota “Zam Zam”</p>
       </div>
     </footer>
 
-    <div class="floating-buttons">
-      <a class="floating-btn whatsapp" href="https://wa.me/998909829871?text=Assalomu%20alaykum%2C%20bron%20qilmoqchiman" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp orqali yozish">WA</a>
-      <a class="floating-btn phone" href="tel:+998909829871" aria-label="Qo'ng'iroq qilish">☎</a>
-    </div>
-<script src="../assets/js/main.js"></script>
+    <script src="../assets/js/main.js" defer></script>
   </body>
 </html>

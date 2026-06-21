@@ -7,6 +7,12 @@ function getCurrentLang() {
 
 const currentLang = getCurrentLang();
 
+function resolveAssetPath(path) {
+  const parts = window.location.pathname.split("/").filter(Boolean);
+  const parentDir = parts.length > 1 ? parts[parts.length - 2] : "";
+  return SUPPORTED_LANGS.includes(parentDir) && parentDir !== "ru" ? `../${path}` : path;
+}
+
 const uiTextByLang = {
   ru: {
     reviewLabel: "Отзыв",
@@ -750,7 +756,7 @@ function renderRoom(roomId) {
   roomPriceDouble.textContent = `${formatPrice(room.pricePerNight)} ${room.currency} / ${uiText.perDay}`;
   roomPriceSingle.textContent = `${formatPrice(room.priceSingle)} ${room.currency} / ${uiText.perDay}`;
   roomPriceChild.textContent = `${formatPrice(room.priceChild)} ${room.currency} / ${uiText.perDay}`;
-  roomImage.src = room.image;
+  roomImage.src = resolveAssetPath(room.image);
   roomImage.alt = room.name;
   roomPriceImage.textContent = formatPrice(room.pricePerNight);
   roomCurrencyImage.textContent = `${room.currency} / ${uiText.perNight}`;

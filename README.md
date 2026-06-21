@@ -10,6 +10,17 @@ This repository is now a plain static website with no framework build step.
 - `ru/` - legacy Russian URLs that redirect to the root pages
 - `assets/css/styles.css` - site styles
 - `assets/js/main.js` - UI interactions
+- `scripts/sync-localized-layouts.js` - keeps Uzbek and Kazakh markup synchronized with the Russian pages
+
+## Localized pages
+
+The Russian root pages are the layout source of truth. After changing their markup or visible copy, run:
+
+```bash
+npm run sync:locales
+```
+
+Previously translated strings are read from `locales/translation-cache.json`; only new Russian copy requires a translation request.
 
 ## Run locally
 
