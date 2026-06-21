@@ -110,16 +110,34 @@
                     required
                   />
                 </label>
-                <label class="booking-field booking-room">
-                  <span>Тип номера</span>
-                  <select id="bookingRoom" name="roomType" required>
+                <div class="booking-field booking-room">
+                  <span>Типы номеров</span>
+                  <button
+                    id="roomTrigger"
+                    class="room-trigger"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="roomPopover"
+                  >
+                    <span id="roomSummary">Выберите номер</span>
+                  </button>
+                  <div id="roomPopover" class="guest-popover room-popover" hidden>
+                    <div class="room-options" role="listbox" aria-label="Типы номеров" aria-multiselectable="true">
+                      <button class="room-option" type="button" role="option" aria-selected="false" data-room-value="standart">Стандарт</button>
+                      <button class="room-option" type="button" role="option" aria-selected="false" data-room-value="polulux1">Полулюкс, 1 комната</button>
+                      <button class="room-option" type="button" role="option" aria-selected="false" data-room-value="polulux2">Полулюкс, 2 комнаты</button>
+                      <button class="room-option" type="button" role="option" aria-selected="false" data-room-value="lux">Люкс</button>
+                    </div>
+                    <button id="roomDone" class="guest-done" type="button">Готово</button>
+                  </div>
+                  <select id="bookingRoom" class="visually-hidden" name="roomTypes" tabindex="-1" aria-hidden="true" multiple required>
                     <option value="">Выберите номер</option>
                     <option value="standart">Стандарт</option>
                     <option value="polulux1">Полулюкс, 1 комната</option>
                     <option value="polulux2">Полулюкс, 2 комнаты</option>
                     <option value="lux">Люкс</option>
                   </select>
-                </label>
+                </div>
                 <div class="booking-honeypot" aria-hidden="true">
                   <label for="bookingWebsite">Не заполняйте это поле</label>
                   <input id="bookingWebsite" name="website" type="text" tabindex="-1" autocomplete="off" />

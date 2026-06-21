@@ -66,13 +66,24 @@ function integerInRange(value, minimum, maximum) {
   return Number.isInteger(number) && number >= minimum && number <= maximum ? number : null;
 }
 
+function normalizeRoomTypes(payload) {
+  const values = Array.isArray(payload.roomTypes)
+    ? payload.roomTypes
+    : typeof payload.roomTypes === "string"
+      ? [payload.roomTypes]
+      : typeof payload.roomType === "string"
+        ? [payload.roomType]
+        : [];
+  return [...new Set(values.filter((value) => typeof value === "string"))];
+}
+
 function validateBooking(payload) {
   const checkin = typeof payload.checkin === "string" ? payload.checkin : "";
   const checkout = typeof payload.checkout === "string" ? payload.checkout : "";
   const phone = normalizePhone(payload.phone);
   const adults = integerInRange(payload.adults, 1, 10);
   const children = integerInRange(payload.children, 0, 10);
-  const roomType = typeof payload.roomType === "string" ? payload.roomType : "";
+  const roomTypes = normalizeRoomTypes(payload);
   const locale = ["ru", "uz", "kk"].includes(payload.locale) ? payload.locale : "ru";
   const nights = nightsBetween(checkin, checkout);
   const today = new Date().toISOString().split("T")[0];
@@ -83,10 +94,13 @@ function validateBooking(payload) {
   if (checkin < today) return { error: "Check-in date cannot be in the past." };
   if (!validPhone(phone)) return { error: "Invalid phone number." };
   if (adults === null || children === null) return { error: "Invalid guest count." };
-  if (!ROOM_TYPES[roomType]) return { error: "Invalid room type." };
+  if (!roomTypes.length || roomTypes.length > Object.keys(ROOM_TYPES).length) {
+    return { error: "Invalid room type." };
+  }
+  if (roomTypes.some((roomType) => !ROOM_TYPES[roomType])) return { error: "Invalid room type." };
 
   return {
-    value: { checkin, checkout, phone, adults, children, roomType, locale, nights }
+    value: { checkin, checkout, phone, adults, children, roomTypes, locale, nights }
   };
 }
 
@@ -106,7 +120,7 @@ function formatTelegramMessage(booking) {
     `🌙 <b>Срок:</b> ${booking.nights} ночей`,
     `👤 <b>Взрослые:</b> ${booking.adults}`,
     `👶 <b>Дети:</b> ${booking.children}`,
-    `🛏 <b>Номер:</b> ${ROOM_TYPES[booking.roomType]}`,
+    `🛏 <b>Типы номеров:</b> ${booking.roomTypes.map((roomType) => ROOM_TYPES[roomType]).join(", ")}`,
     `☎️ <b>Телефон:</b> ${escapeHtml(booking.phone)}`,
     `🌐 <b>Язык сайта:</b> ${booking.locale.toUpperCase()}`
   ].join("\n");

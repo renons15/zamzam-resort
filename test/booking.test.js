@@ -10,7 +10,7 @@ const validBooking = {
   adults: 2,
   children: 1,
   phone: "+998 90 123 45 67",
-  roomType: "polulux1",
+  roomTypes: ["polulux1", "lux"],
   locale: "ru",
   website: ""
 };
@@ -36,7 +36,11 @@ test("booking pages expose every required field in one form", () => {
     assert.match(html, /name="adults"/);
     assert.match(html, /name="children"/);
     assert.match(html, /name="phone"/);
-    assert.match(html, /name="roomType"/);
+    assert.match(html, /name="roomTypes"/);
+    assert.match(html, /multiple required/);
+    assert.match(html, /id="roomTrigger"/);
+    assert.match(html, /id="roomPopover"/);
+    assert.equal((html.match(/class="room-option"/g) || []).length, 4);
     assert.equal((html.match(/<option value="(?:standart|polulux1|polulux2|lux)">/g) || []).length, 4);
   }
 });
@@ -51,8 +55,13 @@ test("server validation enforces a minimum stay of 10 nights", () => {
 });
 
 test("server validation rejects unsupported rooms and malformed phone numbers", () => {
-  assert.match(_private.validateBooking({ ...validBooking, roomType: "penthouse" }).error, /room/i);
+  assert.match(_private.validateBooking({ ...validBooking, roomTypes: ["penthouse"] }).error, /room/i);
   assert.match(_private.validateBooking({ ...validBooking, phone: "call me" }).error, /phone/i);
+});
+
+test("server validation accepts multiple unique room types", () => {
+  const validation = _private.validateBooking(validBooking);
+  assert.deepEqual(validation.value.roomTypes, ["polulux1", "lux"]);
 });
 
 test("booking endpoint sends a validated request to Telegram", async () => {
@@ -77,6 +86,7 @@ test("booking endpoint sends a validated request to Telegram", async () => {
     const payload = JSON.parse(telegramRequest.options.body);
     assert.equal(payload.chat_id, "-100123");
     assert.match(payload.text, /Полулюкс, 1 комната/);
+    assert.match(payload.text, /Люкс/);
     assert.match(payload.text, /10 ночей/);
     assert.match(payload.text, /\+998 90 123 45 67/);
   } finally {

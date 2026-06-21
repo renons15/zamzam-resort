@@ -25,6 +25,7 @@ const uiTextByLang = {
     bookingDateMinimum: "Выберите даты проживания минимум на 10 суток.",
     bookingPhoneInvalid: "Введите корректный номер телефона.",
     bookingRoomRequired: "Выберите тип номера.",
+    selectedRoomTypes: "Выбрано типов номера: {count}",
     bookingSending: "Отправляем запрос…",
     bookingSuccess: "Запрос отправлен. Администратор свяжется с вами для подтверждения.",
     bookingError: "Не удалось отправить запрос. Попробуйте еще раз или свяжитесь с нами по телефону."
@@ -40,6 +41,7 @@ const uiTextByLang = {
     bookingDateMinimum: "Kamida 10 kunlik yashash sanalarini tanlang.",
     bookingPhoneInvalid: "To'g'ri telefon raqamini kiriting.",
     bookingRoomRequired: "Xona turini tanlang.",
+    selectedRoomTypes: "Tanlangan xona turlari: {count}",
     bookingSending: "So'rov yuborilmoqda…",
     bookingSuccess: "So'rov yuborildi. Administrator tasdiqlash uchun siz bilan bog'lanadi.",
     bookingError: "So'rovni yuborib bo'lmadi. Qayta urinib ko'ring yoki biz bilan telefon orqali bog'laning."
@@ -55,6 +57,7 @@ const uiTextByLang = {
     bookingDateMinimum: "Кемінде 10 тәулік тұру күндерін таңдаңыз.",
     bookingPhoneInvalid: "Дұрыс телефон нөмірін енгізіңіз.",
     bookingRoomRequired: "Бөлме түрін таңдаңыз.",
+    selectedRoomTypes: "Таңдалған бөлме түрлері: {count}",
     bookingSending: "Сұраныс жіберілуде…",
     bookingSuccess: "Сұраныс жіберілді. Әкімші растау үшін сізбен хабарласады.",
     bookingError: "Сұранысты жіберу мүмкін болмады. Қайталап көріңіз немесе бізге телефон шалыңыз."
@@ -709,7 +712,14 @@ function initGuestPicker() {
 
   trigger.addEventListener("click", (event) => {
     event.stopPropagation();
-    setOpen(popover.hidden);
+    const shouldOpen = trigger.getAttribute("aria-expanded") !== "true";
+    if (shouldOpen) {
+      const roomTrigger = document.getElementById("roomTrigger");
+      const roomPopover = document.getElementById("roomPopover");
+      roomTrigger?.setAttribute("aria-expanded", "false");
+      if (roomPopover) roomPopover.hidden = true;
+    }
+    setOpen(shouldOpen);
   });
 
   document.getElementById("guestDone")?.addEventListener("click", () => setOpen(false));
@@ -737,7 +747,77 @@ function initGuestPicker() {
     }
   });
 
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || popover.hidden) return;
+    setOpen(false);
+    trigger.focus();
+  });
+
   updateGuestSummary();
+}
+
+function initRoomPicker() {
+  const trigger = document.getElementById("roomTrigger");
+  const summary = document.getElementById("roomSummary");
+  const popover = document.getElementById("roomPopover");
+  const select = document.getElementById("bookingRoom");
+  const options = [...document.querySelectorAll(".room-option")];
+  if (!trigger || !summary || !popover || !select || !options.length) return;
+
+  const setOpen = (isOpen) => {
+    trigger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    popover.hidden = !isOpen;
+  };
+
+  const syncSelection = () => {
+    const selectedOptions = [...select.selectedOptions].filter((option) => option.value);
+    if (selectedOptions.length === 0) summary.textContent = select.options[0].textContent;
+    else if (selectedOptions.length === 1) summary.textContent = selectedOptions[0].textContent;
+    else summary.textContent = uiText.selectedRoomTypes.replace("{count}", selectedOptions.length);
+    options.forEach((option) => {
+      const matchingOption = [...select.options].find((item) => item.value === option.dataset.roomValue);
+      option.setAttribute("aria-selected", matchingOption?.selected ? "true" : "false");
+    });
+  };
+
+  trigger.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const shouldOpen = trigger.getAttribute("aria-expanded") !== "true";
+    if (shouldOpen) {
+      const guestTrigger = document.getElementById("guestTrigger");
+      const guestPopover = document.getElementById("guestPopover");
+      guestTrigger?.setAttribute("aria-expanded", "false");
+      if (guestPopover) guestPopover.hidden = true;
+    }
+    setOpen(shouldOpen);
+  });
+
+  options.forEach((option) => {
+    option.addEventListener("click", () => {
+      const matchingOption = [...select.options].find((item) => item.value === option.dataset.roomValue);
+      if (matchingOption) matchingOption.selected = !matchingOption.selected;
+      select.dispatchEvent(new Event("change", { bubbles: true }));
+    });
+  });
+
+  select.addEventListener("change", syncSelection);
+  document.getElementById("roomDone")?.addEventListener("click", () => {
+    setOpen(false);
+    trigger.focus();
+  });
+
+  document.addEventListener("click", (event) => {
+    if (popover.hidden) return;
+    if (!popover.contains(event.target) && !trigger.contains(event.target)) setOpen(false);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || popover.hidden) return;
+    setOpen(false);
+    trigger.focus();
+  });
+
+  syncSelection();
 }
 
 function createCheckIcon() {
@@ -1001,13 +1081,16 @@ function initBookingForm() {
       return;
     }
 
-    if (!room?.value) {
+    const selectedRoomTypes = room ? [...room.selectedOptions].map((option) => option.value).filter(Boolean) : [];
+    if (!selectedRoomTypes.length) {
       setBookingStatus(status, uiText.bookingRoomRequired, "error");
-      room?.focus();
+      document.getElementById("roomTrigger")?.focus();
       return;
     }
 
     const payload = Object.fromEntries(new FormData(form).entries());
+    payload.roomTypes = selectedRoomTypes;
+    delete payload.roomType;
     payload.locale = currentLang;
 
     submit.disabled = true;
@@ -1024,7 +1107,10 @@ function initBookingForm() {
       if (!response.ok) throw new Error(`Booking request failed with ${response.status}`);
       setBookingStatus(status, uiText.bookingSuccess, "success");
       phone.value = "";
-      room.value = "";
+      [...room.options].forEach((option) => {
+        option.selected = false;
+      });
+      room.dispatchEvent(new Event("change", { bubbles: true }));
     } catch (error) {
       console.error(error);
       setBookingStatus(status, uiText.bookingError, "error");
@@ -1042,6 +1128,7 @@ function bootstrap() {
   initMobileMenu();
   initBookingDates();
   initGuestPicker();
+  initRoomPicker();
   initBookingForm();
   initRoomTabs();
   initReviews();

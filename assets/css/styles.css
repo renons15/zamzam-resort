@@ -405,26 +405,32 @@ textarea {
 
 .booking-card {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(220px, 260px);
+  grid-template-columns: minmax(0, 1fr) 210px;
   background: rgba(255, 255, 255, 0.98);
   color: var(--ink);
   border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.52);
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
-  overflow: hidden;
+  overflow: visible;
 }
 
 .booking-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns:
+    minmax(290px, 1.55fr)
+    minmax(190px, 1fr)
+    minmax(210px, 1.1fr)
+    minmax(220px, 1.15fr);
   position: relative;
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 18px 0 0 18px;
 }
 
 .booking-field {
   border-right: 1px solid #ededed;
-  padding: 20px 24px;
+  padding: 19px 22px;
   position: relative;
-  min-height: 102px;
+  min-height: 112px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -434,28 +440,40 @@ textarea {
   border-right: 0;
 }
 
-.booking-field span {
+.booking-field > span {
   display: block;
-  font-size: 0.76rem;
-  color: #8f8f8f;
-  margin-bottom: 10px;
-  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #69737d;
+  margin-bottom: 11px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .booking-field input,
 .guest-trigger,
+.room-trigger,
 .booking-field select {
   width: 100%;
   border: 0;
   background: transparent;
   padding: 0;
   color: #141922;
-  font-size: 1.08rem;
-  font-weight: 700;
+  font-size: 0.98rem;
+  font-weight: 600;
   cursor: pointer;
   text-align: left;
-  line-height: 1.2;
+  line-height: 1.35;
+}
+
+.booking-field input::placeholder {
+  color: rgba(20, 25, 34, 0.45);
+  opacity: 1;
+}
+
+.booking-phone input {
+  padding-left: 4px;
 }
 
 .booking-field input {
@@ -464,6 +482,7 @@ textarea {
 
 .booking-field input:focus,
 .guest-trigger:focus-visible,
+.room-trigger:focus-visible,
 .booking-field select:focus {
   outline: none;
 }
@@ -479,6 +498,41 @@ textarea {
   background-repeat: no-repeat;
 }
 
+.guest-trigger,
+.room-trigger {
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.guest-trigger::after,
+.room-trigger::after {
+  content: "";
+  flex: 0 0 8px;
+  width: 8px;
+  height: 8px;
+  margin-right: 2px;
+  border-right: 1.5px solid #66717c;
+  border-bottom: 1.5px solid #66717c;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.guest-trigger[aria-expanded="true"]::after,
+.room-trigger[aria-expanded="true"]::after {
+  transform: translateY(2px) rotate(225deg);
+}
+
+#guestSummary,
+#roomSummary {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .date-range-inputs {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
@@ -492,7 +546,8 @@ textarea {
 }
 
 .date-range-inputs input {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .booking-field .date-range-separator {
@@ -502,9 +557,10 @@ textarea {
 }
 
 .booking-dates small {
-  margin-top: 6px;
+  margin-top: 7px;
   color: #717b84;
-  font-size: 0.68rem;
+  font-size: 0.66rem;
+  line-height: 1.25;
 }
 
 .booking-field .visually-hidden,
@@ -539,6 +595,7 @@ textarea {
   white-space: nowrap;
   background: linear-gradient(118deg, var(--sky) 0%, var(--gold) 55%, var(--gold-dark) 100%);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+  border-radius: 0 18px 18px 0;
 }
 
 .booking-submit:hover {
@@ -578,15 +635,20 @@ textarea {
 
 .guest-popover {
   position: absolute;
-  left: 10px;
-  right: 10px;
-  top: calc(100% + 8px);
+  left: 50%;
+  bottom: calc(100% + 10px);
+  width: min(320px, calc(100vw - 32px));
+  transform: translateX(-50%);
   z-index: 18;
   border: 1px solid #ebebeb;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
   padding: 16px;
+}
+
+.guest-popover[hidden] {
+  display: none !important;
 }
 
 .guest-row {
@@ -646,6 +708,69 @@ textarea {
   font-weight: 600;
   letter-spacing: 1px;
   cursor: pointer;
+}
+
+.room-popover {
+  width: min(350px, calc(100vw - 32px));
+}
+
+.room-options {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+.room-option {
+  width: 100%;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: #2c2f33;
+  padding: 9px 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.room-option::after {
+  content: "✓";
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid #d1d5d8;
+  border-radius: 6px;
+  background: #fff;
+  color: transparent;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.room-option:hover,
+.room-option:focus-visible {
+  outline: none;
+  background: #f2f7fc;
+}
+
+.room-option[aria-selected="true"] {
+  color: var(--gold);
+  background: #eef6fd;
+}
+
+.room-option[aria-selected="true"]::after {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: #fff;
 }
 
 .section-about {
@@ -4993,8 +5118,11 @@ textarea {
   }
 
   .guest-popover {
-    left: 0;
-    right: 0;
+    position: static;
+    width: 100%;
+    margin-top: 14px;
+    transform: none;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
   }
 
   .homepage-contact-legacy__layout,
