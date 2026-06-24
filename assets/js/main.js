@@ -22,6 +22,9 @@ const uiTextByLang = {
     adultForms: ["взрослый", "взрослых", "взрослых"],
     childForms: ["ребенок", "ребенка", "детей"],
     formSuccess: "Спасибо! Мы свяжемся с вами в ближайшее время.",
+    contactSending: "Отправляем вопрос…",
+    contactSuccess: "Вопрос отправлен. Мы свяжемся с вами в ближайшее время.",
+    contactError: "Не удалось отправить вопрос. Попробуйте еще раз или свяжитесь с нами по телефону.",
     bookingDateMinimum: "Выберите даты проживания минимум на 10 суток.",
     bookingPhoneInvalid: "Введите корректный номер телефона.",
     bookingRoomRequired: "Выберите тип номера.",
@@ -38,6 +41,9 @@ const uiTextByLang = {
     adultForms: ["katta", "katta", "katta"],
     childForms: ["bola", "bola", "bola"],
     formSuccess: "Rahmat! Tez orada siz bilan bog'lanamiz.",
+    contactSending: "Savol yuborilmoqda…",
+    contactSuccess: "Savol yuborildi. Tez orada siz bilan bog'lanamiz.",
+    contactError: "Savolni yuborib bo'lmadi. Qayta urinib ko'ring yoki biz bilan telefon orqali bog'laning.",
     bookingDateMinimum: "Kamida 10 kunlik yashash sanalarini tanlang.",
     bookingPhoneInvalid: "To'g'ri telefon raqamini kiriting.",
     bookingRoomRequired: "Xona turini tanlang.",
@@ -54,6 +60,9 @@ const uiTextByLang = {
     adultForms: ["ересек", "ересек", "ересек"],
     childForms: ["бала", "бала", "бала"],
     formSuccess: "Рақмет! Жақын арада сізбен хабарласамыз.",
+    contactSending: "Сұрақ жіберілуде…",
+    contactSuccess: "Сұрақ жіберілді. Жақын арада сізбен хабарласамыз.",
+    contactError: "Сұрақты жіберу мүмкін болмады. Қайталап көріңіз немесе бізге телефон шалыңыз.",
     bookingDateMinimum: "Кемінде 10 тәулік тұру күндерін таңдаңыз.",
     bookingPhoneInvalid: "Дұрыс телефон нөмірін енгізіңіз.",
     bookingRoomRequired: "Бөлме түрін таңдаңыз.",
@@ -1035,11 +1044,64 @@ function initContactForm() {
   const formStatus = document.getElementById("formStatus");
   if (!form || !formStatus) return;
 
-  form.addEventListener("submit", (event) => {
+  if (form.getAttribute("action") !== "/.netlify/functions/general-question") {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      formStatus.textContent = uiText.formSuccess;
+      form.reset();
+    });
+    return;
+  }
+
+  const submit = document.getElementById("contactSubmit");
+  if (!submit) return;
+
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    formStatus.textContent = uiText.formSuccess;
-    form.reset();
+    setContactStatus(formStatus, "");
+
+    if (typeof form.reportValidity === "function" && !form.reportValidity()) {
+      return;
+    }
+
+    const phone = form.elements.namedItem("phone");
+    if (!phone || !hasValidPhone(phone.value.trim())) {
+      setContactStatus(formStatus, uiText.bookingPhoneInvalid, "error");
+      phone?.focus();
+      return;
+    }
+
+    const payload = Object.fromEntries(new FormData(form).entries());
+    payload.locale = currentLang;
+
+    submit.disabled = true;
+    form.setAttribute("aria-busy", "true");
+    setContactStatus(formStatus, uiText.contactSending);
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) throw new Error(`General question failed with ${response.status}`);
+      setContactStatus(formStatus, uiText.contactSuccess, "success");
+      form.reset();
+    } catch (error) {
+      console.error(error);
+      setContactStatus(formStatus, uiText.contactError, "error");
+    } finally {
+      submit.disabled = false;
+      form.removeAttribute("aria-busy");
+    }
   });
+}
+
+function setContactStatus(status, message, type = "") {
+  status.textContent = message;
+  status.classList.toggle("is-success", type === "success");
+  status.classList.toggle("is-error", type === "error");
 }
 
 function setBookingStatus(status, message, type = "") {

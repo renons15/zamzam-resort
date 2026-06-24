@@ -559,12 +559,11 @@
           <div class="contact-grid">
             <article class="contact-card">
               <h3>Связаться с нами</h3>
-              <form id="contactForm">
+              <form id="contactForm" action="/.netlify/functions/general-question" method="post">
                 <input type="text" name="name" placeholder="Ваше имя" required />
                 <input type="tel" name="phone" placeholder="Телефон" required />
-                <input type="email" name="email" placeholder="Email" />
-                <textarea name="message" rows="4" placeholder="Сообщение"></textarea>
-                <button class="btn btn-gold" type="submit">ОТПРАВИТЬ</button>
+                <textarea name="message" rows="4" placeholder="Сообщение" required></textarea>
+                <button id="contactSubmit" class="btn btn-gold" type="submit">ОТПРАВИТЬ</button>
                 <p id="formStatus" class="form-status" aria-live="polite"></p>
               </form>
             </article>

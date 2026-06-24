@@ -546,7 +546,7 @@
       <section id="contact" class="section section-contact homepage-contact-legacy" aria-labelledby="contact-title">
         <div class="container">
           <div class="homepage-contact-legacy__layout">
-            <form id="contactForm" action="#" class="homepage-contact-legacy__form reveal" method="post" novalidate>
+            <form id="contactForm" action="/.netlify/functions/general-question" class="homepage-contact-legacy__form reveal" method="post">
               <h2 id="contact-title">Связаться с нами</h2>
 
               <div class="homepage-contact-legacy__field">
@@ -569,16 +569,11 @@
               </div>
 
               <div class="homepage-contact-legacy__field">
-                <label class="homepage-contact-legacy__visually-hidden" for="contactEmail">Email</label>
-                <input id="contactEmail" name="email" type="email" placeholder="Email" autocomplete="email" required />
-              </div>
-
-              <div class="homepage-contact-legacy__field">
                 <label class="homepage-contact-legacy__visually-hidden" for="contactMessage">Сообщение</label>
                 <textarea id="contactMessage" name="message" placeholder="Сообщение" rows="5" required></textarea>
               </div>
 
-              <button type="submit" class="homepage-contact-legacy__submit">Отправить</button>
+              <button id="contactSubmit" type="submit" class="homepage-contact-legacy__submit">Отправить</button>
               <p id="formStatus" class="form-status" aria-live="polite"></p>
             </form>
 

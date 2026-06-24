@@ -32,11 +32,11 @@ python3 -m http.server 3000
 
 Then open `http://localhost:3000`.
 
-The static server is enough to review the layout, but booking submissions require the Netlify function. To test the complete flow locally, install the Netlify CLI and run `netlify dev`.
+The static server is enough to review the layout, but booking and contact submissions require the Netlify functions. To test the complete flow locally, install the Netlify CLI and run `netlify dev`.
 
-## Telegram booking setup
+## Telegram form setup
 
-Booking requests are sent by `netlify/functions/booking.js`. The browser never receives the Telegram bot token.
+Booking requests are sent by `netlify/functions/booking.js`, and contact-page questions are sent by `netlify/functions/general-question.js`. Both use the same Telegram bot and destination chat. The browser never receives the Telegram bot token.
 
 1. Create a bot with [@BotFather](https://t.me/BotFather) and copy its token.
 2. Add the bot to the destination group. Sending messages does not require administrator access.
@@ -46,10 +46,10 @@ Booking requests are sent by `netlify/functions/booking.js`. The browser never r
    - `TELEGRAM_CHAT_ID`
    - `TELEGRAM_MESSAGE_THREAD_ID` only when requests should go to one topic in a forum group
    - `BOOKING_ALLOWED_ORIGINS` with the production site origin, for example `https://zamzam.example`
-5. Deploy the repository through Netlify. The included `netlify.toml` publishes the static site and deploys the booking function together.
+5. Deploy the repository through Netlify. The included `netlify.toml` publishes the static site and deploys both functions together.
 
-Use `.env.example` as the local template. Never commit a real bot token. GitHub Pages can still host the static pages, but it cannot run this server-side function; use Netlify (or an equivalent serverless host) for working booking submissions.
+Use `.env.example` as the local template. Never commit a real bot token. GitHub Pages can still host the static pages, but it cannot run these server-side functions; use Netlify (or an equivalent serverless host) for working form submissions.
 
 ## Deploy
 
-Deploy on Netlify with the publish directory set to the repository root. The booking function is discovered from `netlify/functions`.
+Deploy on Netlify with the publish directory set to the repository root. The functions are discovered from `netlify/functions`.
