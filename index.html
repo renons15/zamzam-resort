@@ -44,23 +44,54 @@
               novalidate
             >
               <div class="booking-grid">
-                <div class="booking-field booking-dates">
-                  <span>Даты проживания</span>
-                  <div class="date-range-inputs">
-                    <label>
-                      <span class="visually-hidden">Заезд</span>
-                      <input id="checkinInput" name="checkin" type="date" required />
-                    </label>
-                    <span class="date-range-separator" aria-hidden="true">—</span>
-                    <label>
-                      <span class="visually-hidden">Выезд</span>
-                      <input id="checkoutInput" name="checkout" type="date" required />
-                    </label>
-                  </div>
-                  <small id="bookingDateHint">Минимум 10 суток</small>
+                <div class="booking-field booking-date-field">
+                  <span>Заезд</span>
+                  <button
+                    id="checkinTrigger"
+                    class="date-trigger"
+                    type="button"
+                    aria-expanded="false"
+                    aria-haspopup="dialog"
+                    aria-controls="bookingCalendarPopover"
+                    data-date-role="checkin"
+                  >
+                    <span class="date-trigger-copy">
+                      <strong id="checkinDisplay">Выберите дату</strong>
+                      <small id="checkinMeta">Минимум 10 суток</small>
+                    </span>
+                    <span class="date-trigger-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M7 3v3M17 3v3M4.5 9.2h15M6.5 5h11A2.5 2.5 0 0 1 20 7.5v10A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5v-10A2.5 2.5 0 0 1 6.5 5Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                  </button>
+                  <input id="checkinInput" name="checkin" type="hidden" required />
+                </div>
+                <div class="booking-field booking-date-field">
+                  <span>Выезд</span>
+                  <button
+                    id="checkoutTrigger"
+                    class="date-trigger"
+                    type="button"
+                    aria-expanded="false"
+                    aria-haspopup="dialog"
+                    aria-controls="bookingCalendarPopover"
+                    data-date-role="checkout"
+                  >
+                    <span class="date-trigger-copy">
+                      <strong id="checkoutDisplay">Выберите дату</strong>
+                      <small id="checkoutMeta">Минимум 10 суток</small>
+                    </span>
+                    <span class="date-trigger-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M7 3v3M17 3v3M4.5 9.2h15M6.5 5h11A2.5 2.5 0 0 1 20 7.5v10A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5v-10A2.5 2.5 0 0 1 6.5 5Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                  </button>
+                  <input id="checkoutInput" name="checkout" type="hidden" required />
                 </div>
                 <div class="booking-field booking-guests">
-                  <span>Гости</span>
+                  <span>Гости и номера</span>
                   <button
                     id="guestTrigger"
                     class="guest-trigger"
@@ -68,7 +99,10 @@
                     aria-expanded="false"
                     aria-controls="guestPopover"
                   >
-                    <span id="guestSummary">2 взрослых, 0 детей</span>
+                    <span class="guest-trigger-copy">
+                      <span id="guestSummary">2 взрослых, 0 детей</span>
+                      <small id="guestRoomSummary">1 номер</small>
+                    </span>
                   </button>
                   <div id="guestPopover" class="guest-popover" hidden>
                     <div class="guest-row">
@@ -111,7 +145,7 @@
                   />
                 </label>
                 <div class="booking-field booking-room">
-                  <span>Типы номеров</span>
+                  <span>Тип номера</span>
                   <button
                     id="roomTrigger"
                     class="room-trigger"
@@ -122,7 +156,7 @@
                     <span id="roomSummary">Выберите номер</span>
                   </button>
                   <div id="roomPopover" class="guest-popover room-popover" hidden>
-                    <div class="room-options" role="listbox" aria-label="Типы номеров" aria-multiselectable="true">
+                    <div class="room-options" role="listbox" aria-label="Тип номера" aria-multiselectable="true">
                       <button class="room-option" type="button" role="option" aria-selected="false" data-room-value="standart">Стандарт</button>
                       <button class="room-option" type="button" role="option" aria-selected="false" data-room-value="polulux1">Полулюкс, 1 комната</button>
                       <button class="room-option" type="button" role="option" aria-selected="false" data-room-value="polulux2">Полулюкс, 2 комнаты</button>
@@ -141,6 +175,26 @@
                 <div class="booking-honeypot" aria-hidden="true">
                   <label for="bookingWebsite">Не заполняйте это поле</label>
                   <input id="bookingWebsite" name="website" type="text" tabindex="-1" autocomplete="off" />
+                </div>
+              </div>
+              <div
+                id="bookingCalendarPopover"
+                class="booking-calendar-popover"
+                role="dialog"
+                aria-label="Выбор дат"
+                hidden
+              >
+                <div id="bookingCalendarMonths" class="booking-calendar-months"></div>
+                <div class="booking-calendar-footer">
+                  <p id="bookingDateHint" class="booking-calendar-note">Минимум 10 суток</p>
+                  <div class="booking-calendar-actions">
+                    <button id="calendarClear" class="calendar-action calendar-action-secondary" type="button">
+                      Очистить даты
+                    </button>
+                    <button id="calendarApply" class="calendar-action calendar-action-primary" type="button">
+                      Применить
+                    </button>
+                  </div>
                 </div>
               </div>
               <button id="bookingSubmit" class="btn btn-gold booking-submit" type="submit">

@@ -29,6 +29,11 @@ const uiTextByLang = {
     bookingPhoneInvalid: "Введите корректный номер телефона.",
     bookingRoomRequired: "Выберите тип номера.",
     selectedRoomTypes: "Выбрано типов номера: {count}",
+    datePlaceholder: "Выберите дату",
+    minimumStayLabel: "Минимум 10 суток",
+    previousMonth: "Предыдущий месяц",
+    nextMonth: "Следующий месяц",
+    guestRoomSummary: "1 номер",
     bookingSending: "Отправляем запрос…",
     bookingSuccess: "Запрос отправлен. Администратор свяжется с вами для подтверждения.",
     bookingError: "Не удалось отправить запрос. Попробуйте еще раз или свяжитесь с нами по телефону."
@@ -48,6 +53,11 @@ const uiTextByLang = {
     bookingPhoneInvalid: "To'g'ri telefon raqamini kiriting.",
     bookingRoomRequired: "Xona turini tanlang.",
     selectedRoomTypes: "Tanlangan xona turlari: {count}",
+    datePlaceholder: "Sanani tanlang",
+    minimumStayLabel: "Kamida 10 kun",
+    previousMonth: "Oldingi oy",
+    nextMonth: "Keyingi oy",
+    guestRoomSummary: "1 xona",
     bookingSending: "So'rov yuborilmoqda…",
     bookingSuccess: "So'rov yuborildi. Administrator tasdiqlash uchun siz bilan bog'lanadi.",
     bookingError: "So'rovni yuborib bo'lmadi. Qayta urinib ko'ring yoki biz bilan telefon orqali bog'laning."
@@ -67,6 +77,11 @@ const uiTextByLang = {
     bookingPhoneInvalid: "Дұрыс телефон нөмірін енгізіңіз.",
     bookingRoomRequired: "Бөлме түрін таңдаңыз.",
     selectedRoomTypes: "Таңдалған бөлме түрлері: {count}",
+    datePlaceholder: "Күнді таңдаңыз",
+    minimumStayLabel: "Кемінде 10 тәулік",
+    previousMonth: "Алдыңғы ай",
+    nextMonth: "Келесі ай",
+    guestRoomSummary: "1 бөлме",
     bookingSending: "Сұраныс жіберілуде…",
     bookingSuccess: "Сұраныс жіберілді. Әкімші растау үшін сізбен хабарласады.",
     bookingError: "Сұранысты жіберу мүмкін болмады. Қайталап көріңіз немесе бізге телефон шалыңыз."
@@ -479,6 +494,15 @@ const state = {
   children: 0
 };
 
+const BOOKING_MINIMUM_NIGHTS = 10;
+const DAY_MS = 86_400_000;
+const localeByLang = {
+  ru: "ru-RU",
+  uz: "uz-UZ",
+  kk: "kk-KZ"
+};
+const bookingLocale = localeByLang[currentLang] || localeByLang.ru;
+
 function formatPrice(price) {
   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }
@@ -624,29 +648,122 @@ function initMobileMenu() {
   else if (typeof desktopMq.addListener === "function") desktopMq.addListener(closeOnDesktop);
 }
 
+function formatDateValue(date) {
+  if (!(date instanceof Date) || Number.isNaN(date.getTime())) return "";
+  const year = date.getUTCFullYear();
+  const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+  const day = String(date.getUTCDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function getTodayDate() {
+  const now = new Date();
+  return new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+}
+
 function setDateValue(input, date) {
   if (!input) return;
-  const localDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
-  input.value = localDate.toISOString().split("T")[0];
+  input.value = formatDateValue(date);
 }
 
 function parseLocalDate(value) {
   const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value || "");
   if (!match) return null;
-  return new Date(Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3])));
+  const date = new Date(Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3])));
+  return formatDateValue(date) === value ? date : null;
 }
 
 function addDays(date, days) {
-  const result = new Date(date);
+  const result = new Date(date.getTime());
   result.setUTCDate(result.getUTCDate() + days);
   return result;
+}
+
+function addMonths(date, months) {
+  return new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + months, 1));
+}
+
+function getMonthStart(date) {
+  return new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), 1));
+}
+
+function getDaysInMonth(date) {
+  return new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + 1, 0)).getUTCDate();
+}
+
+function isSameDate(first, second) {
+  return Boolean(first && second && formatDateValue(first) === formatDateValue(second));
 }
 
 function bookingNights(checkin, checkout) {
   const start = parseLocalDate(checkin);
   const end = parseLocalDate(checkout);
   if (!start || !end) return 0;
-  return Math.round((end.getTime() - start.getTime()) / 86400000);
+  return Math.round((end.getTime() - start.getTime()) / DAY_MS);
+}
+
+function formatBookingDate(date, options) {
+  return new Intl.DateTimeFormat(bookingLocale, { timeZone: "UTC", ...options }).format(date);
+}
+
+function formatBookingMainDate(date) {
+  return formatBookingDate(date, { day: "2-digit", month: "short", year: "numeric" }).replace(/\.$/, "");
+}
+
+function formatBookingWeekday(date) {
+  return formatBookingDate(date, { weekday: "short" }).replace(/\.$/, "");
+}
+
+function formatBookingMonthTitle(date) {
+  return formatBookingDate(date, { month: "long", year: "numeric" });
+}
+
+function getWeekdayLabels() {
+  const monday = new Date(Date.UTC(2026, 5, 22));
+  return Array.from({ length: 7 }, (_, index) => formatBookingDate(addDays(monday, index), { weekday: "short" }));
+}
+
+function closeBookingPopover(triggerId, popoverId) {
+  const trigger = document.getElementById(triggerId);
+  const popover = document.getElementById(popoverId);
+  trigger?.setAttribute("aria-expanded", "false");
+  if (popover) popover.hidden = true;
+}
+
+function ensureDefaultBookingDates(checkin, checkout) {
+  const today = getTodayDate();
+  const todayValue = formatDateValue(today);
+  const selectedCheckin = parseLocalDate(checkin.value);
+
+  if (!selectedCheckin || selectedCheckin.getTime() < today.getTime()) {
+    setDateValue(checkin, today);
+  }
+
+  const activeCheckin = parseLocalDate(checkin.value) || today;
+  const minimumCheckout = addDays(activeCheckin, BOOKING_MINIMUM_NIGHTS);
+  checkin.min = todayValue;
+  checkout.min = formatDateValue(minimumCheckout);
+
+  if (!parseLocalDate(checkout.value) || bookingNights(checkin.value, checkout.value) < BOOKING_MINIMUM_NIGHTS) {
+    setDateValue(checkout, minimumCheckout);
+  }
+}
+
+function initNativeBookingDates(checkin, checkout) {
+  ensureDefaultBookingDates(checkin, checkout);
+
+  const updateCheckoutMinimum = () => {
+    const selectedCheckin = parseLocalDate(checkin.value);
+    if (!selectedCheckin) return;
+    const nextMinimum = addDays(selectedCheckin, BOOKING_MINIMUM_NIGHTS);
+    checkout.min = formatDateValue(nextMinimum);
+    if (!checkout.value || bookingNights(checkin.value, checkout.value) < BOOKING_MINIMUM_NIGHTS) {
+      setDateValue(checkout, nextMinimum);
+    }
+  };
+
+  updateCheckoutMinimum();
+  checkin.addEventListener("change", updateCheckoutMinimum);
 }
 
 function initBookingDates() {
@@ -654,28 +771,361 @@ function initBookingDates() {
   const checkout = document.getElementById("checkoutInput");
   if (!checkin || !checkout) return;
 
-  const today = new Date();
-  const minimumCheckout = new Date(today);
-  minimumCheckout.setDate(minimumCheckout.getDate() + 10);
+  const checkinTrigger = document.getElementById("checkinTrigger");
+  const checkoutTrigger = document.getElementById("checkoutTrigger");
+  const checkinDisplay = document.getElementById("checkinDisplay");
+  const checkoutDisplay = document.getElementById("checkoutDisplay");
+  const checkinMeta = document.getElementById("checkinMeta");
+  const checkoutMeta = document.getElementById("checkoutMeta");
+  const popover = document.getElementById("bookingCalendarPopover");
+  const monthsHost = document.getElementById("bookingCalendarMonths");
+  const clearButton = document.getElementById("calendarClear");
+  const applyButton = document.getElementById("calendarApply");
 
-  setDateValue(checkin, today);
-  setDateValue(checkout, minimumCheckout);
-  const minDate = checkin.value;
-  checkin.min = minDate;
+  if (!checkinTrigger || !checkoutTrigger || !checkinDisplay || !checkoutDisplay || !popover || !monthsHost) {
+    initNativeBookingDates(checkin, checkout);
+    return;
+  }
 
-  const updateCheckoutMinimum = () => {
+  ensureDefaultBookingDates(checkin, checkout);
+
+  const calendarMq = window.matchMedia("(max-width: 767px)");
+  const weekdayLabels = getWeekdayLabels();
+  const picker = {
+    activeField: "checkin",
+    draftCheckin: parseLocalDate(checkin.value),
+    draftCheckout: parseLocalDate(checkout.value),
+    visibleMonth: getMonthStart(parseLocalDate(checkin.value) || getTodayDate()),
+    isOpen: false,
+    closeTimer: 0
+  };
+
+  const getMonthCount = () => (calendarMq.matches ? 1 : 2);
+
+  const updateInputMinimums = () => {
     const selectedCheckin = parseLocalDate(checkin.value);
-    if (!selectedCheckin) return;
-    const nextMinimum = addDays(selectedCheckin, 10);
-    const minimumValue = nextMinimum.toISOString().split("T")[0];
-    checkout.min = minimumValue;
-    if (!checkout.value || bookingNights(checkin.value, checkout.value) < 10) {
-      checkout.value = minimumValue;
+    checkin.min = formatDateValue(getTodayDate());
+    if (selectedCheckin) checkout.min = formatDateValue(addDays(selectedCheckin, BOOKING_MINIMUM_NIGHTS));
+    else checkout.removeAttribute("min");
+  };
+
+  const syncDateDisplays = () => {
+    const selectedCheckin = parseLocalDate(checkin.value);
+    const selectedCheckout = parseLocalDate(checkout.value);
+    const showDate = (date, display, meta) => {
+      if (!display) return;
+      if (!date) {
+        display.textContent = uiText.datePlaceholder;
+        if (meta) meta.textContent = uiText.minimumStayLabel;
+        return;
+      }
+      display.textContent = formatBookingMainDate(date);
+      if (meta) meta.textContent = formatBookingWeekday(date);
+    };
+
+    showDate(selectedCheckin, checkinDisplay, checkinMeta);
+    showDate(selectedCheckout, checkoutDisplay, checkoutMeta);
+    document.getElementById("bookingDateHint")?.replaceChildren(document.createTextNode(uiText.minimumStayLabel));
+    updateInputMinimums();
+  };
+
+  const isDraftRangeValid = () =>
+    Boolean(
+      picker.draftCheckin &&
+        picker.draftCheckout &&
+        bookingNights(formatDateValue(picker.draftCheckin), formatDateValue(picker.draftCheckout)) >=
+          BOOKING_MINIMUM_NIGHTS
+    );
+
+  const isDateDisabled = (date) => {
+    const today = getTodayDate();
+    if (date.getTime() < today.getTime()) return true;
+    if (picker.activeField === "checkout" && picker.draftCheckin) {
+      return (
+        bookingNights(formatDateValue(picker.draftCheckin), formatDateValue(date)) < BOOKING_MINIMUM_NIGHTS
+      );
+    }
+    return false;
+  };
+
+  const focusCalendarDate = (date) => {
+    if (!date) return;
+    const button = monthsHost.querySelector(`.calendar-day[data-date="${formatDateValue(date)}"]:not(:disabled)`);
+    if (button) button.focus({ preventScroll: true });
+  };
+
+  const ensureDateVisible = (date) => {
+    const firstMonth = picker.visibleMonth;
+    const lastMonth = addMonths(firstMonth, getMonthCount() - 1);
+    const targetMonth = getMonthStart(date);
+    if (targetMonth.getTime() < firstMonth.getTime()) {
+      picker.visibleMonth = targetMonth;
+      return true;
+    }
+    if (targetMonth.getTime() > lastMonth.getTime()) {
+      picker.visibleMonth = getMonthCount() > 1 ? addMonths(targetMonth, -1) : targetMonth;
+      return true;
+    }
+    return false;
+  };
+
+  const renderCalendar = () => {
+    monthsHost.innerHTML = "";
+    const monthCount = getMonthCount();
+
+    for (let monthIndex = 0; monthIndex < monthCount; monthIndex += 1) {
+      const monthDate = addMonths(picker.visibleMonth, monthIndex);
+      monthsHost.appendChild(createCalendarMonth(monthDate, monthIndex, monthCount));
+    }
+
+    if (applyButton) {
+      applyButton.disabled = !isDraftRangeValid();
+      applyButton.setAttribute("aria-disabled", applyButton.disabled ? "true" : "false");
     }
   };
 
-  updateCheckoutMinimum();
-  checkin.addEventListener("change", updateCheckoutMinimum);
+  function handleDayKeyboard(event) {
+    const current = parseLocalDate(event.currentTarget.dataset.date);
+    if (!current) return;
+
+    let target = null;
+    if (event.key === "ArrowRight") target = addDays(current, 1);
+    else if (event.key === "ArrowLeft") target = addDays(current, -1);
+    else if (event.key === "ArrowDown") target = addDays(current, 7);
+    else if (event.key === "ArrowUp") target = addDays(current, -7);
+    else if (event.key === "Home") target = addDays(current, -((current.getUTCDay() + 6) % 7));
+    else if (event.key === "End") target = addDays(current, 6 - ((current.getUTCDay() + 6) % 7));
+    else if (event.key === "PageDown") target = addMonths(current, 1);
+    else if (event.key === "PageUp") target = addMonths(current, -1);
+
+    if (!target) return;
+    event.preventDefault();
+    if (ensureDateVisible(target)) renderCalendar();
+    window.requestAnimationFrame(() => focusCalendarDate(target));
+  }
+
+  function chooseDate(date) {
+    if (isDateDisabled(date)) return;
+
+    if (picker.activeField === "checkout" && picker.draftCheckin) {
+      picker.draftCheckout = date;
+      picker.activeField = "checkin";
+    } else {
+      picker.draftCheckin = date;
+      if (
+        !picker.draftCheckout ||
+        bookingNights(formatDateValue(picker.draftCheckin), formatDateValue(picker.draftCheckout)) <
+          BOOKING_MINIMUM_NIGHTS
+      ) {
+        picker.draftCheckout = null;
+      }
+      picker.activeField = "checkout";
+    }
+
+    renderCalendar();
+  }
+
+  function createCalendarMonth(monthDate, monthIndex, monthCount) {
+    const month = document.createElement("section");
+    month.className = "booking-calendar-month";
+
+    const header = document.createElement("div");
+    header.className = "booking-calendar-header";
+
+    const previous = document.createElement("button");
+    previous.type = "button";
+    previous.className = "calendar-nav calendar-nav-prev";
+    previous.setAttribute("aria-label", uiText.previousMonth);
+    if (monthIndex === 0) {
+      previous.addEventListener("click", () => {
+        picker.visibleMonth = addMonths(picker.visibleMonth, -1);
+        renderCalendar();
+      });
+    } else {
+      previous.classList.add("calendar-nav-placeholder");
+      previous.tabIndex = -1;
+      previous.setAttribute("aria-hidden", "true");
+    }
+
+    const title = document.createElement("h3");
+    title.className = "booking-calendar-title";
+    title.textContent = formatBookingMonthTitle(monthDate);
+
+    const next = document.createElement("button");
+    next.type = "button";
+    next.className = "calendar-nav calendar-nav-next";
+    next.setAttribute("aria-label", uiText.nextMonth);
+    if (monthIndex === monthCount - 1) {
+      next.addEventListener("click", () => {
+        picker.visibleMonth = addMonths(picker.visibleMonth, 1);
+        renderCalendar();
+      });
+    } else {
+      next.classList.add("calendar-nav-placeholder");
+      next.tabIndex = -1;
+      next.setAttribute("aria-hidden", "true");
+    }
+
+    header.append(previous, title, next);
+
+    const weekdays = document.createElement("div");
+    weekdays.className = "booking-calendar-weekdays";
+    weekdayLabels.forEach((label) => {
+      const weekday = document.createElement("span");
+      weekday.className = "booking-calendar-weekday";
+      weekday.textContent = label;
+      weekdays.appendChild(weekday);
+    });
+
+    const days = document.createElement("div");
+    days.className = "booking-calendar-days";
+    const firstOffset = (monthDate.getUTCDay() + 6) % 7;
+    for (let index = 0; index < firstOffset; index += 1) {
+      const empty = document.createElement("span");
+      empty.className = "calendar-empty-day";
+      empty.setAttribute("aria-hidden", "true");
+      days.appendChild(empty);
+    }
+
+    const totalDays = getDaysInMonth(monthDate);
+    for (let day = 1; day <= totalDays; day += 1) {
+      const date = new Date(Date.UTC(monthDate.getUTCFullYear(), monthDate.getUTCMonth(), day));
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "calendar-day";
+      button.textContent = String(day);
+      button.dataset.date = formatDateValue(date);
+      button.setAttribute("aria-label", formatBookingDate(date, { weekday: "long", day: "numeric", month: "long", year: "numeric" }));
+
+      if (isDateDisabled(date)) button.disabled = true;
+      if (isSameDate(date, getTodayDate())) button.classList.add("is-today");
+      if (isSameDate(date, picker.draftCheckin)) {
+        button.classList.add("is-checkin");
+        button.setAttribute("aria-pressed", "true");
+      }
+      if (isSameDate(date, picker.draftCheckout)) {
+        button.classList.add("is-checkout");
+        button.setAttribute("aria-pressed", "true");
+      }
+      if (
+        picker.draftCheckin &&
+        picker.draftCheckout &&
+        date.getTime() > picker.draftCheckin.getTime() &&
+        date.getTime() < picker.draftCheckout.getTime()
+      ) {
+        button.classList.add("is-in-range");
+      }
+
+      button.addEventListener("click", () => chooseDate(date));
+      button.addEventListener("keydown", handleDayKeyboard);
+      days.appendChild(button);
+    }
+
+    month.append(header, weekdays, days);
+    return month;
+  }
+
+  const closeCalendar = (returnFocus = false) => {
+    if (!picker.isOpen) return;
+    picker.isOpen = false;
+    window.clearTimeout(picker.closeTimer);
+    popover.classList.remove("is-open");
+    checkinTrigger.setAttribute("aria-expanded", "false");
+    checkoutTrigger.setAttribute("aria-expanded", "false");
+    picker.closeTimer = window.setTimeout(() => {
+      if (!picker.isOpen) popover.hidden = true;
+    }, 210);
+    if (returnFocus) {
+      const trigger = picker.activeField === "checkout" ? checkoutTrigger : checkinTrigger;
+      trigger.focus();
+    }
+  };
+
+  const openCalendar = (field) => {
+    const selectedCheckin = parseLocalDate(checkin.value);
+    const selectedCheckout = parseLocalDate(checkout.value);
+    picker.activeField = field;
+    picker.draftCheckin = selectedCheckin;
+    picker.draftCheckout = selectedCheckout;
+    picker.visibleMonth = getMonthStart(
+      field === "checkout" ? selectedCheckin || selectedCheckout || getTodayDate() : selectedCheckin || getTodayDate()
+    );
+
+    closeBookingPopover("guestTrigger", "guestPopover");
+    closeBookingPopover("roomTrigger", "roomPopover");
+
+    window.clearTimeout(picker.closeTimer);
+    renderCalendar();
+    popover.hidden = false;
+    window.requestAnimationFrame(() => {
+      picker.isOpen = true;
+      popover.classList.add("is-open");
+      checkinTrigger.setAttribute("aria-expanded", field === "checkin" ? "true" : "false");
+      checkoutTrigger.setAttribute("aria-expanded", field === "checkout" ? "true" : "false");
+    });
+  };
+
+  const handleTriggerClick = (event) => {
+    event.stopPropagation();
+    const field = event.currentTarget.dataset.dateRole || "checkin";
+    if (picker.isOpen && picker.activeField === field) {
+      closeCalendar(true);
+      return;
+    }
+    openCalendar(field);
+  };
+
+  checkinTrigger.addEventListener("click", handleTriggerClick);
+  checkoutTrigger.addEventListener("click", handleTriggerClick);
+  popover.addEventListener("click", (event) => event.stopPropagation());
+
+  clearButton?.addEventListener("click", () => {
+    picker.draftCheckin = null;
+    picker.draftCheckout = null;
+    picker.activeField = "checkin";
+    checkin.value = "";
+    checkout.value = "";
+    checkout.removeAttribute("min");
+    syncDateDisplays();
+    renderCalendar();
+    checkinTrigger.focus();
+  });
+
+  applyButton?.addEventListener("click", () => {
+    if (!isDraftRangeValid()) return;
+    setDateValue(checkin, picker.draftCheckin);
+    setDateValue(checkout, picker.draftCheckout);
+    checkin.dispatchEvent(new Event("change", { bubbles: true }));
+    checkout.dispatchEvent(new Event("change", { bubbles: true }));
+    syncDateDisplays();
+    closeCalendar(true);
+  });
+
+  document.addEventListener("booking:close-date-picker", () => closeCalendar(false));
+
+  document.addEventListener("click", (event) => {
+    if (!picker.isOpen) return;
+    const target = event.target;
+    if (!(target instanceof Node)) return;
+    if (popover.contains(target) || checkinTrigger.contains(target) || checkoutTrigger.contains(target)) return;
+    closeCalendar(false);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || !picker.isOpen) return;
+    event.preventDefault();
+    closeCalendar(true);
+  });
+
+  const handleCalendarMqChange = () => {
+    if (picker.isOpen) renderCalendar();
+  };
+  if (typeof calendarMq.addEventListener === "function") calendarMq.addEventListener("change", handleCalendarMqChange);
+  else if (typeof calendarMq.addListener === "function") calendarMq.addListener(handleCalendarMqChange);
+
+  checkin.addEventListener("change", syncDateDisplays);
+  checkout.addEventListener("change", syncDateDisplays);
+  syncDateDisplays();
 }
 
 function pluralizeRu(value, one, few, many) {
@@ -695,10 +1145,12 @@ function updateGuestSummary() {
   const adultsCount = document.getElementById("adultsCount");
   const childrenCount = document.getElementById("childrenCount");
   const summary = document.getElementById("guestSummary");
+  const roomSummary = document.getElementById("guestRoomSummary");
   if (!adultsCount || !childrenCount || !summary) return;
 
   adultsCount.textContent = String(state.adults);
   childrenCount.textContent = String(state.children);
+  if (roomSummary) roomSummary.textContent = uiText.guestRoomSummary;
   const adultsInput = document.getElementById("adultsInput");
   const childrenInput = document.getElementById("childrenInput");
   if (adultsInput) adultsInput.value = String(state.adults);
@@ -723,6 +1175,7 @@ function initGuestPicker() {
     event.stopPropagation();
     const shouldOpen = trigger.getAttribute("aria-expanded") !== "true";
     if (shouldOpen) {
+      document.dispatchEvent(new CustomEvent("booking:close-date-picker"));
       const roomTrigger = document.getElementById("roomTrigger");
       const roomPopover = document.getElementById("roomPopover");
       roomTrigger?.setAttribute("aria-expanded", "false");
@@ -793,6 +1246,7 @@ function initRoomPicker() {
     event.stopPropagation();
     const shouldOpen = trigger.getAttribute("aria-expanded") !== "true";
     if (shouldOpen) {
+      document.dispatchEvent(new CustomEvent("booking:close-date-picker"));
       const guestTrigger = document.getElementById("guestTrigger");
       const guestPopover = document.getElementById("guestPopover");
       guestTrigger?.setAttribute("aria-expanded", "false");
@@ -1131,9 +1585,11 @@ function initBookingForm() {
     const phone = document.getElementById("bookingPhone");
     const room = document.getElementById("bookingRoom");
 
-    if (!checkin?.value || !checkout?.value || bookingNights(checkin.value, checkout.value) < 10) {
+    if (!checkin?.value || !checkout?.value || bookingNights(checkin.value, checkout.value) < BOOKING_MINIMUM_NIGHTS) {
       setBookingStatus(status, uiText.bookingDateMinimum, "error");
-      checkin?.focus();
+      const checkinTrigger = document.getElementById("checkinTrigger");
+      if (checkinTrigger) checkinTrigger.focus();
+      else checkin?.focus();
       return;
     }
 
