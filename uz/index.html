@@ -213,7 +213,7 @@
             “Zangiota Zam-Zam” sanatoriysi Toshkent viloyatining go‘zal hududida joylashgan. U sanoat hududlari va aholi punktlaridan uzoqda joylashgan, atrofi toza havo, ko'p quyosh va mevali bog'lar bilan o'ralgan. Mehmonlarga yuqori malakali tibbiy xizmat, shinam yashash xonalari, mazali va sog‘lom taomlar, tezkor xizmat ko‘rsatish, turli hordiq chiqarish tadbirlari ko‘rsatilmoqda.
           </p>
           <div class="section-link-wrap reveal">
-            <a class="section-link" href="#treatments">
+            <a class="section-link" href="about.html">
               <span>BATAFSIL</span>
               <span class="link-circle">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
@@ -223,160 +223,243 @@
             </a>
           </div>
           <div class="about-gallery">
-            <figure class="about-photo reveal reveal-left">
-              <img
-                src="https://ext.same-assets.com/10141910/1936374692.jpeg"
-                alt="Zangiota Zam-Zam sanatoriysi - Favvora"
-              />
-            </figure>
-            <figure class="about-photo reveal reveal-right">
+            <a class="about-photo about-photo--featured reveal reveal-left" href="about.html" aria-label="Sanatoriyning shifobaxsh tabiati haqida ko'proq o'qing">
               <img
                 src="https://ext.same-assets.com/10141910/3065879048.jpeg"
-                alt="Zangiota Zam-Zam sanatoriysi - Manba"
+                alt="Zangiota Zam-Zam sanatoriysi hududidagi sharsharalar va qarag‘aylar"
               />
-            </figure>
+              <span class="about-photo__overlay">
+                <span class="about-photo__title">Shifo beruvchi tabiat</span>
+                <span class="about-photo__description">Go'zal sharsharalar, toza tog' havosi va ko'p yillik qarag'ay daraxtlari to'liq dam olish muhitini yaratadi.</span>
+              </span>
+            </a>
+            <div class="about-gallery__stack reveal reveal-right">
+              <a class="about-photo about-photo--compact" href="about.html" aria-label="Sanatoriyning qulayligi va osoyishtaligi haqida ko'proq o'qing">
+                <img
+                  src="https://ext.same-assets.com/10141910/1936374692.jpeg"
+                  alt="Zangiota Zam-Zam sanatoriysining favvoralari va yam-yashil xiyobonlari"
+                />
+                <span class="about-photo__overlay">
+                  <span class="about-photo__title">Konfor va xotirjamlik</span>
+                  <span class="about-photo__description">Favvoralar, obodonlashtirilgan xiyobonlar maroqli sayr va sog‘lomlashishga chorlaydi.</span>
+                </span>
+              </a>
+              <a class="about-photo about-photo--compact" href="about.html" aria-label="Sanatoriyaning park hududi haqida batafsil ma'lumot">
+                <img
+                  src="../images/park3.jpg"
+                  alt="Zangiota Zam-Zam sanatoriysining istirohat bog‘i"
+                />
+                <span class="about-photo__overlay">
+                  <span class="about-photo__title">Park maydoni</span>
+                  <span class="about-photo__description">Yashil o'simliklar bilan o'ralgan keng sayr qilish joylari sizni sog'lomlashtirish va tabiatdan zavqlanishingizga yordam beradi.</span>
+                </span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
       <section id="treatments" class="section section-treatments">
-        <div class="container">
-          <h2 class="section-title reveal">Biz davolashga ixtisoslashganmiz:</h2>
-          <div class="treatment-grid reveal">
-            <article class="treatment-card">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.2"
-                  d="M10 4.2v2c0 .8-.3 1.6-.9 2.2-1.4 1.3-2.2 3.1-2.2 5 0 3.1 2.4 5.6 5.5 5.6s5.5-2.5 5.5-5.6c0-2.6-1.8-4.8-4.2-5.4-.6-.2-1-.7-1-1.3V6"
-                ></path>
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.2"
-                  d="M12.4 8.4c1.2-.1 2.2.3 3 .9"
-                ></path>
-              </svg>
-              <p>Oshqozon-ichak trakti kasalliklari</p>
+        <div class="container treatment-container">
+          <header class="treatment-header reveal">
+            <h2 class="section-title">Biz davolashga ixtisoslashganmiz:</h2>
+            <div class="treatment-divider" aria-hidden="true">
+              <span class="treatment-divider__line"></span>
+              <img class="treatment-signature" src="../images/icon.svg" alt="" />
+              <span class="treatment-divider__line"></span>
+            </div>
+            <p class="treatment-subtitle">
+              Zamonaviy davolash usullari, tajribali mutaxassislar va tabiiy shifobaxsh omillar salomatlikni tiklashga va hayot sifatini yaxshilashga yordam beradi.
+            </p>
+          </header>
+
+          <div class="treatment-layout reveal">
+            <div class="treatment-grid">
+              <article class="treatment-card">
+                <span class="treatment-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.2"
+                      d="M10 4.2v2c0 .8-.3 1.6-.9 2.2-1.4 1.3-2.2 3.1-2.2 5 0 3.1 2.4 5.6 5.5 5.6s5.5-2.5 5.5-5.6c0-2.6-1.8-4.8-4.2-5.4-.6-.2-1-.7-1-1.3V6"
+                    ></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.2"
+                      d="M12.4 8.4c1.2-.1 2.2.3 3 .9"
+                    ></path>
+                  </svg>
+                </span>
+                <h3>Oshqozon-ichak trakti kasalliklari</h3>
+                <span class="treatment-card__accent" aria-hidden="true"></span>
+              </article>
+              <article class="treatment-card">
+                <span class="treatment-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.2"
+                      d="M8.5 6.5C6.6 6.5 5 8 5 9.9v1c0 2.3 1.7 4.2 3.9 4.6 1.1.2 2.1-.7 2.1-1.9V8.8c0-1.3-1.1-2.3-2.5-2.3z"
+                    ></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.2"
+                      d="M15.5 6.5c1.9 0 3.5 1.5 3.5 3.4v1c0 2.3-1.7 4.2-3.9 4.6-1.1.2-2.1-.7-2.1-1.9V8.8c0-1.3 1.1-2.3 2.5-2.3z"
+                    ></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M12 14v4"></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.2"
+                      d="M10.5 18h3"
+                    ></path>
+                  </svg>
+                </span>
+                <h3>Urologik kasalliklar</h3>
+                <span class="treatment-card__accent" aria-hidden="true"></span>
+              </article>
+              <article class="treatment-card">
+                <span class="treatment-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="4.5" cy="11.5" r="1.5" stroke-width="1.2"></circle>
+                    <circle cx="19.5" cy="11.5" r="1.5" stroke-width="1.2"></circle>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.2"
+                      d="M6 11.5h3.2a3 3 0 003-3V7M18 11.5h-3.2a3 3 0 01-3-3V7"
+                    ></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M12 7v9"></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.2"
+                      d="M10.5 16h3"
+                    ></path>
+                  </svg>
+                </span>
+                <h3>Ginekologik kasalliklar</h3>
+                <span class="treatment-card__accent" aria-hidden="true"></span>
+              </article>
+              <article class="treatment-card">
+                <span class="treatment-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.2"
+                      d="M10.5 4.5l2.2 4-1 3.2 2 3.4-.7 4.9h-3l.5-4-2.2-3.1.9-3.5-1.6-3.1"
+                    ></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.2"
+                      d="M8.8 9.4h3"
+                    ></path>
+                  </svg>
+                </span>
+                <h3>Muskul-skelet tizimi</h3>
+                <span class="treatment-card__accent" aria-hidden="true"></span>
+              </article>
+              <article class="treatment-card">
+                <span class="treatment-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="12" cy="12" r="2.2" stroke-width="1.2"></circle>
+                    <circle cx="12" cy="4" r="1.1" stroke-width="1.2"></circle>
+                    <circle cx="12" cy="20" r="1.1" stroke-width="1.2"></circle>
+                    <circle cx="4" cy="12" r="1.1" stroke-width="1.2"></circle>
+                    <circle cx="20" cy="12" r="1.1" stroke-width="1.2"></circle>
+                    <circle cx="6.2" cy="6.2" r="1.1" stroke-width="1.2"></circle>
+                    <circle cx="17.8" cy="17.8" r="1.1" stroke-width="1.2"></circle>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M12 9.8V5.1"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M12 14.2v4.7"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M9.8 12H5.1"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M14.2 12h4.7"></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.2"
+                      d="M10.4 10.4L7 7"
+                    ></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.2"
+                      d="M13.6 13.6l3.4 3.4"
+                    ></path>
+                  </svg>
+                </span>
+                <h3>Asab tizimining kasalliklari</h3>
+                <span class="treatment-card__accent" aria-hidden="true"></span>
+              </article>
+              <article class="treatment-card">
+                <span class="treatment-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.2"
+                      d="M20.5 8.5a4.5 4.5 0 00-6.4 0L12 10.6 9.9 8.5a4.5 4.5 0 00-6.4 6.4L12 23l8.5-8.1a4.5 4.5 0 000-6.4z"
+                    ></path>
+                  </svg>
+                </span>
+                <h3>Yurak-qon tomir kasalliklari</h3>
+                <span class="treatment-card__accent" aria-hidden="true"></span>
+              </article>
+            </div>
+
+            <article class="treatment-feature-card">
+              <img
+                src="../images/source.jpg"
+                alt="Zangiota Zam-Zam sanatoriysidagi favvora va ko'kalamzor"
+                loading="lazy"
+              />
+              <div class="treatment-feature-card__content">
+                <span class="treatment-feature-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.35"
+                      d="M8.5 6.5C6.6 6.5 5 8 5 9.9v1c0 2.3 1.7 4.2 3.9 4.6 1.1.2 2.1-.7 2.1-1.9V8.8c0-1.3-1.1-2.3-2.5-2.3z"
+                    ></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.35"
+                      d="M15.5 6.5c1.9 0 3.5 1.5 3.5 3.4v1c0 2.3-1.7 4.2-3.9 4.6-1.1.2-2.1-.7-2.1-1.9V8.8c0-1.3 1.1-2.3 2.5-2.3z"
+                    ></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35" d="M12 14v4"></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.35"
+                      d="M10.5 18h3"
+                    ></path>
+                  </svg>
+                </span>
+                <h3>Nafas olish kasalliklari</h3>
+                <p>
+                  Nafas olish tizimini toza havo, tabiiy omillar va individual muolajalar rejasi asosida sog'lomlashtirish.
+                </p>
+                <span class="treatment-card__accent" aria-hidden="true"></span>
+              </div>
             </article>
-            <article class="treatment-card">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.2"
-                  d="M8.5 6.5C6.6 6.5 5 8 5 9.9v1c0 2.3 1.7 4.2 3.9 4.6 1.1.2 2.1-.7 2.1-1.9V8.8c0-1.3-1.1-2.3-2.5-2.3z"
-                ></path>
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.2"
-                  d="M15.5 6.5c1.9 0 3.5 1.5 3.5 3.4v1c0 2.3-1.7 4.2-3.9 4.6-1.1.2-2.1-.7-2.1-1.9V8.8c0-1.3 1.1-2.3 2.5-2.3z"
-                ></path>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M12 14v4"></path>
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.2"
-                  d="M10.5 18h3"
-                ></path>
-              </svg>
-              <p>Urologik kasalliklar</p>
-            </article>
-            <article class="treatment-card">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <circle cx="4.5" cy="11.5" r="1.5" stroke-width="1.2"></circle>
-                <circle cx="19.5" cy="11.5" r="1.5" stroke-width="1.2"></circle>
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.2"
-                  d="M6 11.5h3.2a3 3 0 003-3V7M18 11.5h-3.2a3 3 0 01-3-3V7"
-                ></path>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M12 7v9"></path>
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.2"
-                  d="M10.5 16h3"
-                ></path>
-              </svg>
-              <p>Ginekologik kasalliklar</p>
-            </article>
-            <article class="treatment-card">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.2"
-                  d="M13.5 4c-.8 2.5-2.2 4.8-3.9 6.8-1.3 1.5-2.1 3.1-2.1 4.6 0 2.1 1.7 3.8 3.8 3.8H14"
-                ></path>
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.2"
-                  d="M14 19h2.2a2.8 2.8 0 002.8-2.8c0-1.3-.8-2.4-2-2.9l-1.4-.6"
-                ></path>
-              </svg>
-              <p>Nafas olish kasalliklari</p>
-            </article>
-            <article class="treatment-card">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.2"
-                  d="M10.5 4.5l2.2 4-1 3.2 2 3.4-.7 4.9h-3l.5-4-2.2-3.1.9-3.5-1.6-3.1"
-                ></path>
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.2"
-                  d="M8.8 9.4h3"
-                ></path>
-              </svg>
-              <p>Muskul-skelet tizimi</p>
-            </article>
-            <article class="treatment-card">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <circle cx="12" cy="12" r="2.2" stroke-width="1.2"></circle>
-                <circle cx="12" cy="4" r="1.1" stroke-width="1.2"></circle>
-                <circle cx="12" cy="20" r="1.1" stroke-width="1.2"></circle>
-                <circle cx="4" cy="12" r="1.1" stroke-width="1.2"></circle>
-                <circle cx="20" cy="12" r="1.1" stroke-width="1.2"></circle>
-                <circle cx="6.2" cy="6.2" r="1.1" stroke-width="1.2"></circle>
-                <circle cx="17.8" cy="17.8" r="1.1" stroke-width="1.2"></circle>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M12 9.8V5.1"></path>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M12 14.2v4.7"></path>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M9.8 12H5.1"></path>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M14.2 12h4.7"></path>
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.2"
-                  d="M10.4 10.4L7 7"
-                ></path>
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.2"
-                  d="M13.6 13.6l3.4 3.4"
-                ></path>
-              </svg>
-              <p>Asab tizimining kasalliklari</p>
-            </article>
-            <article class="treatment-card">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.2"
-                  d="M20.5 8.5a4.5 4.5 0 00-6.4 0L12 10.6 9.9 8.5a4.5 4.5 0 00-6.4 6.4L12 23l8.5-8.1a4.5 4.5 0 000-6.4z"
-                ></path>
-              </svg>
-              <p>Yurak-qon tomir kasalliklari</p>
-            </article>
+          </div>
+
+          <div class="section-link-wrap treatment-cta reveal">
+            <a class="section-link" href="procedures.html">
+              <span>BATAFSIL</span>
+              <span class="link-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            </a>
           </div>
         </div>
       </section>
@@ -394,37 +477,46 @@
 
           <div class="room-layout">
             <article class="room-details">
-              <div class="room-header">
-                <h3 id="roomName">Standart (2-qavat)</h3>
-                <div class="price-badge">
-                  <span>dan</span>
-                  <strong id="roomPriceHeader">490 000</strong>
-                  <small id="roomCurrencyHeader">so'm / kecha</small>
-                </div>
-              </div>
+              <div class="room-intro">
+                <span class="room-kicker">
+                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <path d="M10 2.8l1.7 3.4 3.8.6-2.8 2.7.7 3.8-3.4-1.8-3.4 1.8.7-3.8-2.8-2.7 3.8-.6L10 2.8Z" stroke="currentColor" stroke-width="1.35" stroke-linejoin="round" />
+                  </svg>
+                  <span>Bestseller</span>
+                </span>
 
-              <div class="room-meta">
-                <div class="meta-item">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
-                      d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
-                    ></path>
-                  </svg>
-                  <span id="roomSize">20 m²</span>
+                <div class="room-header">
+                  <h3 id="roomName">Standart (2-qavat)</h3>
+                  <div class="price-badge">
+                    <span>dan</span>
+                    <strong id="roomPriceHeader">490 000</strong>
+                    <small id="roomCurrencyHeader">so'm / kecha</small>
+                  </div>
                 </div>
-                <div class="meta-item">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
-                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                    ></path>
-                  </svg>
-                  <span id="roomBuilding">Bosh bino</span>
+
+                <div class="room-meta">
+                  <div class="meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5"
+                        d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                      ></path>
+                    </svg>
+                    <span id="roomSize">20 m²</span>
+                  </div>
+                  <div class="meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5"
+                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                      ></path>
+                    </svg>
+                    <span id="roomBuilding">Bosh bino</span>
+                  </div>
                 </div>
               </div>
 
@@ -463,128 +555,64 @@
               </div>
             </article>
 
-            <article class="room-media">
-              <img
-                id="roomImage"
-                src="../assets/old/images/standart.jpg"
-                alt="Standart (2-qavat)"
-              />
-              <div class="image-price">
-                <p>Narxi dan</p>
-                <strong id="roomPriceImage">490 000</strong>
-                <small id="roomCurrencyImage">so'm / kecha</small>
-              </div>
-            </article>
-          </div>
-
-          <div class="legacy-room-gallery">
-            <article class="legacy-room-card reveal">
-              <div class="legacy-room-media">
+            <div class="room-visual">
+              <article class="room-media">
                 <img
+                  id="roomImage"
                   src="../assets/old/images/standart.jpg"
-                  alt="Standart xona (2-qavat)"
-                  loading="lazy"
+                  alt="Standart (2-qavat)"
                 />
-              </div>
-              <div class="legacy-room-copy">
-                <h3>Standart xona (2-qavat)</h3>
-                <p>
-                  Bir xonali ikki kishilik 20 m², LCD televizor, muzlatgich, konditsioner. Xona ichidagi dush va hojatxona, WiFi.
-                </p>
-                <a class="legacy-room-link" href="#contact">batafsil ma'lumot</a>
-              </div>
-            </article>
+                <div class="image-price">
+                  <p>Narxi dan</p>
+                  <strong id="roomPriceImage">490 000</strong>
+                  <small id="roomCurrencyImage">so'm / kecha</small>
+                </div>
+              </article>
 
-            <article class="legacy-room-card reveal">
-              <div class="legacy-room-media">
-                <img
-                  src="../assets/old/images/lux.jpg"
-                  alt="2 xonali Suite 55 m²"
-                  loading="lazy"
-                />
+              <div class="room-thumbnail-strip" aria-label="Xonalar">
+                <button class="room-thumbnail is-active" type="button" data-room-id="standart" aria-pressed="true">
+                  <img src="../assets/old/images/standart.jpg" alt="" loading="lazy" />
+                  <span>STANDART</span>
+                </button>
+                <button class="room-thumbnail" type="button" data-room-id="polulux1" aria-pressed="false">
+                  <img src="../assets/old/images/polulux.jpg" alt="" loading="lazy" />
+                  <span>JUNIOR SUITE 1K</span>
+                </button>
+                <button class="room-thumbnail" type="button" data-room-id="polulux2" aria-pressed="false">
+                  <img src="../assets/old/images/polulux.jpg" alt="" loading="lazy" />
+                  <span>JUNIOR SUITE 2K</span>
+                </button>
+                <button class="room-thumbnail" type="button" data-room-id="lux" aria-pressed="false">
+                  <img src="../assets/old/images/lux.jpg" alt="" loading="lazy" />
+                  <span>LUX</span>
+                </button>
               </div>
-              <div class="legacy-room-copy">
-                <h3>2 xonali Suite 55 m²</h3>
-                <p>
-                  Ikki kishilik ikki xonali VIP, 56 m². Chiroyli mebellar, qulay divanlar, LCD-42d, muzlatgich, keng hammom, bog'ga qaragan balkonlar.
-                </p>
-                <a class="legacy-room-link" href="#contact">batafsil ma'lumot</a>
-              </div>
-            </article>
-
-            <article class="legacy-room-card reveal">
-              <div class="legacy-room-media">
-                <img
-                  src="../assets/old/images/polulux.jpg"
-                  alt="Ikki kishilik 2 xonali Junior Suite"
-                  loading="lazy"
-                />
-              </div>
-              <div class="legacy-room-copy">
-                <h3>Ikki kishilik 2 xonali Junior Suite</h3>
-                <p>Ikkita shinam xona, hammom, LCD televizor, muzlatgich, bog'ga qaragan balkon.</p>
-                <a class="legacy-room-link" href="#contact">batafsil ma'lumot</a>
-              </div>
-            </article>
-
-            <article class="legacy-room-card reveal">
-              <div class="legacy-room-media">
-                <img
-                  src="../assets/old/images/standart.jpg"
-                  alt="4 o'rinli xona (Ekonom)"
-                  loading="lazy"
-                />
-              </div>
-              <div class="legacy-room-copy">
-                <h3>4 o'rinli xona (Ekonom)</h3>
-                <p>
-                  4 o'rinli ekonom sinf xonasi. 1 xonadan iborat. Hammom (hojatxona, dush) koridorda umumiydir. Mebel, kabel televideniesi, muzlatgich bilan jihozlangan.
-                </p>
-                <a class="legacy-room-link" href="#contact">batafsil ma'lumot</a>
-              </div>
-            </article>
-
-            <article class="legacy-room-card reveal">
-              <div class="legacy-room-media">
-                <img
-                  src="../assets/old/images/polulux.jpg"
-                  alt="Ikki kishilik junior suit, bitta xona 36 m²"
-                  loading="lazy"
-                />
-              </div>
-              <div class="legacy-room-copy">
-                <h3>Ikki kishilik junior suit, bitta xona 36 m²</h3>
-                <p>
-                  Bir xonali ikki kishilik xona (36 m²): alohida hammom, LCD-TV, muzlatgich, yumshoq mebel, bog'ga qaragan balkon.
-                </p>
-                <a class="legacy-room-link" href="#contact">batafsil ma'lumot</a>
-              </div>
-            </article>
-
-            <article class="legacy-room-card reveal">
-              <div class="legacy-room-media">
-                <img
-                  src="../assets/old/images/standart.jpg"
-                  alt="2 o'rinli Standart xona (bir xonali)"
-                  loading="lazy"
-                />
-              </div>
-              <div class="legacy-room-copy">
-                <h3>2 o'rinli Standart xona (bir xonali)</h3>
-                <p>
-                  Ikki kishilik bir xonali standart. 1 va 3-qavatlarda. Xona 20 m², hammom (dush va hojatxona), qarag'aylarga qaraydigan balkon, kabel televideniesi (LCD).
-                </p>
-                <a class="legacy-room-link" href="#contact">batafsil ma'lumot</a>
-              </div>
-            </article>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="reviews" class="section section-reviews">
+      <section id="reviews" class="section section-reviews" aria-labelledby="reviews-title">
         <div class="container reviews-wrap">
-          <h2 class="section-title reviews-title">Mehmonlar sharhlari</h2>
+          <div class="reviews-header reveal">
+            <div class="reviews-heading">
+              <h2 id="reviews-title" class="section-title reviews-title">Mehmonlar sharhlari</h2>
+              <p class="reviews-subtitle">Biz har bir mehmon fikrini qadrlaymiz. Haqiqiy sharhlar boshqalarga sanatoriyni tanlashda yordam beradi.</p>
+            </div>
+            <aside class="reviews-summary-card" aria-label="Sharhlar reytingi va manbalari">
+              <div class="reviews-summary-rating">
+                <span class="reviews-summary-stars" aria-hidden="true">★★★★★</span>
+                <strong id="reviewsAverageRating">4.9</strong>
+              </div>
+              <p id="reviewsBasedOn">751+ baho asosida</p>
+              <p id="reviewsPositive">Asosiy jihatlar bo'yicha 97% ijobiy baho</p>
+              <div id="reviewsSourceStats" class="reviews-source-stats"></div>
+              <a id="reviewsCta" class="btn btn-primary reviews-cta" href="https://yandex.com/maps/?mode=search&amp;tab=reviews&amp;ol=biz&amp;oid=70228850210" target="_blank" rel="noopener noreferrer">Sharh qoldirish</a>
+            </aside>
+          </div>
+          <div id="reviewFilters" class="review-filters" aria-label="Sharhlar filtri"></div>
           <div id="reviewGrid" class="review-grid" aria-live="polite"></div>
+          <nav id="reviewPagination" class="review-pagination" aria-label="Sharhlar sahifalari"></nav>
         </div>
       </section>
 

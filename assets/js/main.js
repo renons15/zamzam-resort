@@ -17,6 +17,21 @@ const uiTextByLang = {
   ru: {
     reviewLabel: "Отзыв",
     reviewLink: "Открыть отзыв",
+    reviewSectionSubtitle:
+      "Мы ценим мнение каждого гостя. Настоящие отзывы помогают другим людям выбрать санаторий.",
+    reviewStatsAria: "Рейтинг и источники отзывов",
+    reviewBasedOn: "На основе {count}+ оценок",
+    reviewPositive: "{percent}% положительных оценок по ключевым аспектам",
+    reviewLeave: "Оставить отзыв",
+    reviewFilterLabel: "Фильтр отзывов",
+    reviewVerified: "Проверенный отзыв",
+    reviewSource: "Источник",
+    reviewCityFallback: "город не указан",
+    reviewPrevious: "Предыдущая страница отзывов",
+    reviewNext: "Следующая страница отзывов",
+    reviewNoResults: "Для выбранной категории пока нет проверенных отзывов.",
+    reviewSourceReviews: "{count} отзывов",
+    reviewSourceRatings: "{count} оценок",
     perNight: "ночь",
     perDay: "сутки",
     adultForms: ["взрослый", "взрослых", "взрослых"],
@@ -41,6 +56,21 @@ const uiTextByLang = {
   uz: {
     reviewLabel: "Sharh",
     reviewLink: "Sharhni ochish",
+    reviewSectionSubtitle:
+      "Biz har bir mehmon fikrini qadrlaymiz. Haqiqiy sharhlar boshqalarga sanatoriyni tanlashda yordam beradi.",
+    reviewStatsAria: "Sharhlar reytingi va manbalari",
+    reviewBasedOn: "{count}+ baho asosida",
+    reviewPositive: "Asosiy jihatlar bo'yicha {percent}% ijobiy baho",
+    reviewLeave: "Sharh qoldirish",
+    reviewFilterLabel: "Sharhlar filtri",
+    reviewVerified: "Tasdiqlangan sharh",
+    reviewSource: "Manba",
+    reviewCityFallback: "shahar ko'rsatilmagan",
+    reviewPrevious: "Oldingi sharhlar sahifasi",
+    reviewNext: "Keyingi sharhlar sahifasi",
+    reviewNoResults: "Tanlangan kategoriya uchun tasdiqlangan sharhlar hozircha yo'q.",
+    reviewSourceReviews: "{count} sharh",
+    reviewSourceRatings: "{count} baho",
     perNight: "kecha",
     perDay: "kun",
     adultForms: ["katta", "katta", "katta"],
@@ -65,6 +95,21 @@ const uiTextByLang = {
   kk: {
     reviewLabel: "Пікір",
     reviewLink: "Пікірді ашу",
+    reviewSectionSubtitle:
+      "Біз әр қонақтың пікірін бағалаймыз. Шынайы пікірлер басқа адамдарға шипажайды таңдауға көмектеседі.",
+    reviewStatsAria: "Пікірлер рейтингі және дереккөздер",
+    reviewBasedOn: "{count}+ баға негізінде",
+    reviewPositive: "Негізгі аспектілер бойынша {percent}% оң баға",
+    reviewLeave: "Пікір қалдыру",
+    reviewFilterLabel: "Пікірлер сүзгісі",
+    reviewVerified: "Расталған пікір",
+    reviewSource: "Дереккөз",
+    reviewCityFallback: "қала көрсетілмеген",
+    reviewPrevious: "Алдыңғы пікірлер беті",
+    reviewNext: "Келесі пікірлер беті",
+    reviewNoResults: "Таңдалған санат үшін расталған пікірлер әзірге жоқ.",
+    reviewSourceReviews: "{count} пікір",
+    reviewSourceRatings: "{count} баға",
     perNight: "түн",
     perDay: "тәулік",
     adultForms: ["ересек", "ересек", "ересек"],
@@ -331,162 +376,224 @@ const roomDataByLang = {
   }
 };
 
-const reviewsByLang = {
-  ru: [
+const YANDEX_REVIEWS_URL =
+  "https://yandex.com/maps/?mode=search&tab=reviews&ol=biz&oid=70228850210";
+const GOOGLE_REVIEWS_URL =
+  "https://www.google.com/maps/search/?api=1&query=Zangiota%20Zam-Zam%20MCHJ";
+
+const reviewStats = {
+  rating: 4.9,
+  totalCount: 751,
+  positivePercent: 97,
+  ctaUrl: YANDEX_REVIEWS_URL,
+  sources: [
     {
-      name: "Мария К.",
-      city: "Самарканд",
-      date: "03.03.2025",
+      source: "Яндекс Карты",
+      sourceKey: "yandex",
       rating: 5,
-      text: "Вода — словно эликсир молодости. Сон и кожа стали лучше.",
-      url: "__REVIEW_URL__"
+      count: 229,
+      countType: "reviews",
+      sourceUrl: YANDEX_REVIEWS_URL
     },
     {
-      name: "Алексей П.",
-      city: "Ташкент",
-      date: "12.04.2025",
-      rating: 5,
-      text: "Прекрасный санаторий с отличным сервисом и лечением!",
-      url: "__REVIEW_URL__"
-    },
-    {
-      name: "Наталья Б.",
-      city: "Навои",
-      date: "18.02.2025",
-      rating: 5,
-      text: "Природа потрясающая, процедуры эффективные.",
-      url: "__REVIEW_URL__"
-    },
-    {
-      name: "Сергей В.",
-      city: "Фергана",
-      date: "27.01.2025",
-      rating: 5,
-      text: "Рекомендую, особенно людям с проблемами суставов.",
-      url: "__REVIEW_URL__"
-    },
-    {
-      name: "Елена Д.",
-      city: "Бухара",
-      date: "10.01.2025",
-      rating: 5,
-      text: "Вернулась домой полная сил, здоровья. Персонал отличный.",
-      url: "__REVIEW_URL__"
-    },
-    {
-      name: "Ольга Ш.",
-      city: "Андижан",
-      date: "22.12.2024",
-      rating: 5,
-      text: "Лечебная вода творит чудеса. Очень довольна.",
-      url: "__REVIEW_URL__"
-    }
-  ],
-  uz: [
-    {
-      name: "Mariya K.",
-      city: "Samarqand",
-      date: "03.03.2025",
-      rating: 5,
-      text: "Suv go'yo yoshlik eliksiri. Uyqu ham, terim ham yaxshilandi.",
-      url: "__REVIEW_URL__"
-    },
-    {
-      name: "Aleksey P.",
-      city: "Toshkent",
-      date: "12.04.2025",
-      rating: 5,
-      text: "Ajoyib servis va davolashga ega zo'r sanatoriy!",
-      url: "__REVIEW_URL__"
-    },
-    {
-      name: "Natalya B.",
-      city: "Navoiy",
-      date: "18.02.2025",
-      rating: 5,
-      text: "Tabiat ajoyib, muolajalar samarali.",
-      url: "__REVIEW_URL__"
-    },
-    {
-      name: "Sergey V.",
-      city: "Farg'ona",
-      date: "27.01.2025",
-      rating: 5,
-      text: "Tavsiya qilaman, ayniqsa bo'g'im muammosi borlarga.",
-      url: "__REVIEW_URL__"
-    },
-    {
-      name: "Elena D.",
-      city: "Buxoro",
-      date: "10.01.2025",
-      rating: 5,
-      text: "Uyga kuch va sog'liq bilan qaytdim. Jamoa zo'r.",
-      url: "__REVIEW_URL__"
-    },
-    {
-      name: "Olga Sh.",
-      city: "Andijon",
-      date: "22.12.2024",
-      rating: 5,
-      text: "Shifobaxsh suv mo''jiza qiladi. Juda mamnunman.",
-      url: "__REVIEW_URL__"
-    }
-  ],
-  kk: [
-    {
-      name: "Мария К.",
-      city: "Самарқанд",
-      date: "03.03.2025",
-      rating: 5,
-      text: "Су жастық эликсиріндей. Ұйқы мен терім жақсарды.",
-      url: "__REVIEW_URL__"
-    },
-    {
-      name: "Алексей П.",
-      city: "Ташкент",
-      date: "12.04.2025",
-      rating: 5,
-      text: "Қызметі мен емі өте жақсы керемет шипажай!",
-      url: "__REVIEW_URL__"
-    },
-    {
-      name: "Наталья Б.",
-      city: "Науаи",
-      date: "18.02.2025",
-      rating: 5,
-      text: "Табиғат тамаша, емшаралар тиімді.",
-      url: "__REVIEW_URL__"
-    },
-    {
-      name: "Сергей В.",
-      city: "Ферғана",
-      date: "27.01.2025",
-      rating: 5,
-      text: "Ұсынамын, әсіресе буын мәселесі бар адамдарға.",
-      url: "__REVIEW_URL__"
-    },
-    {
-      name: "Елена Д.",
-      city: "Бұхара",
-      date: "10.01.2025",
-      rating: 5,
-      text: "Үйге күш-қуатпен оралдым. Қызметкерлер керемет.",
-      url: "__REVIEW_URL__"
-    },
-    {
-      name: "Ольга Ш.",
-      city: "Андижан",
-      date: "22.12.2024",
-      rating: 5,
-      text: "Емдік су керемет әсер береді. Өте ризамын.",
-      url: "__REVIEW_URL__"
+      source: "Google Reviews",
+      sourceKey: "google",
+      rating: 4.6,
+      count: 235,
+      countType: "reviews",
+      sourceUrl: GOOGLE_REVIEWS_URL
     }
   ]
+};
+
+const verifiedReviews = [
+  {
+    id: "yandex-BQbopop7TFQtFQeIFXz0oteWMNy9NT",
+    reviewId: "BQbopop7TFQtFQeIFXz0oteWMNy9NT",
+    name: "Надежда Захарчук",
+    city: "",
+    date: "2026-05-06",
+    rating: 5,
+    source: "Яндекс Карты",
+    sourceKey: "yandex",
+    sourceUrl: YANDEX_REVIEWS_URL,
+    category: ["treatment", "staff", "food"],
+    verified: true,
+    text:
+      "Хочу поблагодарить санаторий ZamZam, глав/врача Олимбой Камоловича за прекрасный, оздоровительный комплекс, за чистейшую, полезную минеральную воду..."
+  },
+  {
+    id: "yandex-AQIM3J_sDEvsrDPoFAtWfouDls3e-K",
+    reviewId: "AQIM3J_sDEvsrDPoFAtWfouDls3e-K",
+    name: "Gulnora Sadieva",
+    city: "",
+    date: "2026-01-21",
+    rating: 5,
+    source: "Яндекс Карты",
+    sourceKey: "yandex",
+    sourceUrl: YANDEX_REVIEWS_URL,
+    category: ["treatment", "stay", "food", "procedures"],
+    verified: true,
+    text:
+      "Идеальное место для восстановления сил и здоровья! «Провели в санатории «Zangiota Zam-Zam» незабываемые 10 дней..."
+  },
+  {
+    id: "yandex-0fGgz3ded6KAI7c7bZNiZtZJl8mRA4",
+    reviewId: "0fGgz3ded6KAI7c7bZNiZtZJl8mRA4",
+    name: "Гульмира К",
+    city: "",
+    date: "2026-01-10",
+    rating: 5,
+    source: "Яндекс Карты",
+    sourceKey: "yandex",
+    sourceUrl: YANDEX_REVIEWS_URL,
+    category: ["treatment", "staff", "procedures"],
+    verified: true,
+    text:
+      "Мы с дочкой и сестрой посетили санаторий Zam-Zam, и у нас остались самые тёплые и приятные впечатления."
+  },
+  {
+    id: "yandex-gf5eE2ZAruER8rrx4pTbqVblITOSCQb45",
+    reviewId: "gf5eE2ZAruER8rrx4pTbqVblITOSCQb45",
+    name: "Феруза Ибрагимова",
+    city: "",
+    date: "2025-12-30",
+    rating: 5,
+    source: "Яндекс Карты",
+    sourceKey: "yandex",
+    sourceUrl: YANDEX_REVIEWS_URL,
+    category: ["stay", "staff", "food"],
+    verified: true,
+    text:
+      "Территория ухоженная, чистая, приятно прогуливаться. Персонал вежливый и отзывчивый, всегда готов помочь..."
+  },
+  {
+    id: "yandex-dD2A56hsEyQvk6JN1jGLsXLrkvS8z3od",
+    reviewId: "dD2A56hsEyQvk6JN1jGLsXLrkvS8z3od",
+    name: "Анастасия",
+    city: "",
+    date: "2026-02-25",
+    rating: 5,
+    source: "Яндекс Карты",
+    sourceKey: "yandex",
+    sourceUrl: YANDEX_REVIEWS_URL,
+    category: ["treatment", "staff", "procedures"],
+    verified: true,
+    text:
+      "Очень внимательный и грамотный персонал.никакой вопрос не останется без ответа. Доктор Азиза Абдуалиевна Нишанова..."
+  },
+  {
+    id: "yandex-ug-rQ8WRA-C6qBgjXY18gfijl4uI2g",
+    reviewId: "ug-rQ8WRA-C6qBgjXY18gfijl4uI2g",
+    name: "Бану Сабыркеева",
+    city: "",
+    date: "2026-01-07",
+    rating: 5,
+    source: "Яндекс Карты",
+    sourceKey: "yandex",
+    sourceUrl: YANDEX_REVIEWS_URL,
+    category: ["treatment", "staff", "procedures"],
+    verified: true,
+    text:
+      "Нас встретили с теплотой и заботой. Нас обслуживала врач физио терапевт Нишанова Азиза..."
+  },
+  {
+    id: "yandex-PciUJioGiMJDvx6coxVHUShSigx85l",
+    reviewId: "PciUJioGiMJDvx6coxVHUShSigx85l",
+    name: "Надежда Ли",
+    city: "",
+    date: "2026-03-11",
+    rating: 5,
+    source: "Яндекс Карты",
+    sourceKey: "yandex",
+    sourceUrl: YANDEX_REVIEWS_URL,
+    category: ["stay", "staff", "food"],
+    verified: true,
+    text:
+      "Приехали с мужем и остались очень довольны! Санаторий находится близко от города , территория чистая, зелёная, красивая!"
+  },
+  {
+    id: "yandex-SeNAMBbvrqFK9v2QVhTr_MoZUVSH4GMvd",
+    reviewId: "SeNAMBbvrqFK9v2QVhTr_MoZUVSH4GMvd",
+    name: "alsu i.",
+    city: "",
+    date: "2026-04-20",
+    rating: 5,
+    source: "Яндекс Карты",
+    sourceKey: "yandex",
+    sourceUrl: YANDEX_REVIEWS_URL,
+    category: ["treatment", "staff", "stay"],
+    verified: true,
+    text:
+      "В санатории Зангиота отдыхали с 7 по 20 апреля 2026 года. Сразу хочется сказать, что все положительные отзывы..."
+  },
+  {
+    id: "yandex-665vEK1obNVRnWDAfIio9xGaC-H6NBb",
+    reviewId: "665vEK1obNVRnWDAfIio9xGaC-H6NBb",
+    name: "Ирина Афанасьева",
+    city: "",
+    date: "2026-03-16",
+    rating: 5,
+    source: "Яндекс Карты",
+    sourceKey: "yandex",
+    sourceUrl: YANDEX_REVIEWS_URL,
+    category: ["treatment", "staff", "procedures"],
+    verified: true,
+    text:
+      "Очень хорошее лечение и разнообразные процедуры.Очень понравилась минеральная ванна,электропроцедуры на современных аппаратах."
+  }
+];
+
+const reviewsByLang = {
+  ru: verifiedReviews,
+  uz: verifiedReviews,
+  kk: verifiedReviews
 };
 
 const roomData = roomDataByLang[currentLang] || roomDataByLang.ru;
 const reviews = reviewsByLang[currentLang] || reviewsByLang.ru;
 const uiText = uiTextByLang[currentLang] || uiTextByLang.ru;
+
+const REVIEW_PAGE_SIZE = 6;
+const reviewState = {
+  filter: "all",
+  page: 1
+};
+
+const reviewFilterConfig = [
+  { id: "all", label: { ru: "Все отзывы", uz: "Barcha sharhlar", kk: "Барлық пікірлер" } },
+  { id: "treatment", label: { ru: "Лечение", uz: "Davolash", kk: "Емдеу" } },
+  { id: "stay", label: { ru: "Проживание", uz: "Yashash", kk: "Орналасу" } },
+  { id: "food", label: { ru: "Питание", uz: "Ovqatlanish", kk: "Тамақтану" } },
+  { id: "staff", label: { ru: "Персонал", uz: "Xodimlar", kk: "Қызметкерлер" } },
+  { id: "procedures", label: { ru: "Процедуры", uz: "Muolajalar", kk: "Процедуралар" } }
+];
+
+const reviewCategoryLabels = reviewFilterConfig.reduce((labels, item) => {
+  labels[item.id] = item.label;
+  return labels;
+}, {});
+
+const reviewSourceMeta = {
+  yandex: {
+    icon: "Я",
+    label: "Яндекс Карты"
+  },
+  google: {
+    icon: "G",
+    label: "Google Reviews"
+  },
+  youtube: {
+    icon: "▶",
+    label: "YouTube"
+  },
+  twogis: {
+    icon: "2G",
+    label: "2GIS"
+  }
+};
+
+let revealAnimationsReady = false;
 
 const state = {
   activeRoomId: "standart",
@@ -1308,6 +1415,12 @@ function renderRoom(roomId) {
     button.classList.toggle("is-active", button.dataset.roomId === roomId);
   });
 
+  document.querySelectorAll(".room-thumbnail").forEach((button) => {
+    const isActive = button.dataset.roomId === roomId;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+
   const roomName = document.getElementById("roomName");
   const roomSize = document.getElementById("roomSize");
   const roomBuilding = document.getElementById("roomBuilding");
@@ -1363,7 +1476,7 @@ function renderRoom(roomId) {
 }
 
 function initRoomTabs() {
-  document.querySelectorAll(".room-tab").forEach((button) => {
+  document.querySelectorAll(".room-tab, .room-thumbnail").forEach((button) => {
     button.addEventListener("click", () => {
       const roomId = button.dataset.roomId;
       if (!roomId) return;
@@ -1388,6 +1501,17 @@ function createStarIcon() {
   return icon;
 }
 
+function formatText(template, values) {
+  return Object.entries(values).reduce(
+    (text, [key, value]) => text.replace(`{${key}}`, value),
+    template
+  );
+}
+
+function getLocalizedLabel(labelMap) {
+  return labelMap?.[currentLang] || labelMap?.ru || "";
+}
+
 function getReviewInitials(name) {
   return name
     .split(" ")
@@ -1398,9 +1522,85 @@ function getReviewInitials(name) {
     .toUpperCase();
 }
 
+function formatReviewDate(dateValue) {
+  if (!dateValue) return "";
+  const date = new Date(`${dateValue}T00:00:00`);
+  if (Number.isNaN(date.getTime())) return dateValue;
+
+  return new Intl.DateTimeFormat(localeByLang[currentLang] || localeByLang.ru, {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  }).format(date);
+}
+
+function createSourceBadge(sourceKey, sourceLabel) {
+  const sourceMeta = reviewSourceMeta[sourceKey] || {
+    icon: sourceLabel.slice(0, 2).toUpperCase(),
+    label: sourceLabel
+  };
+  const badge = document.createElement("span");
+  badge.className = `review-source-badge review-source-badge--${sourceKey || "default"}`;
+
+  const icon = document.createElement("span");
+  icon.className = "review-source-icon";
+  icon.textContent = sourceMeta.icon;
+
+  const label = document.createElement("span");
+  label.textContent = sourceMeta.label || sourceLabel;
+
+  badge.appendChild(icon);
+  badge.appendChild(label);
+  return badge;
+}
+
+function createRatingStars(rating) {
+  const stars = document.createElement("div");
+  stars.className = "review-stars";
+  const normalizedRating = Math.max(0, Math.min(5, Number(rating) || 0));
+  stars.setAttribute("aria-label", `${uiText.reviewLabel}: ${normalizedRating}/5`);
+
+  for (let i = 0; i < 5; i += 1) {
+    const star = createStarIcon();
+    star.style.setProperty("--star-index", i);
+    if (i >= normalizedRating) {
+      star.classList.add("is-muted");
+    }
+    stars.appendChild(star);
+  }
+
+  return stars;
+}
+
+function createReviewCategories(review) {
+  const categories = Array.isArray(review.category) ? review.category : [];
+  const list = document.createElement("div");
+  list.className = "review-badges";
+
+  categories.forEach((categoryId) => {
+    const label = getLocalizedLabel(reviewCategoryLabels[categoryId]);
+    if (!label) return;
+
+    const badge = document.createElement("span");
+    badge.className = `review-category review-category--${categoryId}`;
+    badge.textContent = label;
+    list.appendChild(badge);
+  });
+
+  return list;
+}
+
 function createReviewCard(review) {
   const card = document.createElement("article");
   card.className = "review-card reveal";
+  card.dataset.reviewId = review.reviewId || review.id;
+
+  if (revealAnimationsReady) {
+    card.classList.add("visible");
+  }
+
+  const top = document.createElement("div");
+  top.className = "review-card-top";
 
   const author = document.createElement("div");
   author.className = "review-author";
@@ -1412,67 +1612,241 @@ function createReviewCard(review) {
   const meta = document.createElement("div");
 
   const nameLocation = document.createElement("h4");
-  nameLocation.textContent = `${review.name}, ${review.city}`;
+  nameLocation.textContent = review.name;
+
+  const details = document.createElement("p");
+  details.className = "review-meta";
+  const city = review.city || uiText.reviewCityFallback;
+  const date = formatReviewDate(review.date);
+  details.textContent = [city, date].filter(Boolean).join(" · ");
 
   meta.appendChild(nameLocation);
-  if (review.date) {
-    const date = document.createElement("p");
-    date.className = "review-date";
-    date.textContent = review.date;
-    meta.appendChild(date);
-  }
+  meta.appendChild(details);
 
   author.appendChild(avatar);
   author.appendChild(meta);
+  top.appendChild(author);
+  top.appendChild(createSourceBadge(review.sourceKey, review.source));
 
-  const stars = document.createElement("div");
-  stars.className = "review-stars";
-  const rating = Math.max(0, Math.min(5, Number(review.rating) || 0));
-  stars.setAttribute("aria-label", `${uiText.reviewLabel}: ${rating}/5`);
-  for (let i = 0; i < rating; i += 1) {
-    stars.appendChild(createStarIcon());
+  const trust = document.createElement("div");
+  trust.className = "review-trust";
+  if (review.verified) {
+    const verified = document.createElement("span");
+    verified.className = "review-verified";
+    verified.textContent = `✓ ${uiText.reviewVerified}`;
+    trust.appendChild(verified);
   }
+  trust.appendChild(createRatingStars(review.rating));
 
   const text = document.createElement("p");
   text.className = "review-text";
   text.textContent = review.text;
 
-  card.appendChild(author);
-  card.appendChild(stars);
+  card.appendChild(top);
+  card.appendChild(trust);
   card.appendChild(text);
+  card.appendChild(createReviewCategories(review));
 
   const hasValidReviewUrl =
-    typeof review.url === "string" && /^https?:\/\//i.test(review.url);
+    typeof review.sourceUrl === "string" && /^https?:\/\//i.test(review.sourceUrl);
 
   if (hasValidReviewUrl) {
     const link = document.createElement("a");
     link.className = "review-more";
-    link.href = review.url;
+    link.href = review.sourceUrl;
     link.target = "_blank";
     link.rel = "noopener noreferrer";
-    link.textContent = uiText.reviewLink;
+    link.textContent = `${uiText.reviewSource} → ${review.source}`;
     card.appendChild(link);
   }
 
   return card;
 }
 
+function getFilteredReviews() {
+  if (reviewState.filter === "all") return reviews;
+  return reviews.filter((review) => {
+    const categories = Array.isArray(review.category) ? review.category : [];
+    return categories.includes(reviewState.filter);
+  });
+}
+
+function renderReviewStats() {
+  const summaryCard = document.querySelector(".reviews-summary-card");
+  const averageRating = document.getElementById("reviewsAverageRating");
+  const basedOn = document.getElementById("reviewsBasedOn");
+  const positive = document.getElementById("reviewsPositive");
+  const cta = document.getElementById("reviewsCta");
+  const sourceList = document.getElementById("reviewsSourceStats");
+
+  if (summaryCard) {
+    summaryCard.setAttribute("aria-label", uiText.reviewStatsAria);
+  }
+  if (averageRating) {
+    averageRating.textContent = reviewStats.rating.toFixed(1);
+  }
+  if (basedOn) {
+    basedOn.textContent = formatText(uiText.reviewBasedOn, { count: reviewStats.totalCount });
+  }
+  if (positive) {
+    positive.textContent = formatText(uiText.reviewPositive, {
+      percent: reviewStats.positivePercent
+    });
+  }
+  if (cta) {
+    cta.href = reviewStats.ctaUrl;
+    cta.textContent = uiText.reviewLeave;
+  }
+  if (!sourceList) return;
+
+  sourceList.innerHTML = "";
+  reviewStats.sources.forEach((source) => {
+    const item = document.createElement("a");
+    item.className = `reviews-source-stat reviews-source-stat--${source.sourceKey}`;
+    item.href = source.sourceUrl;
+    item.target = "_blank";
+    item.rel = "noopener noreferrer";
+
+    item.appendChild(createSourceBadge(source.sourceKey, source.source));
+
+    const rating = document.createElement("strong");
+    rating.textContent = source.rating.toFixed(1);
+
+    const countText =
+      source.countType === "ratings" ? uiText.reviewSourceRatings : uiText.reviewSourceReviews;
+    const count = document.createElement("span");
+    count.textContent = formatText(countText, { count: source.count });
+
+    item.appendChild(rating);
+    item.appendChild(count);
+    sourceList.appendChild(item);
+  });
+}
+
+function renderReviewFilters() {
+  const filters = document.getElementById("reviewFilters");
+  if (!filters) return;
+
+  filters.setAttribute("aria-label", uiText.reviewFilterLabel);
+  filters.innerHTML = "";
+
+  reviewFilterConfig.forEach((filter) => {
+    const button = document.createElement("button");
+    button.className = "review-filter";
+    button.type = "button";
+    button.dataset.reviewFilter = filter.id;
+    button.textContent = getLocalizedLabel(filter.label);
+    const isActive = reviewState.filter === filter.id;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+    button.addEventListener("click", () => {
+      reviewState.filter = filter.id;
+      reviewState.page = 1;
+      renderReviews();
+      renderReviewFilters();
+    });
+    filters.appendChild(button);
+  });
+}
+
+function renderReviewPagination(totalPages) {
+  const pagination = document.getElementById("reviewPagination");
+  if (!pagination) return;
+
+  pagination.innerHTML = "";
+  if (totalPages <= 1) return;
+
+  const createButton = (label, page, options = {}) => {
+    const button = document.createElement("button");
+    button.className = "review-page";
+    button.type = "button";
+    button.textContent = label;
+    if (options.ariaLabel) {
+      button.setAttribute("aria-label", options.ariaLabel);
+    }
+    if (options.current) {
+      button.classList.add("is-active");
+      button.setAttribute("aria-current", "page");
+    }
+    if (options.disabled) {
+      button.disabled = true;
+    }
+    button.addEventListener("click", () => {
+      reviewState.page = page;
+      renderReviews();
+    });
+    return button;
+  };
+
+  pagination.appendChild(
+    createButton("‹", Math.max(1, reviewState.page - 1), {
+      ariaLabel: uiText.reviewPrevious,
+      disabled: reviewState.page === 1
+    })
+  );
+
+  for (let page = 1; page <= totalPages; page += 1) {
+    pagination.appendChild(
+      createButton(String(page), page, {
+        current: page === reviewState.page
+      })
+    );
+  }
+
+  pagination.appendChild(
+    createButton("›", Math.min(totalPages, reviewState.page + 1), {
+      ariaLabel: uiText.reviewNext,
+      disabled: reviewState.page === totalPages
+    })
+  );
+}
+
+function renderReviews() {
+  const reviewGrid = document.getElementById("reviewGrid");
+  if (!reviewGrid) return;
+
+  const filteredReviews = getFilteredReviews();
+  const totalPages = Math.max(1, Math.ceil(filteredReviews.length / REVIEW_PAGE_SIZE));
+  reviewState.page = Math.min(reviewState.page, totalPages);
+
+  const start = (reviewState.page - 1) * REVIEW_PAGE_SIZE;
+  const visibleReviews = filteredReviews.slice(start, start + REVIEW_PAGE_SIZE);
+
+  reviewGrid.innerHTML = "";
+
+  if (visibleReviews.length === 0) {
+    const emptyState = document.createElement("p");
+    emptyState.className = "review-empty";
+    emptyState.textContent = uiText.reviewNoResults;
+    reviewGrid.appendChild(emptyState);
+  } else {
+    visibleReviews.forEach((review) => {
+      reviewGrid.appendChild(createReviewCard(review));
+    });
+  }
+
+  renderReviewPagination(totalPages);
+}
+
 function initReviews() {
   const reviewGrid = document.getElementById("reviewGrid");
   if (!reviewGrid) return;
 
-  reviewGrid.innerHTML = "";
-  reviews.slice(0, 6).forEach((review) => {
-    reviewGrid.appendChild(createReviewCard(review));
-  });
+  renderReviewStats();
+  renderReviewFilters();
+  renderReviews();
 }
 
 function initRevealAnimations() {
   const elements = Array.from(document.querySelectorAll(".reveal"));
-  if (elements.length === 0) return;
+  if (elements.length === 0) {
+    revealAnimationsReady = true;
+    return;
+  }
 
   if (!("IntersectionObserver" in window)) {
     elements.forEach((element) => element.classList.add("visible"));
+    revealAnimationsReady = true;
     return;
   }
 
@@ -1491,6 +1865,7 @@ function initRevealAnimations() {
   );
 
   elements.forEach((element) => observer.observe(element));
+  revealAnimationsReady = true;
 }
 
 function initContactForm() {
