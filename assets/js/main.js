@@ -2014,6 +2014,49 @@ function initBookingForm() {
   });
 }
 
+function initProceduresExperience() {
+  const page = document.querySelector(".procedures-redesign");
+  if (!page) return;
+
+  const revealItems = [...page.querySelectorAll("[data-reveal]")];
+  if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    revealItems.forEach((item) => item.classList.add("is-visible"));
+  } else {
+    document.body.classList.add("is-reveal-ready");
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -48px" }
+    );
+    revealItems.forEach((item) => revealObserver.observe(item));
+  }
+
+  const navLinks = [...page.querySelectorAll(".section-jump a[href^='#']")];
+  const sectionLinks = navLinks.filter((link) => link.hash !== "#main");
+  const sections = sectionLinks.map((link) => document.querySelector(link.hash)).filter(Boolean);
+  if (!("IntersectionObserver" in window) || !sections.length) return;
+
+  const setActiveLink = (id) => {
+    navLinks.forEach((link) => link.classList.toggle("is-active", link.hash === `#${id}`));
+  };
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) setActiveLink(visible.target.id);
+    },
+    { rootMargin: "-28% 0px -58%", threshold: [0, 0.1, 0.25] }
+  );
+  sections.forEach((section) => sectionObserver.observe(section));
+}
+
 function bootstrap() {
   setCurrentYear();
   initHeaderScrollResize();
@@ -2027,6 +2070,7 @@ function bootstrap() {
   initReviews();
   initRevealAnimations();
   initContactForm();
+  initProceduresExperience();
 }
 
 document.addEventListener("DOMContentLoaded", bootstrap);
