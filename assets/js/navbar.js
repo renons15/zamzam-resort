@@ -149,7 +149,7 @@
 
     const context = getPathContext();
     const uiText = NAV_TEXT[context.currentLang] || NAV_TEXT.ru;
-    const logoPath = assetHref("images/logo.webp", context);
+    const logoPath = assetHref("images/icon.svg", context);
     const waHref = "https://wa.me/998909829871";
     const desktopLinks = renderNavLinks(uiText.nav, context);
     const mobileLinks = renderNavLinks(uiText.nav, context);

@@ -594,25 +594,24 @@
 
       <section id="reviews" class="section section-reviews" aria-labelledby="reviews-title">
         <div class="container reviews-wrap">
-          <div class="reviews-header reveal">
-            <div class="reviews-heading">
+          <div class="reviews-main">
+            <div class="reviews-heading reveal">
               <h2 id="reviews-title" class="section-title reviews-title">Mehmonlar sharhlari</h2>
               <p class="reviews-subtitle">Biz har bir mehmon fikrini qadrlaymiz. Haqiqiy sharhlar boshqalarga sanatoriyni tanlashda yordam beradi.</p>
             </div>
-            <aside class="reviews-summary-card" aria-label="Sharhlar reytingi va manbalari">
-              <div class="reviews-summary-rating">
-                <span class="reviews-summary-stars" aria-hidden="true">★★★★★</span>
-                <strong id="reviewsAverageRating">4.9</strong>
-              </div>
-              <p id="reviewsBasedOn">751+ baho asosida</p>
-              <p id="reviewsPositive">Asosiy jihatlar bo'yicha 97% ijobiy baho</p>
-              <div id="reviewsSourceStats" class="reviews-source-stats"></div>
-              <a id="reviewsCta" class="btn btn-primary reviews-cta" href="https://yandex.com/maps/?mode=search&amp;tab=reviews&amp;ol=biz&amp;oid=70228850210" target="_blank" rel="noopener noreferrer">Sharh qoldirish</a>
-            </aside>
+            <div id="reviewGrid" class="review-grid" aria-live="polite"></div>
+            <nav id="reviewPagination" class="review-pagination" aria-label="Sharhlar sahifalari"></nav>
           </div>
-          <div id="reviewFilters" class="review-filters" aria-label="Sharhlar filtri"></div>
-          <div id="reviewGrid" class="review-grid" aria-live="polite"></div>
-          <nav id="reviewPagination" class="review-pagination" aria-label="Sharhlar sahifalari"></nav>
+          <aside class="reviews-summary-card reveal" aria-label="Sharhlar reytingi va manbalari">
+            <div class="reviews-summary-rating">
+              <span class="reviews-summary-stars" aria-hidden="true">★★★★★</span>
+              <strong id="reviewsAverageRating">4.9</strong>
+            </div>
+            <p id="reviewsBasedOn">751+ baho asosida</p>
+            <p id="reviewsPositive">Asosiy jihatlar bo'yicha 97% ijobiy baho</p>
+            <div id="reviewsSourceStats" class="reviews-source-stats"></div>
+            <a id="reviewsCta" class="btn btn-primary reviews-cta" href="https://yandex.com/maps/?mode=search&amp;tab=reviews&amp;ol=biz&amp;oid=70228850210" target="_blank" rel="noopener noreferrer">Sharh qoldirish</a>
+          </aside>
         </div>
       </section>
 

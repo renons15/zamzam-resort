@@ -554,7 +554,7 @@ const roomData = roomDataByLang[currentLang] || roomDataByLang.ru;
 const reviews = reviewsByLang[currentLang] || reviewsByLang.ru;
 const uiText = uiTextByLang[currentLang] || uiTextByLang.ru;
 
-const REVIEW_PAGE_SIZE = 6;
+const REVIEW_PAGE_SIZE = 3;
 const reviewState = {
   filter: "all",
   page: 1
@@ -1572,24 +1572,6 @@ function createRatingStars(rating) {
   return stars;
 }
 
-function createReviewCategories(review) {
-  const categories = Array.isArray(review.category) ? review.category : [];
-  const list = document.createElement("div");
-  list.className = "review-badges";
-
-  categories.forEach((categoryId) => {
-    const label = getLocalizedLabel(reviewCategoryLabels[categoryId]);
-    if (!label) return;
-
-    const badge = document.createElement("span");
-    badge.className = `review-category review-category--${categoryId}`;
-    badge.textContent = label;
-    list.appendChild(badge);
-  });
-
-  return list;
-}
-
 function createReviewCard(review) {
   const card = document.createElement("article");
   card.className = "review-card reveal";
@@ -1645,7 +1627,6 @@ function createReviewCard(review) {
   card.appendChild(top);
   card.appendChild(trust);
   card.appendChild(text);
-  card.appendChild(createReviewCategories(review));
 
   const hasValidReviewUrl =
     typeof review.sourceUrl === "string" && /^https?:\/\//i.test(review.sourceUrl);

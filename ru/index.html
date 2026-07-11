@@ -490,25 +490,24 @@
 
       <section id="reviews" class="section section-reviews" aria-labelledby="reviews-title">
         <div class="container reviews-wrap">
-          <div class="reviews-header reveal">
-            <div class="reviews-heading">
+          <div class="reviews-main">
+            <div class="reviews-heading reveal">
               <h2 id="reviews-title" class="section-title reviews-title">Отзывы гостей</h2>
               <p class="reviews-subtitle">Мы ценим мнение каждого гостя. Настоящие отзывы помогают другим людям выбрать санаторий.</p>
             </div>
-            <aside class="reviews-summary-card" aria-label="Рейтинг и источники отзывов">
-              <div class="reviews-summary-rating">
-                <span class="reviews-summary-stars" aria-hidden="true">★★★★★</span>
-                <strong id="reviewsAverageRating">4.9</strong>
-              </div>
-              <p id="reviewsBasedOn">На основе 751+ оценок</p>
-              <p id="reviewsPositive">97% положительных оценок по ключевым аспектам</p>
-              <div id="reviewsSourceStats" class="reviews-source-stats"></div>
-              <a id="reviewsCta" class="btn btn-primary reviews-cta" href="https://yandex.com/maps/?mode=search&amp;tab=reviews&amp;ol=biz&amp;oid=70228850210" target="_blank" rel="noopener noreferrer">Оставить отзыв</a>
-            </aside>
+            <div id="reviewGrid" class="review-grid" aria-live="polite"></div>
+            <nav id="reviewPagination" class="review-pagination" aria-label="Пагинация отзывов"></nav>
           </div>
-          <div id="reviewFilters" class="review-filters" aria-label="Фильтр отзывов"></div>
-          <div id="reviewGrid" class="review-grid" aria-live="polite"></div>
-          <nav id="reviewPagination" class="review-pagination" aria-label="Пагинация отзывов"></nav>
+          <aside class="reviews-summary-card reveal" aria-label="Рейтинг и источники отзывов">
+            <div class="reviews-summary-rating">
+              <span class="reviews-summary-stars" aria-hidden="true">★★★★★</span>
+              <strong id="reviewsAverageRating">4.9</strong>
+            </div>
+            <p id="reviewsBasedOn">На основе 751+ оценок</p>
+            <p id="reviewsPositive">97% положительных оценок по ключевым аспектам</p>
+            <div id="reviewsSourceStats" class="reviews-source-stats"></div>
+            <a id="reviewsCta" class="btn btn-primary reviews-cta" href="https://yandex.com/maps/?mode=search&amp;tab=reviews&amp;ol=biz&amp;oid=70228850210" target="_blank" rel="noopener noreferrer">Оставить отзыв</a>
+          </aside>
         </div>
       </section>
 
