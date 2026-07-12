@@ -2028,6 +2028,27 @@ function initProceduresExperience() {
   sections.forEach((section) => sectionObserver.observe(section));
 }
 
+function initIndicationGroups() {
+  const groups = [...document.querySelectorAll(".indication-groups__grid > .indication-group")];
+  if (!groups.length) return;
+
+  const desktopQuery = window.matchMedia("(min-width: 768px)");
+
+  const applyDefaultState = () => {
+    groups.forEach((group) => {
+      group.open = desktopQuery.matches;
+    });
+  };
+
+  applyDefaultState();
+
+  if (typeof desktopQuery.addEventListener === "function") {
+    desktopQuery.addEventListener("change", applyDefaultState);
+  } else if (typeof desktopQuery.addListener === "function") {
+    desktopQuery.addListener(applyDefaultState);
+  }
+}
+
 function bootstrap() {
   setCurrentYear();
   initHeaderScrollResize();
@@ -2042,6 +2063,7 @@ function bootstrap() {
   initRevealAnimations();
   initContactForm();
   initProceduresExperience();
+  initIndicationGroups();
   initFloatingButtonsVisibility();
 }
 
