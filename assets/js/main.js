@@ -1756,6 +1756,58 @@ function initReviews() {
   renderReviews();
 }
 
+function initFloatingButtonsVisibility() {
+  // On short/medium mobile viewports the fixed WhatsApp/Telegram bubbles can
+  // sit on top of the hero booking submit button. Hide them whenever the two
+  // actually overlap, and fade back in once the visitor scrolls past.
+  const floatingButtons = document.querySelector(".floating-buttons");
+  const bookingSubmit = document.getElementById("bookingSubmit");
+  if (!floatingButtons || !bookingSubmit) return;
+
+  const GAP = 12;
+  let buttonsRect = null;
+  let ticking = false;
+
+  // The bubbles are position: fixed, so their visible-state rect only changes
+  // on resize. Measure with the is-hidden transform temporarily cleared —
+  // the synchronous class swap never paints.
+  const measureButtons = () => {
+    const wasHidden = floatingButtons.classList.contains("is-hidden");
+    if (wasHidden) floatingButtons.classList.remove("is-hidden");
+    buttonsRect = floatingButtons.getBoundingClientRect();
+    if (wasHidden) floatingButtons.classList.add("is-hidden");
+  };
+
+  const update = () => {
+    ticking = false;
+    if (!buttonsRect) measureButtons();
+    const submitRect = bookingSubmit.getBoundingClientRect();
+    const overlaps =
+      submitRect.bottom + GAP > buttonsRect.top &&
+      submitRect.top - GAP < buttonsRect.bottom &&
+      submitRect.right + GAP > buttonsRect.left &&
+      submitRect.left - GAP < buttonsRect.right;
+    floatingButtons.classList.toggle("is-hidden", overlaps);
+  };
+
+  const requestUpdate = () => {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(update);
+  };
+
+  window.addEventListener("scroll", requestUpdate, { passive: true });
+  window.addEventListener(
+    "resize",
+    () => {
+      buttonsRect = null;
+      requestUpdate();
+    },
+    { passive: true }
+  );
+  update();
+}
+
 function initRevealAnimations() {
   const elements = Array.from(document.querySelectorAll(".reveal"));
   if (elements.length === 0) {
@@ -1990,6 +2042,7 @@ function bootstrap() {
   initRevealAnimations();
   initContactForm();
   initProceduresExperience();
+  initFloatingButtonsVisibility();
 }
 
 document.addEventListener("DOMContentLoaded", bootstrap);

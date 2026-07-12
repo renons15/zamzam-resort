@@ -2482,11 +2482,15 @@ textarea {
     font-size: 1rem;
   }
 
-  .legacy-pricing-main .price-amount {
+  .legacy-pricing-main .price-row .price-amount {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.55rem 0.75rem;
+    /* extra right padding keeps the price value clear of the fixed
+       floating WhatsApp/Telegram widget at this width; the extra
+       ".price-row" ancestor is needed so this wins over the more
+       specific ".price-row span" rule above */
+    padding: 0.55rem 32px 0.55rem 0.75rem;
     background: rgba(0, 90, 167, 0.06);
     border-radius: var(--lpr-radius-sm);
   }
@@ -3887,7 +3891,8 @@ textarea {
 
 .page-about-legacy .floating-contact,
 .page-procedures-legacy .floating-contact,
-.page-indications-legacy .floating-contact {
+.page-indications-legacy .floating-contact,
+.page-nutrition-legacy .floating-contact {
   position: fixed;
   right: 1.25rem;
   bottom: 1.25rem;
@@ -3899,7 +3904,8 @@ textarea {
 
 .page-about-legacy .floating-contact .btn-icon,
 .page-procedures-legacy .floating-contact .btn-icon,
-.page-indications-legacy .floating-contact .btn-icon {
+.page-indications-legacy .floating-contact .btn-icon,
+.page-nutrition-legacy .floating-contact .btn-icon {
   width: 54px;
   height: 54px;
   display: grid;
@@ -3916,7 +3922,8 @@ textarea {
 
 .page-about-legacy .floating-contact .btn-icon:hover,
 .page-procedures-legacy .floating-contact .btn-icon:hover,
-.page-indications-legacy .floating-contact .btn-icon:hover {
+.page-indications-legacy .floating-contact .btn-icon:hover,
+.page-nutrition-legacy .floating-contact .btn-icon:hover {
   transform: scale(1.06);
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
   background-color: #f1faff;
@@ -3924,14 +3931,16 @@ textarea {
 
 .page-about-legacy .floating-contact .btn-icon.whatsapp,
 .page-procedures-legacy .floating-contact .btn-icon.whatsapp,
-.page-indications-legacy .floating-contact .btn-icon.whatsapp {
+.page-indications-legacy .floating-contact .btn-icon.whatsapp,
+.page-nutrition-legacy .floating-contact .btn-icon.whatsapp {
   background-image: url("../../images/whatsapp.svg");
   border-color: #25d366;
 }
 
 .page-about-legacy .floating-contact .btn-icon.telegram,
 .page-procedures-legacy .floating-contact .btn-icon.telegram,
-.page-indications-legacy .floating-contact .btn-icon.telegram {
+.page-indications-legacy .floating-contact .btn-icon.telegram,
+.page-nutrition-legacy .floating-contact .btn-icon.telegram {
   background-image: url("../../images/telegram.svg");
   border-color: #229ed9;
 }
@@ -5638,6 +5647,13 @@ textarea {
   z-index: 45;
   display: grid;
   gap: 10px;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.floating-buttons.is-hidden {
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
 }
 
 .floating-btn {
@@ -5765,7 +5781,7 @@ textarea {
 
   .mobile-nav a {
     width: 100%;
-    padding: 6px 0;
+    padding: 10px 0;
   }
 
   .mobile-actions,
@@ -5775,7 +5791,14 @@ textarea {
 
   .mobile-actions .wa-pill {
     width: 100%;
+    min-height: 44px;
     justify-content: center;
+  }
+
+  .lang-switcher--mobile .lang-switcher__btn {
+    min-height: 44px;
+    min-width: 44px;
+    flex: 1;
   }
 
   .lang-switcher--mobile {
@@ -6167,6 +6190,11 @@ textarea {
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
   }
 
+  .guest-controls button {
+    width: 44px;
+    height: 44px;
+  }
+
   .homepage-contact-legacy__layout,
   .homepage-contact-legacy__list,
   .legacy-contact-main .contact-highlights__list,
@@ -6253,7 +6281,7 @@ textarea {
 
   .room-tab {
     flex: 1 1 calc(50% - 8px);
-    padding: 12px 14px;
+    padding: 13px 14px;
     font-size: 0.68rem;
     letter-spacing: 1.2px;
   }
@@ -6468,6 +6496,27 @@ textarea {
   .floating-btn {
     width: 48px;
     height: 48px;
+  }
+
+  .page-pricing-legacy .floating-contact,
+  .page-contact-legacy .floating-contact,
+  .page-about-legacy .floating-contact,
+  .page-procedures-legacy .floating-contact,
+  .page-indications-legacy .floating-contact,
+  .page-nutrition-legacy .floating-contact {
+    right: 10px;
+    bottom: 10px;
+    gap: 10px;
+  }
+
+  .page-pricing-legacy .floating-contact .btn-icon,
+  .page-contact-legacy .floating-contact .btn-icon,
+  .page-about-legacy .floating-contact .btn-icon,
+  .page-procedures-legacy .floating-contact .btn-icon,
+  .page-indications-legacy .floating-contact .btn-icon,
+  .page-nutrition-legacy .floating-contact .btn-icon {
+    width: 46px;
+    height: 46px;
   }
 }
 
