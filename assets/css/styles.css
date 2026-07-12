@@ -248,16 +248,6 @@ textarea {
   border-color: var(--gold);
 }
 
-.book-link {
-  font-size: 0.76rem;
-  letter-spacing: 2px;
-  font-weight: 700;
-}
-
-.book-link:hover {
-  color: var(--gold);
-}
-
 .menu-toggle {
   display: none;
   width: 42px;
@@ -352,44 +342,6 @@ textarea {
   line-height: 1.06;
   text-wrap: balance;
   text-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
-}
-
-.hero-video {
-  margin-top: 0;
-  background: rgba(255, 255, 255, 0.09);
-  border: 1px solid rgba(255, 255, 255, 0.46);
-  border-radius: 999px;
-  color: #fff;
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  padding: 10px 24px 10px 10px;
-  cursor: pointer;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.26);
-  backdrop-filter: blur(3px);
-  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
-}
-
-.hero-video:hover {
-  background: rgba(255, 255, 255, 0.16);
-  border-color: rgba(255, 255, 255, 0.64);
-  transform: translateY(-1px);
-}
-
-.play-circle {
-  width: 42px;
-  height: 42px;
-  border: 2px solid rgba(255, 255, 255, 0.9);
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.play-circle svg {
-  width: 17px;
-  margin-left: 2px;
 }
 
 .hero-booking {
@@ -2554,43 +2506,11 @@ textarea {
   }
 }
 
-.section-procedures {
-  background: #fff;
-}
-
-.procedures-intro,
 .indications-intro {
   margin: 0 auto 28px;
   max-width: 780px;
   text-align: center;
   color: #666;
-}
-
-.procedure-columns {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.procedure-column {
-  border: 1px solid #ebebeb;
-  background: #fcfcfc;
-  padding: 18px;
-}
-
-.procedure-column h3 {
-  margin: 0 0 12px;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 2rem;
-  color: var(--gold-dark);
-}
-
-.procedure-column ul {
-  margin: 0;
-  padding-left: 18px;
-  display: grid;
-  gap: 7px;
-  color: #5f5f5f;
 }
 
 /* Legacy about page migration */
@@ -4212,16 +4132,6 @@ textarea {
   gap: 0.85rem;
 }
 
-.legacy-indications-main .indications-list {
-  margin: 0;
-  padding-left: 1.2em;
-  color: #435468;
-}
-
-.legacy-indications-main .indications-list li {
-  margin-bottom: 0.4rem;
-}
-
 .legacy-indications-main .indications-overview__media {
   display: grid;
   place-items: center;
@@ -4322,21 +4232,6 @@ textarea {
 .legacy-indications-main .indication-card a:hover,
 .legacy-indications-main .indication-card a:focus {
   text-decoration: underline;
-}
-
-.legacy-indications-main .indication-card-list--bulleted .indication-card {
-  padding-left: 1.1rem;
-  position: relative;
-}
-
-.legacy-indications-main .indication-card-list--bulleted .indication-card::before {
-  content: "•";
-  position: absolute;
-  left: 0.45rem;
-  color: var(--li-primary);
-  font-size: 1.3rem;
-  line-height: 1;
-  top: 0.9rem;
 }
 
 .legacy-indications-main .indications-cta {
@@ -4834,16 +4729,6 @@ textarea {
   }
 }
 
-.section-indications {
-  background: var(--cream);
-}
-
-.indications-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-}
-
 .indication-group {
   margin: 0;
   background: #fff;
@@ -4987,10 +4872,6 @@ textarea {
   color: #707070;
 }
 
-.section-pages {
-  background: var(--cream);
-}
-
 .section-licenses {
   background: var(--cream);
 }
@@ -5020,7 +4901,7 @@ textarea {
   padding: 22px;
 }
 
-.license-panel-content h3 {
+.license-panel-content h2 {
   margin: 0 0 12px;
   font-family: "Cormorant Garamond", serif;
   font-size: 2rem;
@@ -5038,50 +4919,6 @@ textarea {
   color: #5f5f5f;
   display: grid;
   gap: 7px;
-}
-
-.pages-intro {
-  margin: 0 auto 26px;
-  max-width: 760px;
-  text-align: center;
-  color: #666;
-}
-
-.pages-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.page-card {
-  background: #fff;
-  border: 1px solid #ececec;
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
-  padding: 20px;
-  min-height: 170px;
-  display: grid;
-  align-content: start;
-  gap: 8px;
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-.page-card h3 {
-  margin: 0;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 2rem;
-  color: #252525;
-}
-
-.page-card p {
-  margin: 0;
-  color: #666;
-  font-size: 0.9rem;
-}
-
-.page-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(0, 90, 167, 0.45);
-  box-shadow: 0 16px 28px rgba(0, 90, 167, 0.16);
 }
 
 .section-reviews {
@@ -5208,42 +5045,6 @@ textarea {
   box-shadow: 0 16px 26px rgba(0, 90, 167, 0.22);
 }
 
-.review-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 8px;
-  border: 1px solid rgba(0, 90, 167, 0.1);
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
-}
-
-.review-filter {
-  min-height: 44px;
-  padding: 0 18px;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  background: transparent;
-  color: #526a83;
-  cursor: pointer;
-  font-size: 0.92rem;
-  font-weight: 600;
-  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
-}
-
-.review-filter:hover {
-  border-color: rgba(0, 90, 167, 0.18);
-  background: #f3f9ff;
-  color: #174b78;
-}
-
-.review-filter.is-active {
-  background: var(--gold);
-  color: #fff;
-  box-shadow: 0 10px 22px rgba(0, 90, 167, 0.22);
-}
-
 .review-grid {
   display: flex;
   flex-direction: column;
@@ -5354,14 +5155,6 @@ textarea {
 
 .review-source-badge--google .review-source-icon {
   background: conic-gradient(from 45deg, #4285f4, #34a853, #fbbc05, #ea4335, #4285f4);
-}
-
-.review-source-badge--youtube .review-source-icon {
-  background: #ff0033;
-}
-
-.review-source-badge--twogis .review-source-icon {
-  background: #20a052;
 }
 
 .review-trust {
@@ -5825,64 +5618,6 @@ textarea {
   color: #fff;
 }
 
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr 1fr;
-  gap: 26px;
-}
-
-.footer-logo {
-  width: 92px;
-  height: auto;
-  filter: brightness(0) invert(1);
-  margin-bottom: 16px;
-  margin-left: 60px;
-}
-
-.footer-grid h4 {
-  margin: 0 0 18px;
-  font-size: 0.82rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.footer-grid p,
-.footer-grid a {
-  margin: 0 0 8px;
-  color: #bababa;
-  display: block;
-  font-size: 0.88rem;
-}
-
-.footer-grid a:hover {
-  color: var(--gold);
-}
-
-.social-row {
-  display: flex;
-  gap: 8px;
-}
-
-.social-row a {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.25s ease;
-}
-
-.social-row a:hover {
-  background: var(--gold);
-}
-
-.social-row svg {
-  width: 18px;
-  color: #fff;
-}
-
 .footer-copy {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   margin-top: 0;
@@ -6185,14 +5920,10 @@ textarea {
 
   .treatment-grid,
   .legacy-room-gallery,
-  .pages-grid,
   .review-grid,
   .contact-grid,
-  .procedure-columns,
-  .indications-grid,
   .diet-grid,
   .homepage-contact-legacy__list,
-  .footer-grid,
   .legacy-about-main .hero-metrics,
   .legacy-about-main .about-story__layout,
   .legacy-about-main .about-water__grid,
@@ -6219,10 +5950,6 @@ textarea {
 
   .map-wrap iframe {
     height: 380px;
-  }
-
-  .footer-logo {
-    margin-left: 0;
   }
 }
 
@@ -6318,10 +6045,6 @@ textarea {
     border-radius: 22px;
   }
 
-  .review-filters {
-    border-radius: 18px;
-  }
-
   .review-card {
     border-radius: 22px;
   }
@@ -6347,12 +6070,6 @@ textarea {
     font-size: clamp(1.85rem, 11vw, 2.7rem);
     letter-spacing: 0.05em;
     line-height: 1.12;
-  }
-
-  .hero-video {
-    margin-top: 14px;
-    width: 100%;
-    justify-content: center;
   }
 
   .hero-booking {
@@ -6463,14 +6180,10 @@ textarea {
   .legacy-pricing-layout,
   .nutrition-grid-extended,
   .licenses-grid-new,
-  .pages-grid,
   .review-grid,
   .contact-grid,
-  .procedure-columns,
-  .indications-grid,
   .diet-grid,
   .mineral-layout,
-  .footer-grid,
   .legacy-about-main .hero-metrics,
   .legacy-about-main .about-story__layout,
   .legacy-about-main .about-water__grid,
@@ -6696,7 +6409,6 @@ textarea {
   }
 
   .review-card,
-  .page-card,
   .contact-card,
   .legacy-room-copy,
   .legacy-pricing-card,
@@ -6774,24 +6486,6 @@ textarea {
 
   .reviews-cta {
     width: 100%;
-  }
-
-  .review-filters {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding: 6px;
-    scrollbar-width: none;
-  }
-
-  .review-filters::-webkit-scrollbar {
-    display: none;
-  }
-
-  .review-filter {
-    flex: 0 0 auto;
-    min-height: 40px;
-    padding-inline: 14px;
-    font-size: 0.86rem;
   }
 
   .review-card {
