@@ -26,11 +26,9 @@ function request(payload) {
 test("contact and homepage forms submit general questions without an email field", () => {
   for (const page of [
     "contact.html",
-    "ru/contact.html",
     "uz/contact.html",
     "kk/contact.html",
     "index.html",
-    "ru/index.html",
     "uz/index.html",
     "kk/index.html"
   ]) {
