@@ -641,13 +641,13 @@ html:lang(kk) .page-procedures-legacy .procedures-redesign { --procedure-label: 
 }
 
 .page-procedures-legacy .procedures-redesign .procedure-group--diagnostics .procedure-item:nth-child(1)::before {
-  background-image: linear-gradient(rgba(5, 52, 101, 0.05), rgba(5, 52, 101, 0.16)), url("../../images/procedures-bg.jpg");
+  background-image: linear-gradient(rgba(5, 52, 101, 0.05), rgba(5, 52, 101, 0.16)), url("../../images/lab.jpg");
 }
 .page-procedures-legacy .procedures-redesign .procedure-group--diagnostics .procedure-item:nth-child(2)::before {
-  background-image: linear-gradient(rgba(5, 52, 101, 0.05), rgba(5, 52, 101, 0.16)), url("../../images/hero-bg.jpg");
+  background-image: linear-gradient(rgba(5, 52, 101, 0.05), rgba(5, 52, 101, 0.16)), url("../../images/uzi.jpg");
 }
 .page-procedures-legacy .procedures-redesign .procedure-group--diagnostics .procedure-item:nth-child(3)::before {
-  background-image: linear-gradient(rgba(5, 52, 101, 0.05), rgba(5, 52, 101, 0.16)), url("../../images/source.jpg");
+  background-image: linear-gradient(rgba(5, 52, 101, 0.05), rgba(5, 52, 101, 0.16)), url("../../images/ecg.jpg");
 }
 .page-procedures-legacy .procedures-redesign .procedure-group--diagnostics .procedure-item:hover::before { transform: scale(1.04); }
 
@@ -751,7 +751,7 @@ html:lang(kk) .page-procedures-legacy .procedures-redesign { --procedure-label: 
   grid-column: span 2;
   grid-row: span 2;
   justify-content: end;
-  background: linear-gradient(180deg, rgba(4, 42, 82, 0.05), rgba(4, 42, 82, 0.86)), url("../../images/source.jpg") center / cover;
+  background: linear-gradient(180deg, rgba(4, 42, 82, 0.05), rgba(4, 42, 82, 0.86)), url("../../images/vanni.jpg") center / cover;
 }
 
 .page-procedures-legacy .procedures-redesign .procedure-group--balneology .procedure-item:first-child .item-title {

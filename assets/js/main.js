@@ -23,7 +23,6 @@ const uiTextByLang = {
     reviewBasedOn: "На основе {count}+ оценок",
     reviewPositive: "{percent}% положительных оценок по ключевым аспектам",
     reviewLeave: "Оставить отзыв",
-    reviewFilterLabel: "Фильтр отзывов",
     reviewVerified: "Проверенный отзыв",
     reviewSource: "Источник",
     reviewCityFallback: "город не указан",
@@ -62,7 +61,6 @@ const uiTextByLang = {
     reviewBasedOn: "{count}+ baho asosida",
     reviewPositive: "Asosiy jihatlar bo'yicha {percent}% ijobiy baho",
     reviewLeave: "Sharh qoldirish",
-    reviewFilterLabel: "Sharhlar filtri",
     reviewVerified: "Tasdiqlangan sharh",
     reviewSource: "Manba",
     reviewCityFallback: "shahar ko'rsatilmagan",
@@ -101,7 +99,6 @@ const uiTextByLang = {
     reviewBasedOn: "{count}+ баға негізінде",
     reviewPositive: "Негізгі аспектілер бойынша {percent}% оң баға",
     reviewLeave: "Пікір қалдыру",
-    reviewFilterLabel: "Пікірлер сүзгісі",
     reviewVerified: "Расталған пікір",
     reviewSource: "Дереккөз",
     reviewCityFallback: "қала көрсетілмеген",
@@ -150,7 +147,7 @@ const roomDataByLang = {
         "Кондиционер",
         "Душевая и туалет внутри номера"
       ],
-      image: "assets/old/images/standart.jpg"
+      image: "images/standart.jpg"
     },
     polulux1: {
       name: "Полулюкс (1-комнатный, 36 м²)",
@@ -168,7 +165,7 @@ const roomDataByLang = {
         "Мягкая мебель",
         "Балкон с видом на сад"
       ],
-      image: "assets/old/images/polulux.jpg"
+      image: "images/polulux.jpg"
     },
     polulux2: {
       name: "Полулюкс (2-комнатный)",
@@ -186,7 +183,7 @@ const roomDataByLang = {
         "Холодильник",
         "Балкон с видом на сад"
       ],
-      image: "assets/old/images/polulux.jpg"
+      image: "images/polulux.jpg"
     },
     lux: {
       name: "Люкс (2-комнатный)",
@@ -205,7 +202,7 @@ const roomDataByLang = {
         "Просторный санузел",
         "Балконы с видом на сад"
       ],
-      image: "assets/old/images/lux.jpg"
+      image: "images/lux.jpg"
     }
   },
   uz: {
@@ -227,7 +224,7 @@ const roomDataByLang = {
         "Dush, hojatxona",
         "Fen, sochiqlar, xalat"
       ],
-      image: "assets/old/images/standart.jpg"
+      image: "images/standart.jpg"
     },
     polulux1: {
       name: "Polulyuks (1 xonali)",
@@ -247,7 +244,7 @@ const roomDataByLang = {
         "Dush, hojatxona",
         "Fen, sochiqlar, xalat, shippak"
       ],
-      image: "assets/old/images/polulux.jpg"
+      image: "images/polulux.jpg"
     },
     polulux2: {
       name: "Polulyuks (2 xonali)",
@@ -268,7 +265,7 @@ const roomDataByLang = {
         "Dush, hojatxona",
         "Fen, sochiqlar, xalat, shippak"
       ],
-      image: "assets/old/images/polulux.jpg"
+      image: "images/polulux.jpg"
     },
     lux: {
       name: "Lyuks",
@@ -288,7 +285,7 @@ const roomDataByLang = {
         "Dush, hojatxona",
         "Fen, sochiqlar, xalat, shippak"
       ],
-      image: "assets/old/images/lux.jpg"
+      image: "images/lux.jpg"
     }
   },
   kk: {
@@ -310,7 +307,7 @@ const roomDataByLang = {
         "Душ, әжетхана",
         "Фен, сүлгілер, халат"
       ],
-      image: "assets/old/images/standart.jpg"
+      image: "images/standart.jpg"
     },
     polulux1: {
       name: "Жартылай люкс (1 бөлмелі)",
@@ -330,7 +327,7 @@ const roomDataByLang = {
         "Душ, әжетхана",
         "Фен, сүлгілер, халат, тәпішке"
       ],
-      image: "assets/old/images/polulux.jpg"
+      image: "images/polulux.jpg"
     },
     polulux2: {
       name: "Жартылай люкс (2 бөлмелі)",
@@ -351,7 +348,7 @@ const roomDataByLang = {
         "Душ, әжетхана",
         "Фен, сүлгілер, халат, тәпішке"
       ],
-      image: "assets/old/images/polulux.jpg"
+      image: "images/polulux.jpg"
     },
     lux: {
       name: "Люкс",
@@ -371,7 +368,7 @@ const roomDataByLang = {
         "Душ, әжетхана",
         "Фен, сүлгілер, халат, тәпішке"
       ],
-      image: "assets/old/images/lux.jpg"
+      image: "images/lux.jpg"
     }
   }
 };
@@ -556,23 +553,8 @@ const uiText = uiTextByLang[currentLang] || uiTextByLang.ru;
 
 const REVIEW_PAGE_SIZE = 3;
 const reviewState = {
-  filter: "all",
   page: 1
 };
-
-const reviewFilterConfig = [
-  { id: "all", label: { ru: "Все отзывы", uz: "Barcha sharhlar", kk: "Барлық пікірлер" } },
-  { id: "treatment", label: { ru: "Лечение", uz: "Davolash", kk: "Емдеу" } },
-  { id: "stay", label: { ru: "Проживание", uz: "Yashash", kk: "Орналасу" } },
-  { id: "food", label: { ru: "Питание", uz: "Ovqatlanish", kk: "Тамақтану" } },
-  { id: "staff", label: { ru: "Персонал", uz: "Xodimlar", kk: "Қызметкерлер" } },
-  { id: "procedures", label: { ru: "Процедуры", uz: "Muolajalar", kk: "Процедуралар" } }
-];
-
-const reviewCategoryLabels = reviewFilterConfig.reduce((labels, item) => {
-  labels[item.id] = item.label;
-  return labels;
-}, {});
 
 const reviewSourceMeta = {
   yandex: {
@@ -582,10 +564,6 @@ const reviewSourceMeta = {
   google: {
     icon: "G",
     label: "Google Reviews"
-  },
-  youtube: {
-    icon: "▶",
-    label: "YouTube"
   },
   twogis: {
     icon: "2G",
@@ -1508,10 +1486,6 @@ function formatText(template, values) {
   );
 }
 
-function getLocalizedLabel(labelMap) {
-  return labelMap?.[currentLang] || labelMap?.ru || "";
-}
-
 function getReviewInitials(name) {
   return name
     .split(" ")
@@ -1644,14 +1618,6 @@ function createReviewCard(review) {
   return card;
 }
 
-function getFilteredReviews() {
-  if (reviewState.filter === "all") return reviews;
-  return reviews.filter((review) => {
-    const categories = Array.isArray(review.category) ? review.category : [];
-    return categories.includes(reviewState.filter);
-  });
-}
-
 function renderReviewStats() {
   const summaryCard = document.querySelector(".reviews-summary-card");
   const averageRating = document.getElementById("reviewsAverageRating");
@@ -1701,32 +1667,6 @@ function renderReviewStats() {
     item.appendChild(rating);
     item.appendChild(count);
     sourceList.appendChild(item);
-  });
-}
-
-function renderReviewFilters() {
-  const filters = document.getElementById("reviewFilters");
-  if (!filters) return;
-
-  filters.setAttribute("aria-label", uiText.reviewFilterLabel);
-  filters.innerHTML = "";
-
-  reviewFilterConfig.forEach((filter) => {
-    const button = document.createElement("button");
-    button.className = "review-filter";
-    button.type = "button";
-    button.dataset.reviewFilter = filter.id;
-    button.textContent = getLocalizedLabel(filter.label);
-    const isActive = reviewState.filter === filter.id;
-    button.classList.toggle("is-active", isActive);
-    button.setAttribute("aria-pressed", String(isActive));
-    button.addEventListener("click", () => {
-      reviewState.filter = filter.id;
-      reviewState.page = 1;
-      renderReviews();
-      renderReviewFilters();
-    });
-    filters.appendChild(button);
   });
 }
 
@@ -1786,12 +1726,11 @@ function renderReviews() {
   const reviewGrid = document.getElementById("reviewGrid");
   if (!reviewGrid) return;
 
-  const filteredReviews = getFilteredReviews();
-  const totalPages = Math.max(1, Math.ceil(filteredReviews.length / REVIEW_PAGE_SIZE));
+  const totalPages = Math.max(1, Math.ceil(reviews.length / REVIEW_PAGE_SIZE));
   reviewState.page = Math.min(reviewState.page, totalPages);
 
   const start = (reviewState.page - 1) * REVIEW_PAGE_SIZE;
-  const visibleReviews = filteredReviews.slice(start, start + REVIEW_PAGE_SIZE);
+  const visibleReviews = reviews.slice(start, start + REVIEW_PAGE_SIZE);
 
   reviewGrid.innerHTML = "";
 
@@ -1814,8 +1753,59 @@ function initReviews() {
   if (!reviewGrid) return;
 
   renderReviewStats();
-  renderReviewFilters();
   renderReviews();
+}
+
+function initFloatingButtonsVisibility() {
+  // On short/medium mobile viewports the fixed WhatsApp/Telegram bubbles can
+  // sit on top of the hero booking submit button. Hide them whenever the two
+  // actually overlap, and fade back in once the visitor scrolls past.
+  const floatingButtons = document.querySelector(".floating-buttons");
+  const bookingSubmit = document.getElementById("bookingSubmit");
+  if (!floatingButtons || !bookingSubmit) return;
+
+  const GAP = 12;
+  let buttonsRect = null;
+  let ticking = false;
+
+  // The bubbles are position: fixed, so their visible-state rect only changes
+  // on resize. Measure with the is-hidden transform temporarily cleared —
+  // the synchronous class swap never paints.
+  const measureButtons = () => {
+    const wasHidden = floatingButtons.classList.contains("is-hidden");
+    if (wasHidden) floatingButtons.classList.remove("is-hidden");
+    buttonsRect = floatingButtons.getBoundingClientRect();
+    if (wasHidden) floatingButtons.classList.add("is-hidden");
+  };
+
+  const update = () => {
+    ticking = false;
+    if (!buttonsRect) measureButtons();
+    const submitRect = bookingSubmit.getBoundingClientRect();
+    const overlaps =
+      submitRect.bottom + GAP > buttonsRect.top &&
+      submitRect.top - GAP < buttonsRect.bottom &&
+      submitRect.right + GAP > buttonsRect.left &&
+      submitRect.left - GAP < buttonsRect.right;
+    floatingButtons.classList.toggle("is-hidden", overlaps);
+  };
+
+  const requestUpdate = () => {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(update);
+  };
+
+  window.addEventListener("scroll", requestUpdate, { passive: true });
+  window.addEventListener(
+    "resize",
+    () => {
+      buttonsRect = null;
+      requestUpdate();
+    },
+    { passive: true }
+  );
+  update();
 }
 
 function initRevealAnimations() {
@@ -2038,6 +2028,27 @@ function initProceduresExperience() {
   sections.forEach((section) => sectionObserver.observe(section));
 }
 
+function initIndicationGroups() {
+  const groups = [...document.querySelectorAll(".indication-groups__grid > .indication-group")];
+  if (!groups.length) return;
+
+  const desktopQuery = window.matchMedia("(min-width: 768px)");
+
+  const applyDefaultState = () => {
+    groups.forEach((group) => {
+      group.open = desktopQuery.matches;
+    });
+  };
+
+  applyDefaultState();
+
+  if (typeof desktopQuery.addEventListener === "function") {
+    desktopQuery.addEventListener("change", applyDefaultState);
+  } else if (typeof desktopQuery.addListener === "function") {
+    desktopQuery.addListener(applyDefaultState);
+  }
+}
+
 function bootstrap() {
   setCurrentYear();
   initHeaderScrollResize();
@@ -2052,6 +2063,8 @@ function bootstrap() {
   initRevealAnimations();
   initContactForm();
   initProceduresExperience();
+  initIndicationGroups();
+  initFloatingButtonsVisibility();
 }
 
 document.addEventListener("DOMContentLoaded", bootstrap);
